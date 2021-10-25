@@ -129,13 +129,160 @@ ul li {
         right: 3.5vw;
     }
 }
+#legs {
+    animation: left-shoe 1.1s infinite;
+}
+#left-shoe {
+    animation: left-shoe 1.1s infinite;
+}
+#right-shoe {
+    animation: left-shoe 1.1s infinite;
+}
+#right-leg {
+    animation: left-shoe 1.1s infinite;
+}
+#left-leg {
+    animation: left-shoe 1.1s infinite;
+}
+@keyframes left-shoe {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(20deg);
+    }
+}
+#right-leg {
+    animation: right-leg 1.1s infinite;
+}
+@keyframes right-leg {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(20deg);
+    }
+}
+#whole-face {
+    animation: whole-face 1.1s infinite;
+}
+@keyframes whole-face {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(15deg);
+    }
+}
+#circle-face {
+    animation: circle-face 1.1s infinite;
+}
+@keyframes circle-face {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(15deg);
+    }
+}
+#fringes {
+    animation: fringes 1.1s infinite;
+}
+@keyframes fringes {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(15deg);
+    }
+}
+#pony {
+    animation: pony 1.1s infinite;
+}
+@keyframes pony {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateY(15deg) rotateX(10deg);
+    }
+}
+#body {
+    animation: body 1.1s infinite;
+}
+@keyframes body {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(15deg);
+    }
+}
+#left-arm {
+    animation: left-arm 1.1s infinite;
+}
+#right-arm {
+    animation: left-arm 1.1s infinite;
+}
+@keyframes left-arm {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(15deg);
+    }
+}
+#left-hand {
+    animation: left-hand 1.1s infinite;
+}
+#right-hand {
+    animation: right-hand 1.1s infinite;
+    /* transform-origin: center; */
+}
+@keyframes left-hand {
+    from {
+        transform: rotateX(-10deg) rotateZ(1deg);
+    }
+    to {
+        transform: rotateX(20deg) rotateZ(-0.5deg);
+    }
+}
+@keyframes right-hand {
+    from {
+        transform: rotateX(0deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(15deg) rotateZ(-0.5deg);
+    }
+}
+#whole-phone {
+    animation: whole-phone 1.1s infinite;
+}
+#phone {
+    animation: whole-phone 1.1s infinite;
+}
+#tick {
+    animation: whole-phone 1.1s infinite;
+}
+#circle {
+    animation: whole-phone 1.1s infinite;
+}
+@keyframes whole-phone {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(20deg);
+    }
+}
 
 #signupLeftImage {
     margin-top: 0;
     width: 50vw;
     height: 100vh;
     opacity: 0.85;
-    background-color: #5ca0ff;
+    /* background-color: #5ca0ff; */
+    background-color: #fff;
     float: left;
 }
 #signUp {
@@ -187,7 +334,8 @@ ul li {
 }
 #signUpText {
     text-align: center;
-    color: #7d7987;
+    /* color: #7d7987; */
+    color: #f13ab1;
     font-size: 120%;
     font-family: Product Sans;
     letter-spacing: 0.03em;
@@ -240,7 +388,8 @@ top:8px;
     padding-right: 39px;
     border-radius: 6px;
     outline: none;
-    border: 1px solid #8692a6;
+    /* border: 1px solid #8692a6; */
+    border: 1px solid #f13ab1;
     margin-bottom: 1vh;
     font-size: 90%;
 }
@@ -262,8 +411,9 @@ top:8px;
     width: 18vw;
     /* height:10vh; */
     opacity: 1 !important;
-    background-color: #9ac1f8;
-    color: black;
+    /* background-color: #9ac1f8; */
+    background-color: #f13ab1;
+    color: #fff;
     padding: 10px;
     text-align: center;
     border-radius: 7px;
@@ -298,6 +448,7 @@ border:2px solid blue;
 }*/
 #terms {
     display: inline-block;
+    color: #f13ab1;
 }
 #terms1 {
     padding-left: 5px;
@@ -310,7 +461,7 @@ border:2px solid blue;
     margin-top: 3px;
     width: 80%;
     height: 5.5vh;
-    background: #458ff6;
+    background: #f13ab1;
     border-radius: 6px;
     outline: none;
     border: none;
@@ -325,7 +476,7 @@ border:2px solid blue;
 }
 #login {
     margin-top: 1.5vh;
-    color: #696f79;
+    color: #f13ab1;
     font-family: Inter;
     font-size: 105%;
     display: inline-block;
@@ -499,7 +650,7 @@ border:2px solid blue;
         font-size: 80%;
     }
 }
-.error{
+.error {
     border: 1px solid red;
     outline: none;
 }
