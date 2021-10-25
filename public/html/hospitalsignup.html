@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+  <script src="https://use.fontawesome.com/67912d8e88.js"></script>
+  <link rel="stylesheet" href="../css/hospitalsignup.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="../css/passwordstrength.css" />
+  <title>Aarogya</title>
+</head>
+
+<body>
+  <div id="containers">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="Navbar" >
+		<a class="navbar-brand" href="#"><img src="../img/medical1.png" id="logo"></a>
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar" id="button1"><span class="navbar-toggler-icon"></span></button>
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class=" nav navbar-nav mr-auto">
+		<li class="nav-item"><a class="nav-link" href="#" id="homeOpt">HOME<span class="sr-only">(current)</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="#">ABOUT US</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">SERVICES</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">CONTACT US</a></li>
+		</ul>
+		<form class="form-inline">
+		<input type="text" id="inputNav" placeholder="Search...">
+		<a href="#"><img src="../img/search.png" id="search"></a>
+		</form>
+	</div>
+	</nav>
+	</div>
+   <!--Signup-->
+<div id="signUp"><!--started details-->
+	<div id="signupLeftImage">
+		<!--<image src="medicalImage/plate.png" id="plate">-->
+			<img src="..\img/signup-Logo.png" id="design">
+    </div>
+    <div id="Form">
+        <div id="signUpform" class="fadeIn">
+    	<h2 id="heading">Register Your Account!</h2>
+    	<!-- <p id="signUpText">Sign up with your social media account or email address</p> -->
+	    
+    	<div id="details">
+        <form action="" name="signUpform">
+        <label class="label1">Liscence Number*</label><br>
+        <input type="email" placeholder="Write your email" class="inputDetails" required="required"><br>
+
+        <label class="label1">Admin Name*</label><br>
+        <input type="email" placeholder="Write your email" class="inputDetails" required="required"><br>
+
+    
+    	<label class="label1">Email address*</label><br>
+        <input type="email" placeholder="Write your email" class="inputDetails" required="required"><br>
+
+        <label class="label1">Telephone Number*</label><br>
+        <input type="number" placeholder="Write your phone number" class="inputDetails" required="required"><br>
+        
+        <label class="label1">Create password*</label><br>
+        <div id="reasons" class="reasons"></div>
+
+    		<!-- <input type="password" placeholder="Password" class="inputDetails" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> -->
+        <input type="password" placeholder="Password" class="inputDetails password-input" id="password-input" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+              
+        <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i><br>
+        <div class="strength-meter" id="strength-meter"></div>
+        <p class="password-rate"></p>
+        <label class='label1'>Confirm password*</label><br>
+          <div>
+            <input type="password" placeholder="Confirm password" class="inputDetails" id="confirmPwd" required="required">
+            <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i><br>
+          </div>
+        
+    		<div><input type="checkbox" id="terms" required><label for="terms" id="terms1"> I agree to <a href="" id="termLink">terms & conditions</a></label></div>
+    		<button type="submit" id="submitbtn" class="register">Register Account</button>
+        </form>
+      </div>
+      <div class="loginlink-section">
+        <p id="login">Already have an account?</p>
+    	  <a href="#" id="loginLink">Login</a>
+      </div>
+    	
+    </div>
+        <div id="logInform" class="fadeOut">
+        <h2 id="heading1">Login Now</h2>
+        <!-- <p id="logInText">Login with your social media account or email address</p> -->
+        <div id="details1">
+          <form action="">
+            <label class="label2">Your email*</label>
+            <input type="email" placeholder="Write your email" class="inputDetails" required />
+            <label class="label2">Password*</label>
+            <input type="password" placeholder="Password" class="inputDetails" required="required"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+            <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i>
+            <button type="submit" id="submitbtn1">Login</button>
+          </form>
+        </div>
+        <div class="signuplink-section">
+          <p id="signUpopt">Don't have an account?</p>
+        <a href="#" id="signUpLink">Create account</a>
+        </div>
+
+        
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../js/passwordstrength.js"></script>
+  <script src="../js/signup.js"></script>
+</body>
+
+</html>

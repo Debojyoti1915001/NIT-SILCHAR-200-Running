@@ -1,0 +1,1359 @@
+/*_________________________________________________Profile page default_____________________________________________*/
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    overflow-y: auto;
+    font-family: 'OpenSans-Regular';
+    box-sizing: border-box;
+}
+
+/* prole page scrollbar */
+.profile-main::-webkit-scrollbar {
+    width: 8px;
+}
+.profile-main::-webkit-scrollbar-track {
+    background-color: rgb(209, 202, 202);
+    border-radius: 3px;
+}
+.profile-main::-webkit-scrollbar-thumb {
+    background-color: #9593a0;
+    border-radius: 3px;
+}
+
+#profileBody {
+    margin-top: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+#pSec1 {
+    top: 15px;
+    background: #ffffff;
+}
+#pSec2 {
+    /*width:64vw;*/
+    height: 100vh;
+    top: 15px;
+    left: 0px;
+}
+#sub1 {
+    height: 85vh;
+    background: #ffffff;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 10px 10px;
+}
+#pSec3 {
+    background-color: #ffffff;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    top: 15px;
+    right: 5px;
+    padding: 0;
+}
+
+#leftPanel {
+    margin-top: 40px;
+}
+
+/* .dropAnchor {
+    color: black;
+} */
+
+.lists {
+    margin-bottom: 10%;
+    margin-left: 8%;
+}
+.lists > a {
+    color: #9593a0;
+    font-size: 100%;
+    display: inline-block;
+}
+.lists > a:hover,
+.lists > a:active {
+    text-decoration: none;
+}
+.lists:hover,
+.lists:active {
+    width: 85%;
+    height: 100%;
+    background: #019dfa;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 5%;
+}
+.lists:hover a {
+    color: white;
+}
+.lists:hover .Icons {
+    filter: brightness(0) invert(1);
+    margin-top: 1%;
+}
+.active-list {
+    width: 85%;
+    height: 100%;
+    background: #019dfa;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 5%;
+}
+.active-list a {
+    color: white !important;
+}
+.active-list .Icons {
+    filter: brightness(0) invert(1);
+    margin-top: 1%;
+}
+.Icons {
+    position: absolute;
+    right: 15%;
+}
+.profile-icon {
+    filter: brightness(0.46);
+}
+.doctor-icon {
+    display: none;
+}
+#coverImg {
+    width: 100%;
+    height: 40%;
+}
+#Dr {
+    width: 100%;
+    text-align: center;
+    background: #019dfa;
+    color: white;
+    padding: 5%;
+    padding-top: 6%;
+    border-radius: 5px 5px 0px 0px;
+    font-weight: bold;
+    font-size: 140%;
+    font-family: Product Sans;
+}
+#profileImg {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+/* #profileImgD {
+    position: absolute;
+    top: 25%;
+    width: 20%;
+    height: auto;
+    left: -2%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+} */
+#Camera {
+    position: absolute;
+    top: 36.5%;
+    left: 14.5%;
+}
+#patientDetails {
+    position: relative;
+    top: 14%;
+    left: 5.5%;
+    width: 88%;
+    height: 30%;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+}
+#heading2 {
+    font-size: 90%;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+    left: 25px;
+    margin-bottom: 30px;
+}
+.detailLevels {
+    font-size: 14px;
+    margin-left: 25px;
+    margin-bottom: 4px;
+}
+.detailFields {
+    background: #f3f3f3;
+    border: none;
+    outline: none;
+    height: 20px;
+    width: 50%;
+    font-size: 14px;
+}
+#heading1 {
+    font-size: 90%;
+    color: #787878;
+    position: relative;
+    left: 5.5%;
+    top: 10%;
+}
+#name {
+    position: relative;
+    top: 10%;
+    left: 5.5%;
+    font-family: Helvetica;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+/*________________________sideNav styles ________________*/
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 22px 18px rgba(0, 0, 0, 0.04);
+    overflow-x: hidden;
+    padding-top: 0;
+    transition: 0.5s;
+    z-index: 1200;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    display: inline;
+    top: 1%;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+.sidenavHeader {
+    margin-top: 4%;
+    margin-left: 5%;
+    font-weight: 700;
+}
+
+/*__________________________ button sidenav____________________________*/
+.sideNav {
+    display: none;
+}
+.sideNavButton {
+    display: none;
+}
+.sideNavButton:focus {
+    outline: none;
+}
+
+/*____________________________________ Tab view _____________________________________________*/
+@media (max-width: 992px) {
+    #sub1 {
+        height: 90vh;
+    }
+    #pSec1 {
+        height: 90vh;
+    }
+    #pSec3 {
+        display: none !important;
+        background-color: #ffffff;
+        box-shadow: none;
+        margin-top: 50px;
+        margin-left: 20px;
+        position: absolute;
+        width: 300px;
+        height: 55px;
+        left: 17px;
+        top: 367px;
+        background: #019dfa;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+    }
+    #pSec1 {
+        top: 15px;
+    }
+
+    #Dr {
+        padding: 3%;
+        text-align: left;
+    }
+    #Dr p {
+        margin-left: 5%;
+    }
+    .sideNavButton {
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        display: inline;
+        color: #9593a0;
+        font-size: 100%;
+    }
+    .sideNav {
+        border-radius: 50%;
+        height: 30px;
+        /* width: 52px; */
+        /* color: #000000; */
+        font-size: 22px;
+        text-align: center;
+        padding-top: 5px;
+        margin-left: 15px;
+        display: inline;
+        right: 15%;
+        position: absolute;
+    }
+    .doctor-icon {
+        display: inherit;
+        filter: brightness(0.46);
+    }
+    #Camera {
+        position: absolute;
+        top: 37.5%;
+        left: 22.5%;
+    }
+}
+
+.doctors {
+    display: none !important;
+}
+@media (max-width: 992px) {
+    .doctors {
+        display: inline-block !important;
+    }
+    #pSec3 {
+        display: none;
+    }
+}
+
+/*______________________________Mobile View______________________________________________*/
+
+@media (max-width: 576px) {
+    body {
+        overflow: hidden;
+    }
+    html {
+        overflow-x: hidden;
+    }
+    .row {
+        background: #ffffff;
+    }
+
+    #pSec3 {
+        display: flex !important;
+        background-color: #ffffff;
+        box-shadow: none;
+        width: 82%;
+        left: 8%;
+        margin-left: 0;
+        top: 53%;
+        background: #019dfa;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+    }
+
+    #Dr {
+        padding: 3%;
+        text-align: left;
+    }
+    #Dr p {
+        margin-left: 5%;
+    }
+    .sideNavButton {
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        display: inline;
+        color: #9593a0;
+        font-size: 100%;
+    }
+    .Doctor-list {
+        display: none;
+    }
+    .sideNav {
+        /* background: rgb(255, 255, 255); */
+        border-radius: 50%;
+        height: 30px;
+        width: 32px;
+        /* color: #000000; */
+        font-size: 22px;
+        text-align: center;
+        padding-top: 5px;
+        margin-left: 15px;
+        display: block;
+    }
+    .doctor-icon {
+        display: unset;
+        filter: unset;
+        right: 8%;
+        padding-top: 1.2%;
+    }
+    #sub1 {
+        box-shadow: none;
+        height: 42vh;
+    }
+    #pSec2 {
+        height: 42vh;
+    }
+    #coverImg {
+        height: 40%;
+    }
+    #profileImg {
+        top: 16%;
+    }
+    #Camera {
+        top: 40.5%;
+        left: 26.5%;
+    }
+    #name {
+        top: 12%;
+        font-size: 120%;
+    }
+    #patientDetails {
+        height: fit-content;
+    }
+    #heading1 {
+        /* margin-top: 15px; */
+        margin-bottom: 0.2rem;
+    }
+    #patientDetails {
+        top: 12%;
+    }
+    #heading2 {
+        margin-bottom: 15px;
+        top: 12px;
+    }
+    .detailLevels {
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
+    #pSec1 {
+        margin-top: 60px;
+    }
+    #leftPanel {
+        margin-top: 11%;
+    }
+    .lists {
+        margin-bottom: 3%;
+    }
+}
+@media (max-width: 470px) {
+    #leftPanel {
+        margin-top: 14.5%;
+    }
+}
+
+@media (max-width: 440px) {
+    #pSec3 {
+        top: 52%;
+    }
+    .lists {
+        margin-bottom: 4%;
+    }
+    #leftPanel {
+        margin-top: 15%;
+    }
+}
+@media (max-width: 350px) {
+    #leftPanel {
+        margin-top: 22%;
+    }
+    .lists {
+        margin-bottom: 5%;
+    }
+    .doctor-icon {
+        padding-top: 3%;
+    }
+}
+
+@media (max-width: 380px) {
+    #profileImg {
+        left: 8%;
+    }
+
+    #Camera {
+        top: 43.5%;
+        left: 40.5%;
+    }
+
+    #name {
+        top: 18%;
+        left: 7.5%;
+    }
+    #heading1 {
+        top: 16%;
+        left: 7.5%;
+    }
+    #patientDetails {
+        top: 17.5%;
+    }
+    #pSec3 {
+        top: 58%;
+    }
+    #pSec1 {
+        margin-top: 110px;
+    }
+}
+
+@media (max-width: 300px) {
+    #leftPanel {
+        margin-top: 24%;
+    }
+    .lists {
+        margin-bottom: 6%;
+    }
+}
+.dropbtn {
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /* backdrop-filter: blur(4px); */
+    /* background-color: white; */
+    width: 68%;
+    min-height: 20px;
+    max-height: 150px;
+    overflow-y: scroll;
+    /* color: black; */
+    border-radius: 8px;
+    /* border-top: 0px; */
+    transform: translateY(6%);
+    z-index: 1;
+    /* text-shadow: none; */
+    /* transition: all 1250ms; */
+    background: #f3f3f3;
+    box-shadow: 4px 4px 10px rgb(0 0 0 / 25%);
+    border-radius: 0px 0px 10px 10px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #9593a0 !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    /* filter: blur(0px); */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    /*filter: brightness(2000%);
+	border: 0px solid;
+	box-shadow: inset 0 0 20px rgba(109, 131, 255, 0.5), 0 0 20px rgba(5, 110, 136, 0.2);
+	outline-color: rgba(255, 255, 255, 0);
+	outline-offset: 15px;
+	text-shadow: 1px 1px 2px #1c323b; 
+	border-radius: 8px;
+	color: black;*/
+    color: black !important;
+    background: #f3f3f3;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+/*.content-top {
+	background-color: rgb(247, 247, 247) !important;
+	height:5rem;
+	width:100%;
+	top:-5rem;
+	margin-top: -10px;
+	display: inline-flex;
+	border-radius: 1rem 1rem 0rem 0rem;
+	border-color: #70c6f8;
+  border-left: 15px solid #4E90A4;
+  border-right: 15px solid #4E90A4;
+  border-radius: 8px;
+
+  background-image: -webkit-linear-gradient(left, #3e85c8 0%, #4E90A4 100%), -webkit-linear-gradient(left, #3e57c8 0%, #4E90A4 100%);
+  background-image: -moz-linear-gradient(left, #3e6ec8 0%, #4E90A4 100%), -moz-linear-gradient(left, #6db4e4 0%, #4E90A4 100%);
+  background-image: -o-linear-gradient(left, #3e7ac8 0%, #4E90A4 100%), -o-linear-gradient(left, #69a2e2 0%, #4E90A4 100%);
+  background-image: linear-gradient(to right, #347ab3 0%, #4E90A4 100%), linear-gradient(to right, #6da2ce 0%, #4E90A4 100%);
+}
+*/
+#profileImg1 {
+    border-radius: 4rem;
+    max-height: 4rem;
+    max-width: 4rem;
+    display: flex;
+    align-content: flex-start;
+    margin-top: 12px;
+    margin-left: 30px;
+}
+
+.content-top h4 {
+    display: flex;
+    vertical-align: middle;
+    margin-top: 22px;
+    margin-left: 20px;
+    font-size: 23px;
+}
+
+.lists a:not([href]):not([tabindex]) {
+    color: #9593a0;
+}
+.lists:hover a:not([href]):not([tabindex]),
+.lists:active a:not([href]):not([tabindex]) {
+    color: white;
+}
+
+.dropdown-content::-webkit-scrollbar {
+    width: 5.5px;
+}
+.dropdown-content::-webkit-scrollbar-track {
+    background-color: rgb(209, 202, 202);
+    /* border-radius:3px; */
+}
+.dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #9593a0;
+    /* border-radius:3px; */
+}
+
+.desktop-view {
+    display: block;
+}
+.mobile-view {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .mobile-view {
+        display: block;
+    }
+    .desktop-view {
+        display: none;
+    }
+}
+/*Right Panel*/
+#id_search {
+    width: 200px;
+    margin: 20px 20px 0px 20px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-weight: normal;
+    outline: none;
+}
+#id_search_button {
+    margin: 10px 60px 20px 60px;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #019dfa;
+    color: white;
+    outline: none;
+    text-align: center;
+    border: none;
+}
+#id_search1 {
+    width: 80%;
+    margin: 20px 30px 10px 30px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-weight: normal;
+    outline: none;
+}
+#id_search_button1 {
+    margin: 0px 0px 20px 80px;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #019dfa;
+    color: white;
+    outline: none;
+    text-align: center;
+    border: none;
+}
+#patientId {
+    margin: 30px 20px 30px 20px;
+    /* display:flex; */
+}
+#patientList {
+    margin-left: -28px;
+}
+#patientId1 {
+    /* width:90%; */
+    margin: 20px 20px 40px 20px;
+    /* display:flex;  */
+}
+#patientImage1 {
+    margin-right: 4%;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('../img/ProfilePic.png');
+    background-size: cover;
+}
+#patientImage2 {
+    margin-right: 5%;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('../img/ProfilePic.png');
+    background-size: cover;
+}
+#patientImage {
+    margin-right: 10px;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('../img/ProfilePic.png');
+    background-size: cover;
+}
+/* #patientImage3{
+	margin-right:30px;
+	float:left;
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	background-image:url('../img/ProfilePic.png');
+	background-size:cover;
+}  */
+#patientName a {
+    position: relative;
+    top: 6px;
+    /* left:-10px;change */
+    font-size: 90%;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+#patientName1 a {
+    position: relative;
+    top: 12px;
+    left: -20px;
+    font-size: 90%;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+#patientName2 a {
+    position: relative;
+    top: 12px;
+    left: 15px;
+    font-size: 90%;
+    display: block;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+}
+/* #patientName a:hover{
+	text-decoration:none;
+	color:black;
+} */
+
+#patientId:hover {
+    width: 80%;
+    height: 65px;
+    background: #019dfa;
+    padding: 8px 20px 5px 15px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+#patientId1:hover {
+    width: 80%;
+    height: 65px;
+    background: #019dfa;
+    padding: 8px 20px 5px 15px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+#patientId:hover #patientName a {
+    color: white;
+}
+#patientId1:hover #patientName1 a {
+    color: white;
+}
+#patientList1 {
+    margin-left: -2vw;
+}
+#patientList li {
+    list-style-type: none;
+    position: relative;
+    right: 40px;
+    bottom: 4px;
+    font-weight: normal;
+    font-size: 16px;
+    width: 100%;
+}
+#patientList1 li {
+    list-style-type: none;
+    position: relative;
+    right: 18%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 16px;
+}
+#patientId:hover #patientName li {
+    color: white;
+    position: relative;
+    left: -30px;
+}
+#patientId:hover #patientImage {
+    margin-right: 30px;
+}
+#patientId1:hover #patientName1 li {
+    color: white;
+    position: relative;
+    right: 16%;
+    width: 100%;
+}
+#patientName1 p {
+    position: relative;
+    top: 8px;
+}
+#patientId2 {
+    margin: 20px 20px 40px 30px;
+    /* display:flex;  */
+}
+/* #search_button2{
+	 width:80%;
+	margin:0px 10%;
+ } */
+/* #search_button1{
+	 font-size:16px !important;
+	 width:200px;
+	 margin:0px 10px 10px 10px;
+	 margin-left:20px;
+	 padding:10px;
+	 color:white;
+ } */
+@media only screen and (min-width: 992px) and (max-width: 1416px) {
+    #id_search1 {
+        width: 90%;
+        margin: 5% 5%;
+    }
+    #id_search_button1 {
+        margin-left: 23%;
+    }
+}
+@media only screen and (min-width: 1389px) and (max-width: 1416px) {
+    #patientName1 li {
+        position: relative;
+        right: 12%;
+        width: 100%;
+    }
+    #patientList1 {
+        margin-left: -12%;
+    }
+    #patientImage1 {
+        margin-right: 2%;
+    }
+    #patientId1:hover #patientName1 li {
+        position: relative;
+        right: 12%;
+    }
+    #patientId1:hover #patientImage1 {
+        margin-right: 15%;
+    }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1389px) {
+    #patientName1 li {
+        position: relative;
+        right: 12%;
+        width: 100%;
+    }
+    #patientList1 {
+        margin-left: -18%;
+    }
+    #patientId2 {
+        margin-left: 15px;
+    }
+    #patientImage1 {
+        margin-right: 2%;
+    }
+    #patientId1:hover #patientName1 li {
+        position: relative;
+        right: 12%;
+    }
+    #patientId1:hover #patientImage1 {
+        margin-right: 15%;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    #patientList1 {
+        margin-left: -24%;
+    }
+    #patientId2 {
+        margin-left: 15px;
+    }
+    #patientImage1 {
+        margin-right: 8%;
+    }
+    #patientName1 li {
+        position: relative;
+        right: 6%;
+        width: 100%;
+    }
+    #patientId1:hover {
+        margin-left: 7%;
+        width: 90%;
+    }
+
+    #patientId1:hover #patientName1 li {
+        position: relative;
+        right: 10%;
+        width: 100%;
+    }
+    #patientId1:hover #patientImage1 {
+        margin-right: 15%;
+    }
+}
+@media only screen and (max-width:450px){
+    #patientId:hover #patientImage{
+        margin-right:30px;
+    }
+    #patientList li{
+        /* position:relative;
+       right:10px; */
+       margin-left:15px;
+        width:100%;
+    }
+    #name{
+        margin-top:10px;
+    }
+    #patientDetails{
+        margin-top:20px;
+        padding-bottom:10px;
+    }
+    #pSec3{
+        margin-top:25%;
+    }
+    #pSec1{
+        margin-top:30%;
+    }
+}
+/*Mobile view responsiveness modified*/
+@media only screen and (min-width:451px) and (max-width:540px){
+    #name{
+        margin-top:10px;
+    }
+   #pSec3{
+       margin-top:15%;
+   }
+   #pSec1{
+    margin-top:20%;
+}
+    #patientDetails{
+        margin-top:10px;
+        padding-bottom:10px;
+    }
+    #Camera {
+        top: 44.5%;
+        left: 20%;
+    }
+}
+@media only screen and (min-width:319px) and (max-width:340px){
+    #name{
+        margin-top:20px;
+    }
+   #pSec3{
+       margin-top:80px;
+   }
+    #patientDetails{
+        margin-top:10px;
+        padding-bottom:10px;
+    }
+}
+@media only screen and (min-width:365px) and (max-width:380px){
+    #pSec3{
+        margin-top:15%;
+    }
+    #pSec1{
+        margin-top:30%;
+    }
+    #Camera {
+        top: 43.5%;
+        left: 34%;
+    }
+}
+@media (min-width:320px) and (max-width: 365px){
+#Camera {
+    top: 43.5%;
+    left: 34%;
+}
+#pSec3{
+    margin-top:25%;
+ }
+ #pSec1{
+     margin-top:40%;
+ }
+}
+@media (max-width: 320px){
+    #Camera {
+        top: 43.5%;
+        left: 40%;
+    }
+    #patientDetails{
+        margin-top:10px;
+        padding-bottom:10px;
+    }
+#pSec3{
+    margin-top:30%;
+ }
+ #pSec1{
+     margin-top:45%;
+ }
+    }
+
+
+    #myBtnEdit {
+    background: black;
+    color:#f1f1f1;
+    border-radius:5px;
+   margin-left:90%;
+  position: relative;
+  top:5%;
+}
+
+
+
+
+
+.modal-dp-edit {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content-dp-edit{
+    background-color: #292727;
+    color:white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close-dp-edit {
+    color: rgb(236, 230, 230);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-dp-edit,
+  .close-dp-edit:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .save-dp-edit {
+background-color: #0380c9;
+color:white;
+float:right;
+border: none;
+  }
+
+@media only screen and (max-width:450px){
+    #patientId:hover #patientImage{
+        margin-right:30px;
+    }
+    #patientList li{
+        /* position:relative;
+       right:10px; */
+       margin-left:15px;
+        width:100%;
+    }
+    #name{
+        margin-top:10px;
+    }
+    #patientDetails{
+        margin-top:20px;
+        padding-bottom:10px;
+    }
+    #pSec3{
+        margin-top:25%;
+    }
+    #pSec1{
+        margin-top:30%;
+    }
+     #myBtnEdit {
+        background: black;
+        color:#f1f1f1;
+        border-radius:5px;
+       margin-left:80%;
+      position: relative;
+      top:15%;
+    }
+}
+/*Mobile view responsiveness modified*/
+@media only screen and (min-width:451px) and (max-width:540px){
+    #name{
+        margin-top:10px;
+    }
+   #pSec3{
+       margin-top:15%;
+   }
+   #pSec1{
+    margin-top:20%;
+}
+    #patientDetails{
+        margin-top:10px;
+        padding-bottom:10px;
+    }
+    #Camera {
+        top: 44.5%;
+        left: 20%;
+    }
+}
+@media only screen and (min-width:319px) and (max-width:340px){
+    #name{
+        margin-top:20px;
+    }
+   #pSec3{
+       margin-top:80px;
+   }
+    #patientDetails{
+        margin-top:10px;
+        padding-bottom:10px;
+    }
+}
+@media only screen and (min-width:365px) and (max-width:380px){
+    #pSec3{
+        margin-top:15%;
+    }
+    #pSec1{
+        margin-top:30%;
+    }
+    #Camera {
+        top: 43.5%;
+        left: 34%;
+    }
+}
+@media (min-width:320px) and (max-width: 365px){
+#Camera {
+    top: 43.5%;
+    left: 34%;
+}
+#pSec3{
+    margin-top:25%;
+ }
+ #pSec1{
+     margin-top:40%;
+ }
+}
+@media (max-width: 320px){
+    #Camera {
+        top: 43.5%;
+        left: 40%;
+    }
+    #patientDetails{
+        margin-top:10px;
+        padding-bottom:10px;
+    }
+#pSec3{
+    margin-top:30%;
+ }
+ #pSec1{
+     margin-top:45%;
+ }
+    }
+
+    
+
+  
+    
+    
+    
+.modal-dp-edit {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+      
+      /* Modal Content/Box */
+.modal-content-dp-edit{
+        background-color: #292727;
+        color:white;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%; /* Could be more or less, depending on screen size */
+        height:30%;
+}
+      
+      /* The Close Button */
+.close-dp-edit {
+        color: rgb(236, 230, 230) !important;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+}
+      
+.close-dp-edit,
+.close-dp-edit:focus {
+        color: rgb(141, 56, 56);
+        text-decoration: none;
+        cursor: pointer;
+}
+.save-dp-edit {
+    background-color: #0380c9;
+    color:white;
+    float:left;
+    margin-right:-7rem;
+    border: none;
+    margin-top: 10px;
+    border-bottom: 2px;
+}
+.form-control {
+    background: #292727 !important;
+    border:none !important;
+    color:white !important;
+}
+    @media only screen and (max-width:450px){
+        #patientId:hover #patientImage{
+            margin-right:30px;
+        }
+        #patientList li{
+            /* position:relative;
+           right:10px; */
+           margin-left:15px;
+            width:100%;
+        }
+        #name{
+            margin-top:10px;
+        }
+        #patientDetails{
+            margin-top:20px;
+            padding-bottom:10px;
+        }
+        #pSec3{
+            margin-top:25%;
+        }
+        #pSec1{
+            margin-top:30%;
+        }
+    }
+    /*Mobile view responsiveness modified*/
+    @media only screen and (min-width:451px) and (max-width:540px){
+        #name{
+            margin-top:10px;
+        }
+       #pSec3{
+           margin-top:15%;
+       }
+       #pSec1{
+        margin-top:20%;
+    }
+        #patientDetails{
+            margin-top:10px;
+            padding-bottom:10px;
+        }
+        #Camera {
+            top: 44.5%;
+            left: 20%;
+        }
+    }
+    @media only screen and (min-width:319px) and (max-width:340px){
+        #name{
+            margin-top:20px;
+        }
+       #pSec3{
+           margin-top:80px;
+       }
+        #patientDetails{
+            margin-top:10px;
+            padding-bottom:10px;
+        }
+    }
+    @media only screen and (min-width:365px) and (max-width:380px){
+        #pSec3{
+            margin-top:15%;
+        }
+        #pSec1{
+            margin-top:30%;
+        }
+        #Camera {
+            top: 43.5%;
+            left: 34%;
+        }
+    }
+    @media (min-width:320px) and (max-width: 365px){
+    #Camera {
+        top: 43.5%;
+        left: 34%;
+    }
+    #pSec3{
+        margin-top:25%;
+     }
+     #pSec1{
+         margin-top:40%;
+     }
+    }
+    @media (max-width: 320px){
+        #Camera {
+            top: 43.5%;
+            left: 40%;
+        }
+        #patientDetails{
+            margin-top:10px;
+            padding-bottom:10px;
+        }
+    #pSec3{
+        margin-top:30%;
+     }
+     #pSec1{
+         margin-top:45%;
+     }
+        }    

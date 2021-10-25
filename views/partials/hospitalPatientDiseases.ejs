@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../css/disease.css">
+
+
+
+
+<div class="col-lg-8 col-sm-8 col-12 order-1 order-sm-2" id="pSec9">
+    <div class="disease-back-link"><a href="/hospital/patient?id=<%=user._id%>"><i class="fa fa-arrow-left" aria-hidden="true"></i>Patient's Diseases</a></div>
+    <div id="sub4" style="height:90vh !important;">
+        <div class="container">
+            <h5 id="name1">Patient's Diseases </h5>
+            <div class="disease-flexbox">
+                  <% if(diseases.disease.length !== 0){%>
+                  <%for(var i of diseases.disease){%>
+                  <div class="media" id="pat-dis">
+
+                      <a href="/hospital/document?id=<%=i._id%>&userId=<%=user._id%>">
+                          <div style="display: inline-block" class="media-heading align-self-center"
+                              id="patientDiseases"><%=i.name%></div>
+                      </a>
+
+                      <i class="fa fa-medkit fa fa-2x" aria-hidden="true"></i>
+                  </div>
+
+                  <%}%>
+                  <%}else{%>
+    
+                  <div id="name9">No diseases found</div>
+                  <%}%>
+                  
+       
+            </div>
+        </div>
+    </div>
+    
+</div>
+

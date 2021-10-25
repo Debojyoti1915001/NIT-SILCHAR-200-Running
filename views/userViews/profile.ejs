@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="https://use.fontawesome.com/67912d8e88.js"></script>
+
+	<link rel="stylesheet" href="../css/NavBar.css">
+	<link rel="stylesheet" href="../css/modal.css">
+	<link rel="stylesheet" href="../css/edit-form.css">
+
+	<link rel="stylesheet" href="../css/profileNew.css">
+
+	<title>Profile Page</title>
+	<link rel="shortcut icon" href="../img/medical1.png">
+</head>
+
+<body>
+
+	<%- include('../partials/navbar'); %>
+
+	
+<div id="myModal-dp-edit" class="modal-dp-edit">
+    <!-- Modal content -->
+    <div class="modal-content-dp-edit">
+      <span class="close-dp-edit">&times;</span>
+      <div class="col-md-6">
+        <form class="form-group"  method="POST" action="/user/profile/picupload" enctype="multipart/form-data">
+            <label>Upload Image</label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-default btn-file">
+                        Browse… <input type="file" id="profilePic"name="profilePic">
+                    </span>
+                </span>
+                <input type="text" class="form-control" placeholder="Choose a file" readonly>
+            </div>
+            <img id='img-upload' style="max-width: 30%;"/>
+            <button type="save" class="save-dp-edit">Save</button>
+        </form>
+    </div>
+    </div>
+  </div>
+		<div id="myModalEdit" class="modal fadeIn">
+			<div class="modal-content-edit">
+				<div class="row">
+					<div class="content-top-edit ">
+						<% if (user.profilePic){%>
+							<a href="#"><img src="../uploads/<%=user.email%>/profilePic/<%=user.profilePic%>"  id="profileImg" style="width:10px"></a>
+							<%}else{%>
+								<a href="#"><img src="../img/ProfilePic.png"  id="profileImg"></a>
+							<%}%>
+						<span><button type="button" class="cancel-edit fadeOut"
+								data-dismiss="modal">CANCEL</button></span>
+						<h4>Profile details</h4>
+					</div>
+				</div>
+				<form class="form-modal-edit" method="POST">
+					<!--Dont remove the enctype-->
+					<div class="group1">
+						<input type="text" name="nomineeName" ><span
+							class="highlight1"></span><span class="bar1"></span>
+						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Nominee
+							Name</label>
+						<span><button class="save1-edit" formaction="profile/editDetails">SAVE</button></span>
+						<!-- Dont remove the name and value attribute-->
+					</div>
+					<div class="group1-edit">
+						<input type="text" name="nomineeEmail" ><span
+							class="highlight1"></span><span class="bar1"></span>
+						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Nominee
+							Email</label>
+
+						<!-- Dont remove the name and value attribute-->
+					</div>
+					<div class="group1">
+						<input type="text" name="nomineePhn" ><span
+							class="highlight1"></span><span class="bar1"></span>
+						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Nominee
+							Phone Number </label>
+
+						<!-- Dont remove the name and value attribute-->
+					</div>
+					<div class="group1">
+						<input type="text" name="address" ><span
+							class="highlight1"></span><span class="bar1"></span>
+						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">User
+							Address  </label>
+
+						<!-- Dont remove the name and value attribute-->
+					</div>
+					<div class="group1">
+						<input type="text" name="bloodGroup" ><span
+							class="highlight1"></span><span class="bar1"></span>
+						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">User
+							Blood-Group: </label>
+
+						<!-- Dont remove the name and value attribute-->
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div id="myModal" class="modal fadeIn">
+			<div class="modal-content">
+				<div class="row">
+					<div class="content-top ">
+						<a href="#" class="img-rounded"><img src="../img/ProfilePic.png" id="profileImg1"></a>
+						<span><button type="button" class="cancel fadeOut" data-dismiss="modal">CANCEL</button></span>
+						<h4>ADD DISEASE</h4>
+					</div>
+				</div>
+				<form class="form-modal" method="POST" enctype="multipart/form-data">
+					<!--Dont remove the enctype-->
+					<div class="group1">
+						<input type="text" name="name" aria-required="true" required><span
+							class="highlight1"></span><span class="bar1"></span>
+						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Disease
+							Name</label>
+						<span><button class="save1" formaction="profile/upload" value="upload">SAVE</button></span>
+						<!-- Dont remove the name and value attribute-->
+					</div>
+					<div class="group2" style=" margin-bottom: -51px; margin-top: 15px;">
+						<!--<input type="text"><span class="highlight1"></span><span class="bar1"></span>-->
+						<p
+							style="margin-top: -9px; font-size:18px; font-weight: normal; margin-left: 5px;	color:#a5a5a5;">
+							Medicine</p>
+						<div class="custom-file" style="border-radius: 4rem; margin-top: -26px;">
+							<!--<input type="file" class="custom-file-input" id="customFile">
+						<label class="custom-file-label" for="customFile">Choose file</label>-->
+							<input id="input-b3" name="medicine" type="file" class="file" multiple
+								data-show-upload="false" data-show-caption="true"
+								data-msg-placeholder="Select {files} for upload...">
+						</div>
+					</div>
+					<span class="UD">Upload Documents</span>
+					<div class="zone">
+						<span class="UD"
+							style="z-index: 1000; overflow: hidden; display: flex; text-align: start; margin-left: 25px;">Upload
+							Documents</span>
+						<div id="dropZ">
+							<i class="fa fa-cloud-upload"></i>
+							<div>Select your file here</div>
+							<div class="selectFile">
+								<input type="file" name="document" id="file" multiple>
+								<!--Dont remove the name attribute -->
+							</div>
+							<p>File size limit : 10 MB</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="desktop-view">
+			<div class="container-fluid profile-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<%- include('../partials/message'); %>
+					</div>
+					<div class="col-lg-2 col-sm-4 col-12 order-3 order-sm-1" id="pSec1">
+						<div id="leftPanel">
+							<div class="<%= path === '/user/profile' ? 'lists active-list' : 'lists' %>">
+								<a href="/user/profile">Profile</a>
+								<img src="../img/profile.png" class="Icons Icons-invert">
+							</div>
+							<!-- <div class="lists">
+							<a href="#" onclick="myFunction()" class="dropbtn">Disease</a>
+							<img src="../img/disease.png" class="Icons">
+							 <div id="myDropdown" class="dropdown-content">
+								<a id="myBtn" onclick=openModal()>Add New</a>
+							</div>
+						</div> -->
+							<!-- <div class="lists dropdown"> -->
+							<div
+								class="<%= path === '/user/disease' ? 'lists active-list dropdown' : 'lists dropdown' %>">
+								<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+									Diseases
+								</a>
+								<img src="../img/disease.png" class="Icons">
+								<div id="myDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<a id="myBtn" class="dropdown-item" onclick=openModal()>Add New</a>
+									<% for(var d of user.disease) { %>
+										<a class="dropdown-item" href="/user/disease?id=<%= d._id %>"><span
+												class="dropAnchor">
+												<%= d.name %>
+											</span></a>
+										<% } %>
+								</div>
+							</div>
+							<div class="lists">
+								<a href="#">Appointments</a>
+								<img src="../img/appointment.png" class="Icons">
+							</div>
+							<div class="lists">
+								<a href="#">Progress Report</a>
+								<img src="../img/progress.png" class="Icons">
+							</div>
+							<div class="lists">
+								<a href="#">Message</a>
+								<img src="../img/message.png" class="Icons">
+							</div>
+							<div class="hospital-list">
+								<div class="Doctor-list">
+									<div id="mySidenavTab" class="sidenav">
+										<div id="Dr">
+											<p class="sidenavHeader">Hospitals</p>
+											<a href="javascript:void(0)" class="closebtn" onclick="closeNavtab()"><i
+													class="fa fa-angle-left sideNav " aria-hidden="true"></i></a>
+										</div>
+										<form method="POST" action="/user/hospitalSearch" id="hospital-search"
+											class="sidenav-form">
+											<input type="text" placeholder="Search..."
+												class="mobile-preview shadow floating-animate" name="hname"
+												id="id_search">
+											<button id="id_search_button">click</button>
+										</form>
+										<%if (path==='/user/hospitalSearch' ) { %>
+
+											<%- include('../partials/hospitalSearch'); %>
+												<% } %>
+													<% if(path!=='/user/userHospitalD' ) { %>
+														<ul id="patientList">
+															<% for(var d of hospitals) { %>
+																<div id="patientId2">
+																	<div id="patientImage2">
+																		<img src="../img/ProfilePic.png">
+																	</div>
+																	<div id="patientName2">
+																		<a
+																			href="/user/userHospital?id=<%=d.hospitalId._id%>">
+																			<%= d.hospitalId.hospitalName %>
+																		</a>
+																	</div>
+																</div>
+																<% } %>
+														</ul>
+														<% } %>
+									</div>
+									<!-- <div id="Drs"><button class=" sideNavButton" onclick=openNavtab() type="button ">Doctors<i class="fa fa-angle-right sideNav" aria-hidden="true" onclick=openNav()></i></button></div>				 -->
+
+									<div id="Drs">
+										<button
+											class="<%= path === '/user/userHospital' ? 'sideNavButton lists active-list' : 'sideNavButton lists' %>"
+											onclick=openNavtab() type="button ">
+											<a>Hospitals</a><img src="../img/doctor-icon.png" class="Icons Icons-invert"
+												onclick=openNavtab()></button>
+									</div>
+								</div>
+							</div>
+							<!-- <div class=" Doctor-list">
+							<div id="mySidenavTab" class="sidenav">
+								<div id="Dr"><p class="sidenavHeader">Doctors<a href="javascript:void(0)" class="closebtn" onclick="closeNavtab()"><i class="fa fa-angle-left sideNav " aria-hidden="true"></i></a></p></div>
+							</div>
+							<div id="Drs"><button class=" sideNavButton" onclick=openNavtab() type="button ">Doctors<i class="fa fa-angle-right sideNav" aria-hidden="true" onclick=openNav()></i></button></div>				
+							<div id="Drs"><button class=" sideNavButton lists" onclick=openNavtab() type="button "><a>Doctors</a><img src="../img/doctor-icon.png" class="Icons doctor-icon"  onclick=openNav()></button></div>				
+						</div> -->
+							<div class="lists">
+								<a href="#">Settings</a>
+								<img src="../img/Settings.png" class="Icons">
+							</div>
+						</div>
+					</div>
+					<%if (path==='/user/profile' ||path==='/user/hospitalSearch' ) { %>
+
+						<div class="col-lg-8 col-sm-8 col-12 order-1 order-sm-2" id="pSec2">
+							<div id="sub1">
+								<div class="images">
+									<img src="../img/CoverPhoto.png" id="coverImg">
+									<% if (user.profilePic){%>
+										<a href="#"><img src="../uploads/<%=user.email%>/profilePic/<%=user.profilePic%>"  id="profileImg"></a>
+										<%}else{%>
+											<a href="#"><img src="../img/ProfilePic.png"  id="profileImg"></a>
+											<%}%>
+									<img src="../img/camera.png" id="Camera">
+								</div>
+								<div class="name-id">
+									<h5 id="name">
+										<%if (user.name) { %>
+											<%=user.name %>
+												<% } %>
+									</h5>
+									<h4 id="heading1">Patient Id-<%if (user.short_id) { %>
+											<%=user.short_id %>
+												<% } %><span id="patientId"></span></h4>
+								</div>
+								<div id="patientDetails">
+									<div class="heading-and-edit-icon">
+										<h3 id="heading2">Patient Details</h3>
+										<button id="myBtnEdit" data-toggle="modal" data-target="#myModalEdit"
+											onclick=modalEdit()>
+											<img src="../img/profile-edit-icon.png">
+										</button>
+									</div>
+									<label for="bloodGroup" class="detailLevels">Blood Group : <%if (user.bloodGroup) { %>
+										<%=user.bloodGroup %>
+										<% } %></label>
+									<!-- <input type="text" class="detailFields" id="bloodGroup"> -->
+									<br>
+									<label for="Address" class="detailLevels">Address :<%if (user.address) { %>
+										<%=user.address %>
+										<% } %> </label>
+									<!-- <input type="text" class="detailFields" id="Address"> -->
+									<br>
+									<label for="PhoneNo" class="detailLevels">Phone No. : <%if (user.phoneNumber) { %>
+											<%=user.phoneNumber %>
+												<% } %> </label>
+									<!-- <input type="tel" class="detailFields" id="PhoneNo"> -->
+									<br>
+									<label for="Email" class="detailLevels">Email:<%if (user.email) { %>
+											<%=user.email %>
+												<% } %> </label>
+									<!-- <input type="email" class="detailFields" id="Email"> -->
+									<br>
+								</div>
+							</div>
+						</div>
+						<% } %>
+							<%if (path==='/user/disease' ) { %>
+								<%- include('../partials/diseaseContent'); %>
+									<% } %>
+										<%if (path==='/user/userHospital' ) { %>
+											<%- include('../partials/HospitalProfileContent'); %>
+												<% } %>
+													<%if (path==='/user/userHospitalD' ) { %>
+														<%- include('../partials/HospitalProfileContentD'); %>
+															<% } %>
+																<div class="col-lg-2 col-sm-0 col-12 order-2 order-sm-3"
+																	id="pSec3">
+																	<div id="Dr"><a>Doctors </a><img
+																			src="../img/doctor-icon.png"
+																			class="Icons doctor-icon"></div>
+																	<form method="POST" action="/user/hospitalSearch"
+																		id="search-form">
+																		<input type="text" placeholder="Search..."
+																			class="mobile-preview shadow floating-animate"
+																			name="hname" id="id_search1">
+																		<button id="id_search_button1">click</button>
+																	</form>
+																	<%if (path==='/user/hospitalSearch' ) { %>
+																		<%- include('../partials/hospitalSearch'); %>
+																			<% } %>
+																				<% if(path!=='/user/userHospitalD' ) {
+																					%>
+																					<ul id="patientList">
+																						<% for(var d of hospitals) { %>
+																							<div id="patientId2">
+																								<div id="patientImage2">
+																									<img
+																										src="../img/ProfilePic.png">
+																								</div>
+																								<div id="patientName2">
+																									<a
+																										href="/user/userHospital?id=<%=d.hospitalId._id%>">
+																										<%= d.hospitalId.hospitalName
+																											%>
+																									</a>
+																								</div>
+																							</div>
+																							<% } %>
+																					</ul>
+																					<% } %>
+																</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="mobile-view">
+			<div class="container-fluid profile-body">
+				<%if (path==='/user/profile' ||path==='/user/hospitalSearch' ||path==='/user/userHospitalD' ) { %>
+					<div class="row">
+						<div class="col-sm-12">
+							<%- include('../partials/message'); %>
+						</div>
+						<div class="col-lg-2 col-sm-4 col-12 order-3 order-sm-1" id="pSec1">
+							<div id="leftPanel">
+								<div class="lists active-list">
+									<a href="/user/profile">Profile</a>
+									<img src="../img/profile.png" class="Icons profile-icon">
+								</div>
+								<!-- <div class="lists">
+						<a  onclick=myFunctionMobile() class="dropbtn">Disease</a>
+						<img src="../img/disease.png" class="Icons">
+						 <div  id="myDropdownMobile" class="dropdown-content">
+							<a id="myBtn" data-toggle="modal" onclick=openModal() data-target="#myModal">Add New</a>
+						</div> 
+					</div> -->
+								<div class="lists dropdown">
+									<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false" onclick=myFunctionMobile()>
+										Diseases
+									</a>
+									<img src="../img/disease.png" class="Icons">
+									<div id="myDropdownMobile" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										<!-- <a id="myBtn" class="dropdown-item" onclick=openModal()>Add New</a> -->
+										<a id="myBtn" class="dropdown-item" data-toggle="modal" onclick=openModal()
+											data-target="#myModal">Add New</a>
+										<% for(var d of user.disease) { %>
+											<a class="dropdown-item" href="/user/disease?id=<%= d._id %>"><span
+													class="dropAnchor">
+													<%= d.name %>
+												</span></a>
+											<% } %>
+									</div>
+								</div>
+								<div class="lists">
+									<a href="#">Appointments</a>
+									<img src="../img/appointment.png" class="Icons">
+								</div>
+								<div class="lists">
+									<a href="#">Progress Report</a>
+									<img src="../img/progress.png" class="Icons">
+								</div>
+								<div class="lists">
+									<a href="#">Message</a>
+									<img src="../img/message.png" class="Icons">
+								</div>
+								<!-- <div class=" Doctor-list">
+						<div id="mySidenavTab" class="sidenav">
+							<div id="Dr"><p class="sidenavHeader">Doctors<a href="javascript:void(0)" class="closebtn" onclick="closeNavtab()"><i class="fa fa-angle-left sideNav " aria-hidden="true"></i></a></p></div>
+						</div>
+						<div id="Drs"><button class=" sideNavButton" onclick=openNavtab() type="button ">Doctors<i class="fa fa-angle-right sideNav" aria-hidden="true" onclick=openNav()></i></button></div>				
+						<div id="Drs"><button class=" sideNavButton lists" onclick=openNavtab() type="button "><a>Doctors</a><img src="../img/doctor-icon.png" class="Icons doctor-icon"  onclick=openNav()></button></div>				
+					</div> -->
+								<div class="lists">
+									<a href="#">Settings</a>
+									<img src="../img/Settings.png" class="Icons">
+								</div>
+							</div>
+						</div>
+						<%if (path==='/user/profile' ||path==='/user/hospitalSearch' ) { %>
+							<div class="col-lg-8 col-sm-8 col-12 order-1 order-sm-2" id="pSec2">
+								<div id="sub1">
+									<div class="images">
+										<img src="../img/CoverPhoto.png" id="coverImg">
+										<% if (user.profilePic){%>
+											<a href="#"><img src="../uploads/<%=user.email%>/profilePic/<%=user.profilePic%>"  id="profileImg"></a>
+											<%}else{%>
+												<a href="#"><img src="../img/ProfilePic.png"  id="profileImg"></a>
+												<%}%>
+										<img src="../img/camera.png" id="CameraMobile">
+									</div>
+									<div class="name-id">
+										<h5 id="name">
+											<%if (user.name) { %>
+												<%=user.name %>
+													<% } %>
+										</h5>
+										<h4 id="heading1">Patient Id- <%if (user.short_id) { %>
+												<%=user.short_id %>
+													<% } %>
+														<span id="patientId"></span></h4>
+									</div>
+									<div id="patientDetails">
+										<div class="heading-and-edit-icon">
+											<h3 id="heading2">Patient Details</h3>
+											<button id="myBtnEdit" data-toggle="modal" data-target="#myModalEdit"
+												onclick=modalEdit()>
+												<img src="../img/profile-edit-icon.png">
+											</button>
+										</div>
+										<label for="bloodGroup" class="detailLevels">Blood Group : </label>
+										<!-- <input type="text" class="detailFields" id="bloodGroup"> -->
+										<br>
+										<label for="Address" class="detailLevels">Address : </label>
+										<!-- <input type="text" class="detailFields" id="Address"> -->
+										<br>
+										<label for="PhoneNo" class="detailLevels">Phone No. : <%if (user.phoneNumber) {
+												%>
+												<%=user.phoneNumber %>
+													<% } %></label>
+										<!-- <input type="tel" class="detailFields" id="PhoneNo"> -->
+										<br>
+										<label for="Email" class="detailLevels">Email : <%if (user.email) { %>
+												<%=user.email %>
+													<% } %></label>
+										<!-- <input type="email" class="detailFields" id="Email"> -->
+										<br>
+									</div>
+								</div>
+							</div>
+							<% } %>
+
+
+								<div class="col-lg-2 col-sm-0 col-12 order-2 order-sm-3" id="pSec3">
+									<div id="mySidenav" class="sidenav">
+										<div id="Dr">
+											<p class="sidenavHeader">Hospitals</p>
+											<a href="javascript:void(0)" class="closebtn" onclick=closeNav()><i
+													class="fa fa-angle-left sideNav " aria-hidden="true"></i></a>
+										</div>
+										<form method="POST" action="/user/hospitalSearch" class="sidenav-form">
+											<input type="text" placeholder="Search..."
+												class="mobile-preview shadow floating-animate" name="hname"
+												id="id_search">
+											<button id="id_search_button">click</button>
+										</form>
+										<%if (path==='/user/hospitalSearch' ) { %>
+
+											<%- include('../partials/hospitalSearch'); %>
+												<% } %>
+													<%if(path!==' /user/userHospitalD') { %>
+														<ul id="patientList">
+															<% for(var d of hospitals) { %>
+																<div id="patientId2">
+																	<div id="patientImage2">
+																		<img src="../img/ProfilePic.png">
+																	</div>
+																	<div id="patientName2">
+																		<a
+																			href="/user/userHospital?id=<%=d.hospitalId._id%>">
+																			<%= d.hospitalId.hospitalName %>
+																		</a>
+																	</div>
+																</div>
+																<% } %>
+														</ul>
+														<% } %>
+									</div>
+									<div id="Dr-sec3">
+										<button class="sideNavButton" onclick=openNav()>
+											<a>Doctors</a><img src="../img/doctor-icon.png"
+												class="Icons doctor-icon"></button>
+									</div>
+								</div>
+
+					</div>
+					<%}%>
+						<%if (path==='/user/disease' ) { %>
+							<%- include('../partials/diseaseContent'); %>
+								<% } %>
+
+									<%if (path==='/user/userHospital' ) { %>
+										<%- include('../partials/HospitalProfileContent'); %>
+											<% } %>
+			</div>
+		</div>
+		<%- include('../partials/footer'); %>
+
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+			<script>
+				function modalEdit() {
+					var modal = document.getElementById("myModalEdit");
+					var btn = document.getElementById("myBtnEdit");
+					var span = document.getElementsByClassName("cancel-edit")[0];
+					btn.onclick = function () {
+						modal.style.display = "block";
+					}
+					span.onclick = function () {
+						modal.style.display = "none";
+					}
+					window.onclick = function (event) {
+						if (event.target == modal) {
+							modal.style.display = "none";
+						}
+					}
+					var span = document.getElementsByClassName("save1-edit")[0];
+					btn.onclick = function () {
+						modal.style.display = "block";
+					}
+					span.onclick = function () {
+						modal.style.display = "none";
+					}
+					window.onclick = function (event) {
+						if (event.target == modal) {
+							modal.style.display = "none";
+						}
+					}
+				}
+			</script>
+			<script>
+				$(window, document, undefined).ready(function () {
+					$('input').blur(function () {
+						var $this = $(this);
+						if ($this.val())
+							$this.addClass('used');
+						else
+							$this.removeClass('used');
+					});
+					var $ripples = $('.ripples');
+					$ripples.on('click.Ripples', function (e) {
+						var $this = $(this);
+						var $offset = $this.parent().offset();
+						var $circle = $this.find('.ripplesCircle');
+						var x = e.pageX - $offset.left;
+						var y = e.pageY - $offset.top;
+						$circle.css({
+							top: y + 'px',
+							left: x + 'px'
+						});
+						$this.addClass('is-active');
+					});
+					$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function (e) {
+						$(this).removeClass('is-active');
+					});
+				});
+
+			</script>
+			<script>
+				$(document).ready(function () {
+					$(document).on('change', '.btn-file :file', function () {
+						var input = $(this),
+							label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+						input.trigger('fileselect', [label]);
+					});
+
+					$('.btn-file :file').on('fileselect', function (event, label) {
+
+						var input = $(this).parents('.input-group').find(':text'),
+							log = label;
+
+						if (input.length) {
+							input.val(log);
+						} else {
+							if (log) alert(log);
+						}
+
+					});
+					function readURL(input) {
+						if (input.files && input.files[0]) {
+							var reader = new FileReader();
+
+							reader.onload = function (e) {
+								$('#img-upload').attr('src', e.target.result);
+							}
+
+							reader.readAsDataURL(input.files[0]);
+						}
+					}
+
+					$("#imgInp").change(function () {
+						readURL(this);
+					});
+				});
+			</script>
+<script>
+	$(document).ready( function() {
+    	$(document).on('change', '.btn-file :file', function() {
+		var input = $(this),
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		input.trigger('fileselect', [label]);
+		});
+
+		$('.btn-file :file').on('fileselect', function(event, label) {
+		    
+		    var input = $(this).parents('.input-group').find(':text'),
+		        log = label;
+		    
+		    if( input.length ) {
+		        input.val(log);
+		    } else {
+		        if( log ) alert(log);
+		    }
+	    
+		});
+		function readURL(input) {
+		    if (input.files && input.files[0]) {
+		        var reader = new FileReader();
+		        
+		        reader.onload = function (e) {
+		            $('#img-upload').attr('src', e.target.result);
+		        }
+		        
+		        reader.readAsDataURL(input.files[0]);
+		    }
+		}
+
+		$("#imgInp").change(function(){
+		    readURL(this);
+		}); 	
+	});
+</script>
+<script>
+	var modal = document.getElementById("myModal-dp-edit");
+	
+	var btn = document.getElementById("Camera");
+	
+	var span = document.getElementsByClassName("close-dp-edit")[0];
+	
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	  var span = document.getElementsByClassName("save-dp-edit")[0];
+	
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	var modal = document.getElementById("myModal-dp-edit");
+	var btn = document.getElementById("Camera");
+	var span = document.getElementsByClassName("close-dp-edit")[0];
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	  var span = document.getElementsByClassName("save-dp-edit")[0];
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	} 
+	
+	</script>
+	<script>
+		$(document).bind('dragover', function (e) {
+			var dropZone = $('.zone'),
+				timeout = window.dropZoneTimeout;
+			if (!timeout) {
+				dropZone.addClass('in');
+			} else {
+				clearTimeout(timeout);
+			}
+			var found = false,
+				node = e.target;
+			do {
+				if (node === dropZone[0]) {
+					found = true;
+					break;
+				}
+				node = node.parentNode;
+			} while (node != null);
+			if (found) {
+				dropZone.addClass('hover');
+			} else {
+				dropZone.removeClass('hover');
+			}
+			window.dropZoneTimeout = setTimeout(function () {
+				window.dropZoneTimeout = null;
+				dropZone.removeClass('in hover');
+			}, 100);
+		});
+	</script>
+	<script>
+		// Get the modal
+	var modal = document.getElementById("myModal-dp-edit");
+	// Get the button that opens the modal
+	var btn = document.getElementById("CameraMobile");
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close-dp-edit")[0];
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	// When the user clicks anywhere outside of the modal, close it
+	  var span = document.getElementsByClassName("save-dp-edit")[0];
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	} 
+	</script>
+	
+	<script>
+		$(window, document, undefined).ready(function () {
+			$('input').blur(function () {
+				var $this = $(this);
+				if ($this.val())
+					$this.addClass('used');
+				else
+					$this.removeClass('used');
+			});
+			var $ripples = $('.ripples');
+			$ripples.on('click.Ripples', function (e) {
+				var $this = $(this);
+				var $offset = $this.parent().offset();
+				var $circle = $this.find('.ripplesCircle');
+				var x = e.pageX - $offset.left;
+				var y = e.pageY - $offset.top;
+				$circle.css({
+					top: y + 'px',
+					left: x + 'px'
+				});
+				$this.addClass('is-active');
+			});
+			$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function (e) {
+				$(this).removeClass('is-active');
+			});
+		});
+	</script>
+	<script>
+		$(document).bind('dragover', function (e) {
+			var dropZone = $('.zone'),
+				timeout = window.dropZoneTimeout;
+			if (!timeout) {
+				dropZone.addClass('in');
+			} else {
+				clearTimeout(timeout);
+			}
+			var found = false,
+				node = e.target;
+			do {
+				if (node === dropZone[0]) {
+					found = true;
+					break;
+				}
+				node = node.parentNode;
+			} while (node != null);
+			if (found) {
+				dropZone.addClass('hover');
+			} else {
+				dropZone.removeClass('hover');
+			}
+			window.dropZoneTimeout = setTimeout(function () {
+				window.dropZoneTimeout = null;
+				dropZone.removeClass('in hover');
+			}, 100);
+		});
+	</script>
+
+	<script src="../js/sideNav.js"></script>
+	<!-- <script src="../js/profilePage.js"></script> -->
+	<!-- <script src="../js/sideNav.js"></script> -->
+	<script src="../js/modal.js"></script>
+</body>
+
+</html>

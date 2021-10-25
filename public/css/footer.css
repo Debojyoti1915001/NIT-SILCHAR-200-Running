@@ -1,0 +1,361 @@
+.footer {
+    background-color: #414141;
+    width: 100%;
+    text-align: left;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 50px;
+    margin-top: 5px;
+    
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+@media (max-width: 576px) {
+    .footer-align{
+        display: flex !important;
+        flex-direction:  column !important;
+        align-items: flex-start !important;
+    }
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+    width: 33%;
+    padding-right: 15px;
+}
+
+.footer .about {
+    line-height: 20px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+.footer .about p{
+    color: #808080
+
+}
+
+.footer .about span {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer .icons {
+    margin-top: 25px;
+}
+
+.footer .icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+/* footer center*/
+
+.footer .footer-center {
+    width: 30%;
+}
+
+.footer .footer-center i {
+    background-color: #ffffff;
+    color: #3b3838;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer .footer-center p a {
+    color: #0099ff;
+    text-decoration: none;
+}
+
+/* footer right*/
+
+.footer .footer-right {
+    width: 35%;
+}
+
+.footer h2 {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 2vh;
+}
+
+.footer h2 span {
+    color: #0099ff;
+}
+
+.footer .menu {
+    color: #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+}
+
+.footer .menu a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer .menu a:hover {
+    color: #0099ff;
+}
+
+.footer .name {
+    color: #0099ff;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+@media (min-width: 1200px) {
+    #arogya-footer {
+        padding-top: 50px;
+    }
+}
+@media (max-width: 1400px) {
+    
+    #arogya-footer {
+        padding-top: 50px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .footer {
+        font-size: 14px;
+    }
+
+    .footer .footer-left,
+    .footer .footer-center,
+    .footer .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .footer .footer-center i {
+        margin-left: 0;
+    }
+}
+#arogya-footer .submit-button .fa {
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    height: 30px;
+    width: 32px;
+    color: #000000;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: 15px;
+}
+
+#arogya-footer{
+    background-color: rgb(80, 191, 211);
+    font-size: 15px;
+    font-family: 'OpenSans-Semibold';
+    color: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 8px 15px;
+    /* display: inline-block; */
+    text-transform: uppercase;
+    padding-right: 5px;
+    text-decoration: none !important;
+    /* padding-bottom: 7px; */
+    vertical-align: middle;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 576px) {
+    .footer {
+        margin-top: 20px;
+    }
+
+}
+
+
+/* 
+.arogya-feature h2,
+.arogya-features h2 {
+    font-family: 'Lato-Regular';
+    color: #000000;
+    font-size: 31px;
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    background: transparent;
+    margin-right: 1em;
+}
+
+.arogya-banner-area {
+    margin-top: 20px;
+    min-height: 500px;
+}
+
+.arogya-banner-area h1 {
+    font-family: 'Lato-Light';
+    font-size: 48px;
+    color: #000000;
+    max-width: 500px;
+    margin-top: 70px;
+}
+
+.arogya-banner-area h1 span {
+    font-family: 'Lato-Medium';
+}
+
+@media (max-width: 1199px) {
+    .arogya-banner-area h1 {
+        margin-top: 30px;
+    }
+}
+
+.arogya-banner-area p {
+    max-width: 450px;
+    margin: 20px 0;
+    margin-bottom: 40px;
+}
+
+.arogya-banner-area a {
+    display: inline;
+    padding: 10px 30px;
+    padding-right: 5px;
+}
+
+.arogya-banner-area .col-md-6 .card .card-img-top {
+    max-width: 430px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-right: 0;
+}
+
+@media (max-width: 1400px) {
+    .arogya-banner-area .col-md-6 .card .card-img-top {
+        max-width: 400px;
+        margin-top: 20px;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 1199px) {
+    .arogya-banner-area .col-md-6 .card .card-img-top {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 767px) {
+    .arogya-banner-area .col-md-6 .card .card-img-top {
+        margin-top: 100px;
+    }
+
+    .arogya-banner-area .col-md-6 .card .card-img-top {
+        display: none;
+    }
+
+    div.arogya-banner-area {
+        margin-bottom: 0px;
+    }
+
+    div.arogya-feature {
+        margin-top: 0px;
+    }
+
+    div.arogya-features-list {
+        margin-top: 0px;
+    }
+
+    div.arogya-features #about {
+        margin-bottom: 0px;
+    }
+
+    div.arogya-news #news {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    .arogya-features .col-lg-4 .col-lg-8 {
+        padding-top: 0px;
+        margin-top: 0px;
+        background-color: rgb(204, 196, 196);
+    }
+}
+
+.arogya-feature {
+    margin-top: 100px;
+}
+
+.arogya-feature .card .back-bg {
+    margin-left: -30px !important;
+    margin-top: -20px;
+}
+
+.arogya-feature .card svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.arogya-feature .card svg.defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.arogya-feature .card .squircle {
+    width: 100%;
+    height: 456px;
+    background: url(../img/aboutus.png) center/cover, #aaa;
+    clip-path: url(#clip-path);
+    background-position-x: -50px;
+} */

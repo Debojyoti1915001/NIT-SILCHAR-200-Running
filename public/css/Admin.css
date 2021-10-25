@@ -1,0 +1,506 @@
+/*_________________________________________________Profile page default_____________________________________________*/
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    overflow: hidden;
+    overflow-y: auto;
+    font-family: 'OpenSans-Regular';
+    box-sizing: border-box;
+}
+
+#profileBody{
+	margin-top:0;
+	display:flex;
+	width:100vw;
+	height:100vh;
+}
+#pSec1{
+	
+	top: 15px;
+	background:#FFFFFF;
+}
+#pSec2{
+	/*width:64vw;*/
+	height:100vh;
+	top:15px;
+	left:0px;
+}
+#sub1{
+	height:85vh;
+	background:#FFFFFF;
+	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 10px 10px;
+}
+#pSec3{
+	background-color: #FFFFFF;
+	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	top:15px;
+	right:5px;
+	padding:0
+}
+
+#leftPanel{
+	margin-top:40px;
+}
+
+.lists{
+	margin-bottom:10%;
+	margin-left:8%;
+}
+.lists>a{
+color: #9593A0;
+font-size:100%;
+display:inline-block;
+}
+.lists>a:hover, .lists>a:active{
+text-decoration:none;
+
+}
+.lists:hover, .lists:active{
+	width:85%;
+	height:100%;
+	background:#019DFA;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+	border-radius: 16px;
+	padding:5%;
+}
+.lists:hover a{
+	color:white;
+}
+.lists:hover .Icons{
+	filter:brightness(0) invert(1);
+	margin-top:1%;
+}
+.Icons{
+	position:absolute;
+	right:15%;
+}
+.profile-icon{
+	filter: brightness(0.46);
+}
+.doctor-icon{
+	display: none;
+}
+#coverImg{
+	width:100%;
+	height:40%;
+}
+#Dr{
+	width:100%;
+	height:8%;
+	text-align:center;
+	background: #019DFA;
+	color:white;
+	padding:5%;
+	padding-top:6%;
+	border-radius:5px 5px 0px 0px;
+	font-weight:bold;
+	font-size:140%;
+	font-family: Product Sans;
+}
+#profileImg{
+	position:absolute;
+	top:25%;
+	left:5%;
+	border-radius:50%;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+#Camera{
+	position:absolute;
+	top:36.5%;
+	left:14.5%;
+}
+#patientDetails{
+	position:relative;
+	top:14%;
+	left:5.5%;
+	width:88%;
+	height:30%;
+	background-color: #F3F3F3;
+	border-radius:15px;
+}
+#heading2{
+	font-size:90%;
+	font-weight:bold;
+	position:relative;
+	top:20px;
+	left:25px;
+	margin-bottom:30px;
+}
+.detailLevels{
+	font-size:14px;
+	margin-left:25px;
+	margin-bottom:4px;
+}
+.detailFields{
+	background:#F3F3F3;
+	border:none;
+	outline:none;
+	height:20px;
+	width:50%;
+	font-size:14px;
+}
+#heading1{
+	font-size:90%;
+	color:#787878;
+	position:relative;
+	left:5.5%;
+	top:10%;
+
+}
+#name{
+	position:relative;
+	top:10%;
+	left:5.5%;
+	font-family: Helvetica;
+	font-size:150%;
+	font-weight:bold;
+}
+
+/*________________________sideNav styles ________________*/
+
+.sidenav {
+	height: 100%; 
+	width: 0; 
+	position: fixed; 
+	top: 0; 
+	left: 0;
+	background-color: #FFFFFF;
+	box-shadow: 0px 4px 22px 18px rgba(0, 0, 0, 0.04);
+	overflow-x: hidden; 
+	padding-top: 0; 
+	transition: 0.5s; 
+	z-index: 1200;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+	display: block;
+	transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+	color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+	  position: absolute;
+	display: inline;
+	top: 1%;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+	transition: margin-left .5s;
+	padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+  }
+  .sidenavHeader{
+	  margin-top: 4%;
+	  margin-left: 5%;
+	  font-weight: 700;
+  }
+
+/*__________________________ button sidenav____________________________*/
+.sideNav {
+    
+	display: none;
+}
+.sideNavButton{
+	
+	display: none;
+}
+.sideNavButton:focus{
+	outline:none;
+}
+
+
+
+/*____________________________________ Tab view _____________________________________________*/
+@media(max-width:992px)
+{
+	  #sub1{
+		 height:90vh;
+	 }
+	 #pSec1{
+		 height: 90vh;
+	 }
+	 #pSec3{
+		display: none !important;
+		background-color: #FFFFFF;
+		box-shadow: none;
+		margin-top: 50px;
+		margin-left: 20px;
+		position: absolute;
+        width: 300px;
+        height: 55px;
+        left: 17px;
+        top: 367px;
+        background: #019DFA;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+	 }
+	 #pSec1{
+		 top: 15px;
+	 }
+
+
+	 #Dr {
+		 padding: 3%;
+		 text-align: left;
+	 }
+	 #Dr p{
+		 margin-left: 5%;
+	 }
+	 .sideNavButton{
+		border-radius: 50%;
+		background: transparent;
+		border: none;
+		display:inline;
+		color: #9593A0;
+		font-size: 100%;
+	 }
+	 .sideNav {
+		border-radius: 50%;
+		height: 30px;
+		/* width: 52px; */
+		/* color: #000000; */
+		font-size: 22px;
+		text-align: center;
+		padding-top: 5px;
+		margin-left: 15px;
+		display: inline;
+		right: 15%;
+		position: absolute;
+	}
+	.doctor-icon{
+		display: inherit;
+		filter: brightness(0.46);
+	}
+	#Camera {
+		position: absolute;
+		top: 37.5%;
+		left: 22.5%;
+	}
+}
+
+.doctors{
+	display: none !important;
+}
+@media (max-width: 992px) {
+	.doctors{
+		display: inline-block !important;
+	}
+	#pSec3{
+		display: none;
+	 }
+}
+
+/*______________________________Mobile View______________________________________________*/
+
+
+
+@media (max-width: 576px) {
+	 body{
+		 overflow: hidden;
+	 }
+	 html{
+		 overflow-x: hidden;
+	 }
+	 .row{
+		background: #FFFFFF;
+	}
+
+	 #pSec3{
+			display: flex !important;
+			background-color: #FFFFFF;
+			box-shadow: none;
+			width: 82%;
+			left: 8%;
+			margin-left: 0;
+			top: 53%;
+			background: #019DFA;
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+			border-radius: 5px;
+	 }
+
+	 #Dr {
+		 padding: 3%;
+		 text-align: left;
+	 }
+	 #Dr p{
+		 margin-left: 5%;
+	 }
+	 .sideNavButton{
+		border-radius: 50%;
+		background: transparent;
+		border: none;
+		display:inline;
+		color: #9593A0;
+		font-size: 100%;
+	 }
+	.Doctor-list{
+		display: none;
+	}
+	 .sideNav{
+		/* background: rgb(255, 255, 255); */
+		border-radius: 50%;
+		height: 30px;
+		width: 32px;
+		/* color: #000000; */
+		font-size: 22px;
+		text-align: center;
+		padding-top: 5px;
+		margin-left: 15px;
+		 display: block;
+	 }
+	 .doctor-icon{
+		 display: unset;
+		 filter: unset;
+		 right: 8%;
+		 padding-top: 1.2%;
+	 }
+	#sub1{
+		box-shadow: none;
+		height: 42vh;
+	}
+	#pSec2{
+		height: 42vh;
+	}
+	#coverImg{
+		height: 40%;
+	}
+	#profileImg{
+		top: 16%;
+	}
+	#Camera {
+		top: 40.5%;
+		left: 22.5%;
+	}
+	#name {
+		top: 12%;
+		font-size: 120%;
+	}
+	#patientDetails{
+		height: fit-content;
+	}
+	#heading1{
+		/* margin-top: 15px; */
+		margin-bottom: 0.2rem;
+	}
+	#patientDetails{
+		top: 12%;
+	}
+	#heading2{
+		margin-bottom: 15px;
+		top: 12px;
+	}
+	.detailLevels {
+		font-size: 13px;
+		margin-bottom: 3px;
+	}
+	#pSec1{
+		margin-top: 60px;
+	}
+	#leftPanel{
+		margin-top: 11%;
+	}
+	.lists{
+		margin-bottom: 3%;
+	}
+
+}
+@media (max-width: 470px) {
+	#leftPanel{
+		margin-top: 14.5%;
+	}
+}
+
+@media (max-width: 440px) {
+	#pSec3{
+		top: 52%;
+	}
+	.lists{
+		margin-bottom: 4%;
+	}
+	#leftPanel{
+		margin-top: 15%;
+	}
+}
+@media (max-width: 350px) {
+	#leftPanel{
+		margin-top: 22%;
+	}
+	.lists{
+		margin-bottom: 5%;
+	}
+	.doctor-icon{
+		padding-top: 3%;
+	}
+}
+
+@media(max-width:380px)
+{
+	#profileImg{
+		left: 8%;
+	}
+
+	#Camera {
+		top: 43.5%;
+		left: 30.5%;
+	}
+
+	#name{
+		top:18%;
+		left: 7.5%;
+	}
+	#heading1{
+		top:16%;
+		left:7.5%;
+	}
+	#patientDetails {
+		top: 17.5%;
+	}
+	#pSec3{
+		top: 58%;
+	}
+	#pSec1{
+	    margin-top: 110px;
+	}
+}
+
+
+@media (max-width: 300px) {
+	#leftPanel{
+		margin-top: 24%;
+	}
+	.lists{
+		margin-bottom: 6%;
+	}
+}
+
+
+
+
+
+
+
+
+

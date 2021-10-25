@@ -1,0 +1,21 @@
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    padding: 12px 16px;
+    transform: translate(0%, -50%);
+  }
+  
+.close:hover {
+    background: #bbb;
+}
+
+.alignment{
+	text-align: center;	
+  
+}
+
+.alert{
+  padding: 1.25rem 1.25rem 1.25rem 1.25rem !important;
+}

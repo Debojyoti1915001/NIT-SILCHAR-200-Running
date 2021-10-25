@@ -1,0 +1,25 @@
+<% for(var a of hospitals){ %>
+<div class="col-lg-8 col-sm-8 col-12 order-1 order-sm-2" id="pSec2">
+    <div id="sub1">
+        <img src="../img/CoverPhoto.png" id="coverImg">
+        <a href="#"><img src="../img/ProfilePic.png" id="profileImg"></a>
+        <a href="#"><img src="../img/camera.png" id="Camera"></a>
+        <h5 id="name"><%=a.hospitalName %></h5>
+        <div id="patientDetails">
+            <h3 id="heading2">Hospital Details</h3>
+            <label for="bloodGroup" class="detailLevels">Blood Group : </label>
+            <input type="text" class="detailFields" id="bloodGroup">
+            <br>
+            <label for="Address" class="detailLevels">Address : </label>
+            <input type="text" class="detailFields" id="Address">
+            <br>
+            <label for="PhoneNo" class="detailLevels">Phone No. : <%=a.phoneNumber %> </label>
+            <!-- <input type="tel" class="detailFields" id="PhoneNo"> -->
+            <br>
+            <label for="Email" class="detailLevels">Email : <%=a.email %> </label>
+            <!-- <input type="email" class="detailFields" id="Email"> -->
+            <br>
+        </div>
+    </div>
+</div>
+<% } %>

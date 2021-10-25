@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#F1F1F1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#logo {
+    width: 45%;
+    height: 45%;
+    margin-left: 10px;
+}
+#containers {
+    height: 9vh;
+    width: 100%;
+   box-shadow: -3px -16px 44px 8px rgba(18, 118, 210, 0.44)!important;
+}
+#Navbar {
+    background-color: #ffffff;
+}
+#button1 {
+    border-color: blue;
+}
+ul {
+    margin-left: 6vw;
+}
+ul li {
+    color: black;
+    font-family: Product Sans;
+    font-weight: bolder;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-left: 3vw;
+}
+#inputNav {
+    width: 20vw;
+    padding: 2.5%;
+    position: relative;
+    right: 5vw;
+    border-radius: 42px;
+    background: #f0f0f0;
+    outline: 0;
+    border: none;
+    float: left;
+    padding-left: 30px;
+    padding-right: 50px;
+}
+#search {
+    width: 70%;
+    height: 70%;
+    float: left;
+    position: relative;
+    right: 8vw;
+}
+
+@media (max-width: 412px) {
+    ul li {
+        margin-left: -3.5vw;
+    }
+    #containers{
+        height: 8vh;
+    }
+}
+@media (max-width: 991px) {
+    #inputNav {
+        margin: 0 auto;
+        width: 70%;
+        position: relative;
+        left: 5vw;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 40px;
+    }
+    #search {
+        position: relative;
+        right: 14vw;
+    }
+}
+@media (max-width: 1096px) and (min-width: 992px) {
+    #containers {
+        box-shadow: -3px -16px 48px 17px rgba(18, 118, 210, 0.44);
+    }
+    #inputNav {
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 45px;
+    }
+    #search {
+        position: relative;
+        left: 11.5vw;
+        margin-top: -30px;
+    }
+}
+@media(min-width:1023px) and (max-width: 1096px){
+    #inputNav{
+        position:relative;
+        left:15px;
+    }
+    #search{
+        position: relative;
+        left: -2.7vw;
+        margin-top:.4vh;
+    }
+}
+@media (min-width:992px) and (max-width:1023px){
+    ul{
+        margin-left:4vw;
+    }
+    #inputNav{
+        position:relative;
+        left:15px;
+    }
+    #search{
+        position: relative;
+        left:-2.7vw;
+        margin-top:.4vh;
+    }
+}
+@media (min-width: 1096px) and (max-width: 1224px) {
+    #inputNav {
+        position: relative;
+        left: 5px;
+        padding-left: 17px;
+    }
+    #search {
+        position: relative;
+        right: 3.5vw;
+    }
+}
+

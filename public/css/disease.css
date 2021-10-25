@@ -1,0 +1,154 @@
+.row{
+	margin-bottom: 3vh;
+}
+
+#pSec9{
+	top: 17px;
+	height: 91vh;
+	overflow-y: scroll !important;
+	padding-right: unset !important;
+	scroll-margin-right: 15px !important;
+}
+.disease-back-link{
+    width: 100%;
+    /* height: 8%; */
+    text-align: center;
+    background: #019dfa;
+    color: white;
+    padding: 3%;
+    /* padding-top: 6%; */
+    border-radius: 5px 5px 0px 0px;
+    font-weight: bold;
+    font-size: 140%;
+    font-family: Product Sans;
+	margin: 5px 0px 15px;
+	display: none;
+}
+.disease-back-link a{
+	text-decoration: none;
+	color: white;
+}
+.disease-back-link .fa-arrow-left{
+	margin-right: 15px;
+}
+#sub4{
+	height: 89vh;
+	box-shadow: 3px 3px 15px rgb(0 0 0 / 25%);
+    border-radius: 10px 10px 10px 10px;
+	margin-bottom: 10px;
+}
+.sub4-2{
+	margin-top: 4%;
+}
+
+.add-documents {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}	
+
+
+.add-documents-button{
+  
+   /* position: absolute;
+   top: 15px;
+   right: 3px;
+    width: 100px; */
+    height: 40px;
+    border-radius: 5px;
+	
+    background-color: unset;
+    /* color: white; */
+    outline: none;
+    /* text-align: center; */
+    border: none;
+}
+
+
+#patientDiseases {
+    color: black;
+    font-family: Product Sans;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-left: 3vw;
+}
+
+#pSec9::-webkit-scrollbar{
+	width:8px;
+	scroll-padding-right: 15px;
+	scroll-margin-right: 15px;
+}
+#pSec9::-webkit-scrollbar-track{
+    background-color: rgb(209, 202, 202);
+    border-radius:3px;
+	scroll-padding-right: 15px;
+
+}
+#pSec9::-webkit-scrollbar-thumb{
+    background-color:#9593A0;
+    border-radius:3px;
+	scroll-padding-right: 15px;
+
+}
+#pSec3{
+	right: -10px !important;
+}
+#Dr{
+	height: auto !important;
+	padding: 8% !important;
+}
+#name1{
+	position: relative;
+	padding: 2vh 0 1vh;
+	margin-bottom: 2vh;
+	
+}
+/* #name1:first-child{
+	color: #9593a0 !important;
+} */
+.disease-flexbox{
+	display: flex;
+	flex-direction: column;
+}
+.media{
+	margin-bottom: 20px;
+	display: flex;
+	align-items: flex-end !important;
+	justify-content: space-between !important;
+}
+.pdf-img{
+	margin-left: 5px;
+}
+.media-body{
+	display: block !important;
+	flex: none !important;
+	margin-right: 15px;
+}
+@media (max-width: 576px) {
+	#sub4{
+		margin-bottom: 15px;
+		box-shadow:none;
+	}
+	.disease-back-link{
+		display: block;
+	}
+}
+@media (max-width: 414px){
+	.align-self-center{
+		margin-right:15px !important;
+		overflow-x: scroll;
+	}
+	.pdf-img{
+		width:40px !important;
+		margin-right:0.1rem !important;
+		margin-left:10px  !important;
+	}
+	.fa-download .fa-3x{
+		width: 30px !important;
+		margin-left:3px !important;
+	}
+}

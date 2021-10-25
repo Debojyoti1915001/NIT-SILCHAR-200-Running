@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+  <script src="https://use.fontawesome.com/67912d8e88.js"></script>
+  <link rel="stylesheet" href="/css/signUp.css" />
+  <link rel="stylesheet" href="/css/login.css" />
+  <link rel="stylesheet" href="/css/passwordstrength.css" />
+  <title>Aarogya</title>
+  <link rel="shortcut icon" href="../img/medical1.png">
+</head>
+
+<body>
+  <%- include('../partials/navbar'); %>
+   <!--Signup-->
+<div id="signUp"><!--started details-->
+	<div id="signupLeftImage">
+		<!--<image src="medicalImage/plate.png" id="plate">-->
+			<img src="/img/signup-Logo.png" id="design">
+    </div>
+    
+    <div id="Form">
+      <div><%- include('../partials/message'); %></div>
+      <% if(type === 'signup') { %>
+        <div id="signUpform" class="fadeIn">
+      <% } else { %>
+        <div id="signUpform" class="fadeOut">
+      <% } %>
+    	<h2 id="heading">Register Your Account!</h2>
+    	<!-- <p id="signUpText">Sign up with your social media account or email address</p> -->
+	    
+    	<div id="details">
+       
+        <form action="/user/signup" method="POST" name="signUpform">
+          <label class="label1">Name*</label><br>
+          <input type="text" placeholder="Write your name" class="inputDetails" name="name" id="SignupName" required /><br>
+          <label class="label1">Email address*</label><br>
+        <input type="email" placeholder="Write your email" class="inputDetails" name="email" id="SignupEmail" required /><br>
+
+        <label class="label1">Phone Number*</label><br>
+        <input type="tel" placeholder="Write your phone number" class="inputDetails" id="SignupPhone" name="phoneNumber" required /><br>
+        
+        <label class="label1">Create password*</label><br>
+
+        <input type="password" placeholder="Password" class="inputDetails password-input" id="password-input" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?.+\-^#&])[A-Za-z\d@$!%*?.+\-^#&]{8,}" name="password">
+        <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i><i id="info" class="fa fa-info-circle" aria-hidden="true"><span id="infoText">Your password must contain 8 letters,1 uppercase characters, 1 number, 1 special character.</span></i><br>
+        <div id="reasons" class="reasons"></div>
+
+        <div class="strength-meter" id="strength-meter"></div>
+        <p class="password-rate"></p>
+        <label class='label1'>Confirm password*</label><br>
+          <div>
+            <input type="password" placeholder="Confirm password" class="inputDetails" id="confirmPwd" required name="confirmPwd">
+            <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i><br>
+          </div>
+        
+    		<div><input type="checkbox" id="terms" required><label for="terms" id="terms1"> I agree to <a href="" id="termLink">terms & conditions</a></label></div>
+        <button type="submit" id="submitbtn" class="register" name="submitbtn">Register Account</button>
+        </form>
+      </div>
+      <div class="loginlink-section">
+        <p id="login">Already have an account?</p>
+    	  <a href="#" id="loginLink" style="text-decoration:none !important">Login</a>
+      </div>
+    	
+    </div>
+    <% if(type === 'login') { %>
+      <div id="logInform" class="fadeIn">
+    <% } else { %>
+      <div id="logInform" class="fadeOut">
+    <% } %>
+        <h2 id="heading1">Login Now</h2>
+        <!-- <p id="logInText">Login with your social media account or email address</p> -->
+        <div id="details1">
+          <form action="/user/login" method="POST">
+            <label class="label2">Your email*</label>
+            <input type="email" placeholder="Write your email" class="inputDetails" required id="LoginEmail" name="email"/>
+            <label class="label2">Password*</label>
+            <input type="password" placeholder="Password" class="inputDetails" required id="password" name="password"/>
+            <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i>
+            <button type="submit" id="submitbtn1" >Login</button>
+          </form>
+        </div>
+        <div class="signuplink-section">
+          <p id="signUpopt">Don't have an account?</p>
+        <a href="#" id="signUpLink" style="text-decoration:none !important">Create account</a>
+        </div>  
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="/js/passwordstrength.js"></script>
+  <script src="/js/signUp.js"></script>
+</body>
+
+</html>
