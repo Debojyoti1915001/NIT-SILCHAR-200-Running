@@ -638,10 +638,10 @@ module.exports.onboarding_post = async (req, res) => {
     const user=req.user
     //how we pass matters
     const { color, favCeleb } = req.body
-    console.log(color,':',favCeleb)
+    // console.log(color,':',favCeleb)
     try {
         
-        User.findOneAndUpdate({_id: user._id}, {$set:{color}}, {new: true}, (err, doc) => {
+        await User.findOneAndUpdate({_id: user._id}, {$set:{color}}, {new: true}, (err, doc) => {
             if (err) {
                 // console.log("Something wrong when updating data!");
                 req.flash("error_msg", "Something wrong when updating data!")
@@ -650,7 +650,7 @@ module.exports.onboarding_post = async (req, res) => {
             
             // console.log(doc);
         });
-        User.findOneAndUpdate({_id: user._id}, {$set:{favCeleb}}, {new: true}, (err, doc) => {
+        await User.findOneAndUpdate({_id: user._id}, {$set:{favCeleb}}, {new: true}, (err, doc) => {
             if (err) {
                 // console.log("Something wrong when updating data!");
                 req.flash("error_msg", "Something wrong when updating data!")
