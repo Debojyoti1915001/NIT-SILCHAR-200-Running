@@ -1,5 +1,5 @@
 {
-  "name": "medical-records",
+  "name": "nit-silchar-200-running",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/knight-18/Medical-Records.git"
+    "url": "git+https://github.com/Debojyoti1915001/NIT-SILCHAR-200-Running.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/knight-18/Medical-Records/issues"
+    "url": "https://github.com/Debojyoti1915001/NIT-SILCHAR-200-Running/issues"
   },
-  "homepage": "https://github.com/knight-18/Medical-Records#readme",
+  "homepage": "https://github.com/Debojyoti1915001/NIT-SILCHAR-200-Running#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",

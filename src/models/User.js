@@ -67,6 +67,11 @@ const userSchema = mongoose.Schema(
         favCeleb:[{
             type:String
         }],
+        group:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Group'
+
+        }],
         //end
         nominee:{
             type:mongoose.Schema.Types.ObjectId,

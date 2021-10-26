@@ -12,6 +12,7 @@ require('dotenv').config()
 const { nanoId } = require("nanoid")
 const mongoose=require('mongoose')
 const Group = require('../models/Group')
+const Post = require('../models/Post')
 
 const maxAge = 30 * 24 * 60 * 60
 
@@ -618,6 +619,7 @@ module.exports.createGroup_post = async (req, res) => {
         const group = new Group({  name, desc,arrayUsers,visibility:0})
         let groupUser = await group.save()
 
+
          console.log(groupUser);
         req.flash(
             'success_msg',
@@ -663,6 +665,48 @@ module.exports.onboarding_post = async (req, res) => {
         req.flash(
             'success_msg',
             'Details added'
+        )
+        //res.send(saveUser)
+        res.redirect('/')
+    } catch (err) {
+        // console.log(errors)
+        req.flash(
+            'error_msg',
+            'Failed'
+        )
+        res.status(400).redirect('/')
+    }
+}
+module.exports.postinGroup_post=async (req, res) => {
+    // const groupId=req.query
+    // 61784d0307a9ec177861ea70
+    // const params=new URLSearchParams(groupId)
+    // const id=params.get('id')
+    const id = req.params.id
+    // console.log(id)
+    const { name, desc } = req.body
+    // console.log(name,':',desc)
+    try {
+        const post = new Post({ name, desc})
+        let savePost = await post.save()
+        const groupExists = await Group.findOne({ _id:id })
+        // console.log(groupExists)
+        const posts=groupExists.post
+        posts.push(id)
+        await Group.findOneAndUpdate({_id: id}, {$set:{post:posts}}, {new: true}, (err, doc) => {
+            if (err) {
+                // console.log("Something wrong when updating data!");
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+            
+            // console.log(doc);
+        });
+        // const p = await Group.findOne({ _id:id })
+        // console.log(p)
+        req.flash(
+            'success_msg',
+            'Post Added'
         )
         //res.send(saveUser)
         res.redirect('/')

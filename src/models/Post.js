@@ -5,7 +5,7 @@ const post = mongoose.Schema({
         type: String,
         trim: true,
     },
-    content:{
+    desc:{
         type: String,
         trim : true
     },
@@ -15,6 +15,7 @@ const post = mongoose.Schema({
     }],
     like : {
         type : Number,
+        default:0,
     },
     pic:{
         type: String
