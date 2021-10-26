@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema(
         {
             type: String, 
             trim:true, 
-            required: [true, 'Short ID cannot be absent']
         },
         name: {
             type: String,
@@ -61,6 +60,14 @@ const userSchema = mongoose.Schema(
         bloodGroup:{
             type:String
         },
+        //hackathon
+        color:[{
+            type:String
+        }],
+        favCeleb:[{
+            type:String
+        }],
+        //end
         nominee:{
             type:mongoose.Schema.Types.ObjectId,
             ref:'Nominee'

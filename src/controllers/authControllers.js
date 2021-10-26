@@ -601,14 +601,13 @@ module.exports.picupload_post=async(req,res)=>{
 //start
 module.exports.createGroup_post = async (req, res) => {
     const id=req.user._id
-    console.log(id)
+    // console.log(id)
     const { name, desc } = req.body
-    console.log(name,':',desc)
+    // console.log(name,':',desc)
     try {
         const groupExists = await Group.findOne({ name })
         
         if (groupExists) {
-            console.log(groupExists)
             req.flash(
                 'success_msg',
                 'This name already exist'
@@ -616,13 +615,54 @@ module.exports.createGroup_post = async (req, res) => {
             return res.redirect('/')//to be changed to groups landing page route
         }
         let arrayUsers=[id];
-        const group = new Group({  name, desc,arrayUsers})
+        const group = new Group({  name, desc,arrayUsers,visibility:0})
         let groupUser = await group.save()
 
          console.log(groupUser);
         req.flash(
             'success_msg',
             'Group Added'
+        )
+        //res.send(saveUser)
+        res.redirect('/')
+    } catch (err) {
+        // console.log(errors)
+        req.flash(
+            'error_msg',
+            'Failed'
+        )
+        res.status(400).redirect('/')
+    }
+}
+module.exports.onboarding_post = async (req, res) => {
+    const user=req.user
+    //how we pass matters
+    const { color, favCeleb } = req.body
+    console.log(color,':',favCeleb)
+    try {
+        
+        User.findOneAndUpdate({_id: user._id}, {$set:{color}}, {new: true}, (err, doc) => {
+            if (err) {
+                // console.log("Something wrong when updating data!");
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+            
+            // console.log(doc);
+        });
+        User.findOneAndUpdate({_id: user._id}, {$set:{favCeleb}}, {new: true}, (err, doc) => {
+            if (err) {
+                // console.log("Something wrong when updating data!");
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+            
+            // console.log(doc);
+        });
+        console.log(req.user)
+        req.flash(
+            'success_msg',
+            'Details added'
         )
         //res.send(saveUser)
         res.redirect('/')

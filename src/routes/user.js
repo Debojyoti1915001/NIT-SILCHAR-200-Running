@@ -103,6 +103,7 @@ router.get('/profile', requireAuth, authController.profile_get)
 
 //Add Group Feature
 router.post('/createGroup', requireAuth, authController.createGroup_post)
+router.post('/onboarding', requireAuth, authController.onboarding_post)
 //Post in a Group
 // router.post('/postGroup/:id', requireAuth, authController.postGroup)
 
