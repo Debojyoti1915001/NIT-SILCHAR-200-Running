@@ -98,6 +98,16 @@ router.get('/login', redirectIfLoggedIn, authController.login_get)
 router.post('/login', authController.login_post)
 router.get('/logout', requireAuth, authController.logout_get)
 router.get('/profile', requireAuth, authController.profile_get)
+
+//For hackathon
+
+//Add Group Feature
+router.post('/createGroup', requireAuth, authController.createGroup_post)
+//Post in a Group
+// router.post('/postGroup/:id', requireAuth, authController.postGroup)
+
+//End
+
 router.post('/profile/editDetails',requireAuth,authController.editDetails_post)
 
 //router.get('/profileNew'/*, requireAuth,*/, authController.profileNew_get)

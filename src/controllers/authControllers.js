@@ -11,6 +11,7 @@ const crypto = require('crypto')
 require('dotenv').config()
 const { nanoId } = require("nanoid")
 const mongoose=require('mongoose')
+const Group = require('../models/Group')
 
 const maxAge = 30 * 24 * 60 * 60
 
@@ -596,4 +597,41 @@ module.exports.picupload_post=async(req,res)=>{
         // console.log(doc);
     });
     res.redirect('/user/profile')
+}
+//start
+module.exports.createGroup_post = async (req, res) => {
+    const id=req.user._id
+    console.log(id)
+    const { name, desc } = req.body
+    console.log(name,':',desc)
+    try {
+        const groupExists = await Group.findOne({ name })
+        
+        if (groupExists) {
+            console.log(groupExists)
+            req.flash(
+                'success_msg',
+                'This name already exist'
+            )
+            return res.redirect('/')//to be changed to groups landing page route
+        }
+        let arrayUsers=[id];
+        const group = new Group({  name, desc,arrayUsers})
+        let groupUser = await group.save()
+
+         console.log(groupUser);
+        req.flash(
+            'success_msg',
+            'Group Added'
+        )
+        //res.send(saveUser)
+        res.redirect('/')
+    } catch (err) {
+        // console.log(errors)
+        req.flash(
+            'error_msg',
+            'Failed'
+        )
+        res.status(400).redirect('/')
+    }
 }

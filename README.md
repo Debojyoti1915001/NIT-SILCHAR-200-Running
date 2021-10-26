@@ -12,9 +12,7 @@
    * GET ```/user/login``` -> Renders the login view
    * POST ```/user/login``` -> User login
    * GET ```/user/logout``` -> Logs the user out and redirects to ```/login``` route
-   * GET ```/user/profile``` -> Renders the profile page
-   * POST ```/user/profile/upload``` -> Uploads file to server and redirects to profile page after completion
-   *  GET ```/user/verify/:id``` -> Verifies a user as one having a genuine email address from the link in user's inbox
+   
 ### Installation 
 (Note : These instructions are only for developers/testers for now)
 1) Open git bash or cmd
