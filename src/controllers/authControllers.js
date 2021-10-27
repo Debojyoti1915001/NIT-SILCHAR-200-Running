@@ -336,7 +336,7 @@ module.exports.createGroup_post = async (req, res) => {
     const id=req.user._id
     // console.log(id)
     const { name, desc } = req.body
-    // console.log(name,':',desc)
+    console.log(name,':',desc)
     try {
         const groupExists = await Group.findOne({ name })
         
@@ -505,4 +505,8 @@ module.exports.updatePost_post = async (req, res) => {
         )
         res.status(400).redirect('/')
     }
+}
+// createGroup_get
+module.exports.createGroup_get = async (req, res) => {
+    res.render('./userViews/create-group')
 }
