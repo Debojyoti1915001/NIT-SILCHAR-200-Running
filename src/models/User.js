@@ -48,12 +48,6 @@ const userSchema = mongoose.Schema(
             trim: true,
             validate: [utilities.phoneValidator, 'Phone number is invalid'],
         },
-        disease: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Disease',
-            },
-        ],
         address:{
             type:String
         },
