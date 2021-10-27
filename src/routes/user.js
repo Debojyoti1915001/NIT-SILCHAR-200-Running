@@ -113,28 +113,14 @@ router.post('/postinGroup/:id', requireAuth,upload.single('photo'), authControll
 
 //End
 
-router.post('/profile/editDetails',requireAuth,authController.editDetails_post)
 
 //router.get('/profileNew'/*, requireAuth,*/, authController.profileNew_get)
 
 
-router.post(
-    '/profile/upload',
-    requireAuth,
-    upload.fields([{
-        name: 'medicine', maxCount: 3
-      }, {
-        name: 'document', maxCount: 3
-      }]),  
-    authController.upload_post
-)
 
 
-router.get('/userHospital',requireAuth,authController.userHospital_get)
 
-router.get('/disease',requireAuth,authController.disease_get)
-router.get('/hospitalSearch',requireAuth,authController.hospitalSearch_get)
-router.post('/hospitalSearch',requireAuth,authController.hospitalSearch_post)
+
 router.get('/forgotPassword', redirectIfLoggedIn,authController.getForgotPasswordForm)
 router.post('/forgotPassword', redirectIfLoggedIn,authController.forgotPassword)
 router.get('/resetPassword/:id/:token',authController.getPasswordResetForm)

@@ -64,11 +64,11 @@ app.use((req, res, next) => {
 //Routes
 const indexRoutes = require('./routes/index')
 const userRoutes = require('./routes/user')
-const hospitalRoutes = require('./routes/hospital')
+// const hospitalRoutes = require('./routes/hospital')
 
 app.use('/',indexRoutes)
 app.use('/user',userRoutes)
-app.use('/hospital', hospitalRoutes)
+// app.use('/hospital', hospitalRoutes)
 
 //Start the server
 app.listen(PORT, () => {

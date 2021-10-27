@@ -73,11 +73,6 @@ const userSchema = mongoose.Schema(
 
         }],
         //end
-        nominee:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Nominee'
-
-        },
         profilePic: {
             type: String,
             trim: true,
