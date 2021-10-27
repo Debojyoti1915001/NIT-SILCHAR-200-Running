@@ -110,6 +110,8 @@ router.post('/createGroup', requireAuth, authController.createGroup_post)
 router.post('/onboarding', requireAuth, authController.onboarding_post)
 //Post in a Group
 router.post('/postinGroup/:id', requireAuth,upload.single('photo'), authController.postinGroup_post)
+router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
+// router.post('/deletepost', requireAuth, authController.deletePost_post)
 
 //End
 

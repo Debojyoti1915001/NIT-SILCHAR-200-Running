@@ -462,3 +462,47 @@ module.exports.postinGroup_post=async (req, res) => {
         res.status(400).redirect('/')
     }
 }
+module.exports.updatePost_post = async (req, res) => {
+    const id = req.params.id
+    //how we pass matters
+    const { name, desc } = req.body
+    // console.log(color,':',favCeleb)
+    try {
+        
+        if(name.length!==0){
+            await Post.findOneAndUpdate({_id: id}, {$set:{name}}, {new: true}, (err, doc) => {
+                if (err) {
+                    // console.log("Something wrong when updating data!");
+                    req.flash("error_msg", "Something wrong when updating data!")
+                    res.redirect('/')
+                }
+                
+                // console.log(doc);
+            });
+        }
+        if(desc.length!==0){
+            await Post.findOneAndUpdate({_id: id}, {$set:{desc}}, {new: true}, (err, doc) => {
+                if (err) {
+                    // console.log("Something wrong when updating data!");
+                    req.flash("error_msg", "Something wrong when updating data!")
+                    res.redirect('/')
+                }
+                
+                // console.log(doc);
+            });
+        }
+        req.flash(
+            'success_msg',
+            'Details added'
+        )
+        //res.send(saveUser)
+        res.redirect('/')
+    } catch (err) {
+        // console.log(errors)
+        req.flash(
+            'error_msg',
+            'Failed'
+        )
+        res.status(400).redirect('/')
+    }
+}
