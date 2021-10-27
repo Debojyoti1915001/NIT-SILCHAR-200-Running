@@ -11,7 +11,11 @@ const multer = require('multer')
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         // console.log("in multer",file)
-        if(file.fieldname!=='profilePic'){
+        if(file.fieldname==='photo'){
+            const userEmail = req.user.email.toLowerCase()
+            var dir = `./public/uploads/${userEmail}/${file.fieldname}`
+        }
+        else if(file.fieldname!=='profilePic'){
         const {name}=req.body 
         // console.log('disease name',name)
         //console.log('field',file.fieldname)
@@ -105,7 +109,7 @@ router.get('/profile', requireAuth, authController.profile_get)
 router.post('/createGroup', requireAuth, authController.createGroup_post)
 router.post('/onboarding', requireAuth, authController.onboarding_post)
 //Post in a Group
-router.post('/postinGroup/:id', requireAuth, authController.postinGroup_post)
+router.post('/postinGroup/:id', requireAuth,upload.single('photo'), authController.postinGroup_post)
 
 //End
 
