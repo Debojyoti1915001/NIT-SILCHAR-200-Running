@@ -334,17 +334,13 @@ module.exports.picupload_post=async(req,res)=>{
 //start
 module.exports.createGroup_post = async (req, res) => {
     const id=req.user._id
+
     const picture =req.file.path
-    // console.log(picture)
     var pic=null
     await cloudinary.uploader.upload(picture,function(err,res){
-        //  console.log(res)
         pic=res.secure_url
-        // console.log(pic)
     })
-    // console.log(id)
     const { name, desc,visibility,category } = req.body
-    console.log(name,':',desc,":",visibility ,":",category)
     try {
         const groupExists = await Group.findOne({ name })
         
@@ -353,14 +349,23 @@ module.exports.createGroup_post = async (req, res) => {
                 'success_msg',
                 'This name already exist'
             )
-            return res.redirect('/')//to be changed to groups landing page route
+            return res.redirect('/user/createGroup')//to be changed to groups landing page route
         }
         let arrayUsers=[id];
         const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
-
-
+        var groupsOfUsers=req.user.group
+        console.log(groupsOfUsers)
+        groupsOfUsers.push(groupUser._id)
+        await User.findOneAndUpdate({_id: id}, {$set:{group:groupsOfUsers}}, {new: true}, (err, doc) => {
+            if (err) {
+                // console.log("Something wrong when updating data!");
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/user/createGroup')
+            }
+        });
          console.log("check",groupUser);
+         console.log("user:",req.user);
         req.flash(
             'success_msg',
             'Group Added'
@@ -373,7 +378,7 @@ module.exports.createGroup_post = async (req, res) => {
             'error_msg',
             'Failed'
         )
-        res.status(400).redirect('/')
+        res.status(400).redirect('/user/createGroup')
     }
 }
 module.exports.onboarding_post = async (req, res) => {
