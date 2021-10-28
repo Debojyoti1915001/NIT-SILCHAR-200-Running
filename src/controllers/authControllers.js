@@ -334,9 +334,17 @@ module.exports.picupload_post=async(req,res)=>{
 //start
 module.exports.createGroup_post = async (req, res) => {
     const id=req.user._id
+    const picture =req.file.path
+    // console.log(picture)
+    var pic=null
+    await cloudinary.uploader.upload(picture,function(err,res){
+        //  console.log(res)
+        pic=res.secure_url
+        // console.log(pic)
+    })
     // console.log(id)
-    const { name, desc } = req.body
-    console.log(name,':',desc)
+    const { name, desc,visibility,category } = req.body
+    console.log(name,':',desc,":",visibility ,":",category)
     try {
         const groupExists = await Group.findOne({ name })
         
@@ -348,11 +356,11 @@ module.exports.createGroup_post = async (req, res) => {
             return res.redirect('/')//to be changed to groups landing page route
         }
         let arrayUsers=[id];
-        const group = new Group({  name, desc,arrayUsers,visibility:0})
+        const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
 
 
-         console.log(groupUser);
+         console.log("check",groupUser);
         req.flash(
             'success_msg',
             'Group Added'

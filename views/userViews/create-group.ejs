@@ -764,7 +764,7 @@
                     </div>
 
                     <!-- form body -->
-                    <form action="/user/createGroup" class="form" method="POST">
+                    <form action="/user/createGroup" class="form" method="POST" enctype="multipart/form-data">
                     <div class="p-10 space-y-7">
 
                         <div class="line">
@@ -772,9 +772,9 @@
                             <span for="username" class="line__placeholder"> Group Name </span>
                         </div>
 
-                        <!-- <div>
+                        <div>
                             <label for="" class="font-semibold text-base"> Group Category </label>
-                            <select id="" name=""  class="shadow-none selectpicker with-border">
+                            <select id="category" name="category"  >
                                 <option value="1">Technology</option>
                                 <option value="2">Cars and Vehicles</option>
                                 <option value="3">Comedy</option>
@@ -787,13 +787,20 @@
                                 <option value="10">Live Style</option> 
                                 <option value="0">Other</option>
                            </select>
-                        </div> -->
+                        </div>
 
                         <div class="line h-32"> 
                             <textarea class="line__input h-32"  id="" name="desc" type="text" onkeyup="this.setAttribute('value', this.value);" value="" autocomplete="off"></textarea>
                             <span for="username" class="line__placeholder"> Group description </span> 
                         </div>
-                        
+                        <label>Upload Profile Pic</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                    Browse… <input type="file" id="profilePic"name="photo">
+                                </span>
+                            </span>
+                        </div>
                         <!-- <div class="px-2 space-y-2">
                             <label for="" class="font-semibold text-base"> Choose Privacy </label> 
                             <div> Anyone can see who's in the group and what they post. </div>
@@ -806,7 +813,21 @@
                         </div> -->
                         
                     </div>
-                
+                    <legend class="col-form-label col-sm-5 pt-0">Visibilty</legend>
+                    <div class="col-sm-7">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios1" value="0" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                          Public
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios2" value="1">
+                        <label class="form-check-label" for="gridRadios2">
+                          Private
+                        </label>
+                      </div>
+                    </div>
                     <!-- form footer -->
                     <div class="flex justify-center border-gray-100 py-8">
                         <!-- <button type="button" class="button lg:w-1/3">
