@@ -354,6 +354,7 @@ module.exports.createGroup_post = async (req, res) => {
         let arrayUsers=[id];
         const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
+        console.log(groupUser._id)
         var groupsOfUsers=req.user.group
         groupsOfUsers.push(groupUser._id)
         await User.findOneAndUpdate({_id: id}, {$set:{group:groupsOfUsers}}, {new: true}, (err, doc) => {
@@ -421,7 +422,7 @@ module.exports.onboarding_post = async (req, res) => {
 }
 module.exports.postinGroup_post=async (req, res) => {
     // const groupId=req.query
-    // 61784d0307a9ec177861ea70
+    // 617ae4ad48b7423f606d5f16
     // const params=new URLSearchParams(groupId)
     // const id=params.get('id')
     const id = req.params.id
@@ -431,7 +432,6 @@ module.exports.postinGroup_post=async (req, res) => {
     await cloudinary.uploader.upload(picture,function(err,res){
         // console.log(res)
         pic=res.secure_url
-        console.log(pic)
     })
     try {
         if(name.length==0||desc.length==0){
@@ -443,12 +443,13 @@ module.exports.postinGroup_post=async (req, res) => {
         }
         else{
         const post = new Post({ name, desc,pic})
-        console.log(post)
         let savePost = await post.save()
+        const postId=savePost._id
+        console.log(postId)
         const groupExists = await Group.findOne({ _id:id })
         // console.log(groupExists)
         const posts=groupExists.post
-        posts.push(id)
+        posts.push(postId)
         await Group.findOneAndUpdate({_id: id}, {$set:{post:posts}}, {new: true}, (err, doc) => {
             if (err) {
                 req.flash("error_msg", "Something wrong when updating data!")
@@ -529,7 +530,54 @@ module.exports.groupFeed_get = async (req, res) => {
         userGroups,
         allGroups
     })
-} 
+}
+module.exports.like = async (req, res) => {
+    console.log('hitting')
+    const id=req.user._id
+    const postId=req.params.id
+    const post=await Post.findOne({_id:postId})
+    const likes=post.like
+    var f=0
+    for(var i=0;i<likes.length;i++){
+        if(likes[i]==id){
+            f=1
+        }        
+    }
+    if(f===0){
+        likes.push(id);
+    }
+    await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/user/groupLanding')
+        }
+        
+        // console.log(doc);
+    });
+    res.redirect('/user/groupLanding')
+}
+//BUG
+module.exports.groupLanding_get = async (req, res) => {
+// 617ae747fe75f93fe8e8796f
+// 617ae774fe75f93fe8e87970
+// 617ae789fe75f93fe8e87971
+// 617ae7a5fe75f93fe8e87972<-id of some post
+    const user = await req.user.populate('group').execPopulate()
+    const userGroups=user.group
+    var value=[]
+    for(var i = 0; i < userGroups.length; i++) {
+        var name=userGroups[i].name
+        const post = await userGroups[i].populate('post').execPopulate()
+        const pic=userGroups[i].pic
+        value.push({name,pic,post})
+    }
+    console.log(value)
+    // res.send(value)
+    res.render('./userViews/groupLanding',{
+        value
+    })
+}  
 module.exports.joinGroup_post = async (req, res) => {
     const groupId=req.params.id
     const userId=req.user._id

@@ -13,10 +13,9 @@ const post = mongoose.Schema({
         type: String,
         trim : true
     }],
-    like : {
-        type : Number,
-        default:0,
-    },
+    like :[ {
+        type : String,
+    }],
     pic:{
         type: String
     }
