@@ -520,3 +520,38 @@ module.exports.updatePost_post = async (req, res) => {
 module.exports.createGroup_get = async (req, res) => {
     res.render('./userViews/create-group')
 }
+
+module.exports.groupFeed_get = async (req, res) => {
+    const allGroups=await Group.find({})
+    const user = await req.user.populate('group').execPopulate()
+    const userGroups=user.group
+    res.render('./userViews/groupfeed',{
+        userGroups,
+        allGroups
+    })
+} 
+module.exports.joinGroup_post = async (req, res) => {
+    const groupId=req.params.id
+    const userId=req.user._id
+    const groupExists = await Group.findOne({ _id: groupId })
+    const users=groupExists.arrayUsers
+    users.push(userId)
+    await Group.findOneAndUpdate({_id: groupId}, {$set:{arrayUsers:users}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/')
+        }
+    });
+    const groups=req.user.group
+    //
+    groups.push(groupId)
+    await User.findOneAndUpdate({_id: userId}, {$set:{group:groups}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/')
+        }
+    });
+    res.redirect('/user/groupFeed')
+} 
