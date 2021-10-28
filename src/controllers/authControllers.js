@@ -355,7 +355,6 @@ module.exports.createGroup_post = async (req, res) => {
         const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
         var groupsOfUsers=req.user.group
-        console.log(groupsOfUsers)
         groupsOfUsers.push(groupUser._id)
         await User.findOneAndUpdate({_id: id}, {$set:{group:groupsOfUsers}}, {new: true}, (err, doc) => {
             if (err) {
@@ -364,8 +363,6 @@ module.exports.createGroup_post = async (req, res) => {
                 res.redirect('/user/createGroup')
             }
         });
-         console.log("check",groupUser);
-         console.log("user:",req.user);
         req.flash(
             'success_msg',
             'Group Added'
