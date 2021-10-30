@@ -8,11 +8,7 @@ require('dotenv').config()
 
 const userSchema = mongoose.Schema(
     {
-        short_id: 
-        {
-            type: String, 
-            trim:true, 
-        },
+        
         name: {
             type: String,
             trim: true,

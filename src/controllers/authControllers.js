@@ -2,7 +2,7 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const { signupMail,passwordMail } = require('../config/nodemailer')
 const path = require('path')
-const { handleErrors,generateShortId } = require('../utilities/Utilities'); 
+const { handleErrors } = require('../utilities/Utilities'); 
 const crypto = require('crypto')
 require('dotenv').config()
 const { nanoId } = require("nanoid")
@@ -38,7 +38,6 @@ module.exports.login_get = (req, res) => {
 
 module.exports.signup_post = async (req, res) => {
     const { name, email, password, confirmPwd, phoneNumber } = req.body
-    const nominee=null
     // console.log("in sign up route",req.body);
     if (password != confirmPwd) {
         req.flash('error_msg', 'Passwords do not match. Try again')
@@ -63,9 +62,7 @@ module.exports.signup_post = async (req, res) => {
             )
             return res.redirect('/user/login')
         }
-        const short_id =  generateShortId(name,phoneNumber);
-        // console.log("Short ID generated is: ", short_id)
-        const user = new User({ email, name, password, phoneNumber, short_id ,nominee})
+        const user = new User({ email, name, password, phoneNumber})
         let saveUser = await user.save()
         // console.log(saveUser);
         req.flash(
