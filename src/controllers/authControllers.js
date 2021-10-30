@@ -136,7 +136,7 @@ module.exports.emailVerify_get = async (req, res) => {
 module.exports.login_post = async (req, res) => {
     const { email, password } = req.body
     // console.log('in Login route')
-    //  console.log('req.body',req.body)
+    //   console.log('req.body',req.body)
     try {
 
         const user = await User.login(email, password)
@@ -439,13 +439,12 @@ module.exports.postinGroup_post=async (req, res) => {
                 'error_msg',
                 'Enter name and desc'
             )
-            res.redirect('/')
+            res.redirect(`/user/homeGroup?id=${id}`)
         }
         else{
-        const post = new Post({ name, desc,pic})
+        const post = new Post({ name, desc,pic,group:id})
         let savePost = await post.save()
         const postId=savePost._id
-        console.log(postId)
         const groupExists = await Group.findOne({ _id:id })
         // console.log(groupExists)
         const posts=groupExists.post
@@ -453,16 +452,21 @@ module.exports.postinGroup_post=async (req, res) => {
         await Group.findOneAndUpdate({_id: id}, {$set:{post:posts}}, {new: true}, (err, doc) => {
             if (err) {
                 req.flash("error_msg", "Something wrong when updating data!")
-                res.redirect('/')
+                res.redirect(`/user/homeGroup?id=${id}`)
             }
             
         });
+        console.log("user:",req.user.likedPosts)
+        console.log("group:",groupExists)
+        console.log("post:",savePost)
+        
+
         req.flash(
             'success_msg',
             'Post Added'
         )
         //res.send(saveUser)
-        res.redirect('/')
+        res.redirect(`/user/homeGroup?id=${id}`)
         }
     } catch (err) {
         // console.log(errors)
@@ -470,7 +474,7 @@ module.exports.postinGroup_post=async (req, res) => {
             'error_msg',
             'Failed'
         )
-        res.status(400).redirect('/')
+        res.status(400).redirect(`/user/homeGroup?id=${id}`)
     }
 }
 module.exports.updatePost_post = async (req, res) => {
@@ -537,6 +541,7 @@ module.exports.like = async (req, res) => {
     const postId=req.params.id
     const post=await Post.findOne({_id:postId})
     const likes=post.like
+    
     var f=0
     for(var i=0;i<likes.length;i++){
         if(likes[i]==id){
@@ -544,7 +549,20 @@ module.exports.like = async (req, res) => {
         }        
     }
     if(f===0){
-        likes.push(id);
+        likes.push(id)
+        //likes in User
+        const likedPost=req.user.likedPosts
+        if(likedPost.length>20){
+            const c=likedPost.shift()
+        }
+        likedPost.push(post.pic)
+        await User.findOneAndUpdate({_id: id}, {$set:{likedPosts:likedPost}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+        
+        })
     }
     await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
         if (err) {
@@ -556,6 +574,47 @@ module.exports.like = async (req, res) => {
         // console.log(doc);
     });
     res.redirect('/user/groupLanding')
+}
+module.exports.likePost = async (req, res) => {
+    console.log('hitting')
+    const id=req.user._id
+    const gid=req.params.gid
+    const postId=req.params.id
+    const post=await Post.findOne({_id:postId})
+    const likes=post.like
+    
+    var f=0
+    for(var i=0;i<likes.length;i++){
+        if(likes[i]==id){
+            f=1
+        }        
+    }
+    if(f===0){
+        likes.push(id)
+        //likes in User
+        const likedPost=req.user.likedPosts
+        if(likedPost.length>20){
+            const c=likedPost.shift()
+        }
+        likedPost.push(post.pic)
+        await User.findOneAndUpdate({_id: id}, {$set:{likedPosts:likedPost}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+        
+        })
+    }
+    await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/user/homeGroup')
+        }
+        
+        // console.log(doc);
+    });
+    res.redirect(`/user/homeGroup?id=${gid}`)
 }
 //BUG
 module.exports.groupLanding_get = async (req, res) => {
@@ -578,7 +637,7 @@ module.exports.groupLanding_get = async (req, res) => {
         value
     })
 }  
-module.exports.joinGroup_post = async (req, res) => {
+module.exports.joinGroup_get = async (req, res) => {
     const groupId=req.params.id
     const userId=req.user._id
     const groupExists = await Group.findOne({ _id: groupId })
@@ -603,3 +662,19 @@ module.exports.joinGroup_post = async (req, res) => {
     });
     res.redirect('/user/groupFeed')
 } 
+module.exports.homeGroup_get = async (req, res) =>{
+    // const id=req.params.id
+    // const group=await Group.findOne({_id:id})
+    // const groupContent = await group.populate('post').execPopulate()
+    const groupId=req.query
+    const params=new URLSearchParams(groupId)
+    const id=params.get('id')
+    const group=await Group.findOne({_id:id})
+    const groupC = await group.populate('post').execPopulate()
+    const groupContent=await groupC.populate('arrayUsers').execPopulate()
+    console.log(groupContent)
+    res.render('./userViews/homeGroup',{
+        groupContent
+    }
+    )
+}

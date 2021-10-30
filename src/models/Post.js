@@ -18,7 +18,12 @@ const post = mongoose.Schema({
     }],
     pic:{
         type: String
-    }
+    },
+    group: 
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Group',
+        },
 })
 
 const Post = mongoose.model('Post', post)

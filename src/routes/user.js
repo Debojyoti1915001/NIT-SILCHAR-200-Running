@@ -112,13 +112,14 @@ router.post('/createGroup', requireAuth,upload.single('photo'), authController.c
 router.get('/groupFeed', requireAuth, authController.groupFeed_get)
 router.get('/groupLanding', requireAuth, authController.groupLanding_get)
 
-router.get('/joinGroup/:id', requireAuth, authController.joinGroup_post)
+router.get('/joinGroup/:id', requireAuth, authController.joinGroup_get)
 router.post('/onboarding', requireAuth, authController.onboarding_post)
 //Post in a Group
 router.post('/postinGroup/:id', requireAuth,upload.single('photo'), authController.postinGroup_post)
 router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
 // router.post('/deletepost', requireAuth, authController.deletePost_post)
-
+//group home page
+router.get('/homeGroup', requireAuth, authController.homeGroup_get)
 //End
 
 
@@ -127,8 +128,9 @@ router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
 
 
 
-
+router.get('/likePost/:id/:gid', requireAuth,authController.likePost)
 router.get('/like/:id', requireAuth,authController.like)
+
 
 
 router.get('/forgotPassword', redirectIfLoggedIn,authController.getForgotPasswordForm)

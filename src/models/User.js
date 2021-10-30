@@ -48,12 +48,7 @@ const userSchema = mongoose.Schema(
             trim: true,
             validate: [utilities.phoneValidator, 'Phone number is invalid'],
         },
-        address:{
-            type:String
-        },
-        bloodGroup:{
-            type:String
-        },
+       
         //hackathon
         color:[{
             type:String
@@ -66,7 +61,12 @@ const userSchema = mongoose.Schema(
             ref:'Group'
 
         }],
+        likedPosts:[{
+            type:String,
+
+        }],
         //end
+        
         profilePic: {
             type: String,
             trim: true,
