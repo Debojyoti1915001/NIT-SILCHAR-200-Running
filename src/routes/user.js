@@ -120,6 +120,7 @@ router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
 // router.post('/deletepost', requireAuth, authController.deletePost_post)
 //group home page
 router.get('/homeGroup', requireAuth, authController.homeGroup_get)
+router.post('/search', requireAuth, authController.search_post)
 //End
 
 

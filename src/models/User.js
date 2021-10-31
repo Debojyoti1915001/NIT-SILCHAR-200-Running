@@ -57,9 +57,13 @@ const userSchema = mongoose.Schema(
             ref:'Group'
 
         }],
+        post:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Group'
+
+        }],
         likedPosts:[{
             type:String,
-
         }],
         //end
         

@@ -183,16 +183,35 @@ module.exports.login_post = async (req, res) => {
 }
 
 
-
+module.exports.search_post=async(req,res)=>{
+    try{
+        const group=req.body.data
+        const allGroups=await Group.find({name:group})
+        const allPosts=await Post.find({name:group})
+        res.render('./userViews/searchResults',{
+            allGroups,
+            allPosts
+        })
+    }catch(err){
+        res.send(err)
+    }
+}
 
 module.exports.profile_get = async (req, res) => {
-    res.send('Profile Page')
-    // res.render('./userViews/profile', {
-    //     path: '/user/profile',
-    //     // profilePath
-    //   })
-    //   console.log("in profile page")
+    // res.send('Profile Page')
+    try{
+        const userLocal=req.user
+    const user=await userLocal.populate('post').execPopulate()
+    const allGroups=[]
+    const group=await 
+    res.render('./userViews/profile', {
+        user,
+        allGroups
+      })
+    }catch(err){
+        res.end(err)
     }
+}
 
 module.exports.logout_get = async (req, res) => {
     // res.cookie('jwt', '', { maxAge: 1 });
@@ -446,6 +465,16 @@ module.exports.postinGroup_post=async (req, res) => {
         // console.log(groupExists)
         const posts=groupExists.post
         posts.push(postId)
+        const userId=req.user._id
+        const userPosts=req.user.post
+        userPosts.push(postId)
+        await User.findOneAndUpdate({_id:userId }, {$set:{post:userPosts}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect(`/user/homeGroup?id=${id}`)
+            }
+            
+        });
         await Group.findOneAndUpdate({_id: id}, {$set:{post:posts}}, {new: true}, (err, doc) => {
             if (err) {
                 req.flash("error_msg", "Something wrong when updating data!")
