@@ -185,12 +185,14 @@ module.exports.login_post = async (req, res) => {
 
 module.exports.search_post=async(req,res)=>{
     try{
+        const user=req.user
         const group=req.body.data
         const allGroups=await Group.find({name:group})
         const allPosts=await Post.find({name:group})
         res.render('./userViews/searchResults',{
             allGroups,
-            allPosts
+            allPosts,
+            user
         })
     }catch(err){
         res.send(err)
@@ -564,11 +566,13 @@ module.exports.createGroup_get = async (req, res) => {
 
 module.exports.groupFeed_get = async (req, res) => {
     const allGroups=await Group.find({})
+    
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
     res.render('./userViews/groupfeed',{
         userGroups,
-        allGroups
+        allGroups,
+        user
     })
 }
 module.exports.like = async (req, res) => {
@@ -711,7 +715,8 @@ module.exports.groupLanding_get = async (req, res) => {
     console.log(value)
     // res.send(value)
     res.render('./userViews/groupLanding',{
-        value
+        value,
+        user
     })
 }  
 module.exports.joinGroup_get = async (req, res) => {
@@ -762,12 +767,15 @@ module.exports.homegroupPage=async (req, res) =>{
 }
 module.exports.comment_profile = async (req, res) =>{
     const id=req.params.id
+    const user=req.user
     const comment=req.body.comment
     const post=await Post.findOne({_id:id})
     const postComments=post.comments
     postComments.push(comment)
     let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
-    res.redirect('/user/profile')
+    res.redirect('/user/profile',{
+        user
+    })
     
 }
 module.exports.comment_homeGroup= async (req, res) =>{
