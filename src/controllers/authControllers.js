@@ -201,13 +201,18 @@ module.exports.profile_get = async (req, res) => {
     // res.send('Profile Page')
     try{
         const userLocal=req.user
-    const user=await userLocal.populate('post').execPopulate()
-    const allGroups=[]
-    const group=await 
-    res.render('./userViews/profile', {
-        user,
-        allGroups
-      })
+        const userGroup=await userLocal.populate('post').execPopulate()
+        const user=await userGroup.populate('group').execPopulate()
+        const allGroups=[]
+        console.log(user)
+        for(var i=0; i< user.post.length;i++){
+            var post=await user.post[i].populate('group').execPopulate()
+        }
+        // res.send(user.post)
+        res.render('./userViews/profile', {
+            user,
+            allGroups,
+        })
     }catch(err){
         res.end(err)
     }
@@ -600,6 +605,47 @@ module.exports.like = async (req, res) => {
         // console.log(doc);
     });
     res.redirect('/user/groupLanding')
+}
+module.exports.like_profile = async (req, res) => {
+    console.log('hitting')
+    const id=req.user._id
+    const postId=req.params.id
+    console.log(postId)
+    const post=await Post.findOne({_id:postId})
+    const likes=post.like
+    
+    var f=0
+    for(var i=0;i<likes.length;i++){
+        if(likes[i]==id){
+            f=1
+        }        
+    }
+    if(f===0){
+        likes.push(id)
+        //likes in User
+        const likedPost=req.user.likedPosts
+        if(likedPost.length>20){
+            const c=likedPost.shift()
+        }
+        likedPost.push(post.pic)
+        await User.findOneAndUpdate({_id: id}, {$set:{likedPosts:likedPost}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+        
+        })
+    }
+    await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/user/profile')
+        }
+        
+        // console.log(doc);
+    });
+    res.redirect('/user/profile')
 }
 module.exports.likePost = async (req, res) => {
     console.log('hitting')
