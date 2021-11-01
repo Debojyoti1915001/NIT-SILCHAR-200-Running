@@ -750,3 +750,13 @@ module.exports.homeGroup_get = async (req, res) =>{
     }
     )
 }
+module.exports.comment_profile = async (req, res) =>{
+    const id=req.params.id
+    const comment=req.body.comment
+    const post=await Post.findOne({_id:id})
+    const postComments=post.comments
+    postComments.push(comment)
+    let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect('/user/profile')
+    
+}

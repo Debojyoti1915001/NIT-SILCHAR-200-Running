@@ -132,7 +132,7 @@ router.post('/search', requireAuth, authController.search_post)
 router.get('/likePost/:id/:gid', requireAuth,authController.likePost)
 router.get('/like/:id', requireAuth,authController.like)
 router.get('/likeProfile/:id', requireAuth,authController.like_profile)
-
+router.post('/comment/:id', requireAuth,authController.comment_profile)//send post's id
 
 router.get('/forgotPassword', redirectIfLoggedIn,authController.getForgotPasswordForm)
 router.post('/forgotPassword', redirectIfLoggedIn,authController.forgotPassword)
