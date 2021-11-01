@@ -313,7 +313,7 @@
                                         Liked by<strong> <%=p.like.length %> </strong>
                                     </div>
                                 </div>
-                
+                                
                                 <% if(p.comments.length<3){ %>
                                     <%for (var comment of p.comments){%>
                                      <div class="border-t py-4 space-y-4 dark:border-gray-600">
@@ -401,7 +401,7 @@
                                     <!-- <a href="#" class="hover:text-blue-600 hover:underline">  View All Comments </a> -->
                                      <%}%>
                                     <div class="bg-gray-100 rounded-full relative dark:bg-gray-800 border-t">
-                                        <form action="/user/comment/<%=p._id%>" method="Post"><input name="comment"placeholder="Add your Comment.." class="bg-transparent max-h-10 shadow-none px-5"></form>
+                                        <form action="/user/commentGroup/<%=p._id%>" method="Post"><input name="comment"placeholder="Add your Comment.." class="bg-transparent max-h-10 shadow-none px-5"></form>
                                         <div class="-m-0.5 absolute bottom-0 flex items-center right-3 text-xl">
                                             <a href="#">
                                                 <ion-icon name="happy-outline" class="hover:bg-gray-200 p-1.5 rounded-full"></ion-icon>
@@ -415,11 +415,7 @@
                                         </div>
                                     </div>
                     
-                                </div>
-                    
-                            
-                            
-                            
+                                </div>                       
                 
                            
                         <%}%>   

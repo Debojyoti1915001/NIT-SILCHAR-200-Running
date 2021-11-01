@@ -134,7 +134,8 @@ router.get('/likePost/:id/:gid', requireAuth,authController.likePost)
 router.get('/like/:id', requireAuth,authController.like)
 router.get('/likeProfile/:id', requireAuth,authController.like_profile)
 router.post('/comment/:id', requireAuth,authController.comment_profile)//send post's id
-
+router.post('/commentGroup/:id', requireAuth,authController.comment_homeGroup)
+router.post('/commentHome/:id/:gid', requireAuth,authController.comment_home)
 router.get('/forgotPassword', redirectIfLoggedIn,authController.getForgotPasswordForm)
 router.post('/forgotPassword', redirectIfLoggedIn,authController.forgotPassword)
 router.get('/resetPassword/:id/:token',authController.getPasswordResetForm)
