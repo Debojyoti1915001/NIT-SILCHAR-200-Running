@@ -340,8 +340,13 @@ module.exports.download=async(req,res)=>{
 }
 module.exports.picupload_post=async(req,res)=>{
     const user=req.user
-    const picPath=user.profilePic
-    User.findOneAndUpdate({_id: user._id}, {$set:{profilePic:picPath}}, {new: true}, (err, doc) => {
+    const picture =req.file.path
+    console.log(picture)
+    var pic=null
+    await cloudinary.uploader.upload(picture,function(err,res){
+        pic=res.secure_url
+    })
+    User.findOneAndUpdate({_id: user._id}, {$set:{profilePic:pic}}, {new: true}, (err, doc) => {
         if (err) {
             // console.log("Something wrong when updating data!");
             req.flash("error_msg", "Something wrong when updating data!")

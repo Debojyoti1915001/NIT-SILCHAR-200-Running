@@ -248,7 +248,37 @@
                         <div class="profile_avatar">
                             <div class="profile_avatar_holder"> 
                                 <!-- come come -->
-                                <img src="../images/avatars/avatar-8.jpg" alt="">
+                                <!-- Craete post modal -->
+    <div id="create-profile-modal" class="create-post" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
+
+            <div class="flex flex-1 items-start space-x-4 p-5">
+                <form action="/user/profile/picupload" class="form" method="POST" enctype="multipart/form-data">
+                <div class="flex-1 pt-2">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse… <input type="file" id="profilePic"name="photo">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex justify-center border-gray-100 py-8">
+                    
+                    <input
+                type="submit"
+                value="&nbsp&nbsp Submit &nbsp&nbsp"
+            />
+                </div>
+            </form>
+            </div>
+            
+            
+        </div>
+    </div>
+                                <a href="#" uk-toggle="target: #create-profile-modal"><img src="<%=user.profilePic%>" alt=""></a>
+                                
                             </div>
                             <div class="user_status status_online"></div>
                             <div class="icon_change_photo" hidden> <ion-icon name="camera" class="text-xl"></ion-icon> </div>

@@ -143,7 +143,7 @@ router.post(
     '/profile/picupload',
     requireAuth,
     upload.single(
-            'profilePic',
+            'photo',
       ),  
     authController.picupload_post
 )
