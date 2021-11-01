@@ -106,11 +106,21 @@ router.get('/profile', requireAuth, authController.profile_get)
 //For hackathon
 
 //Add Group Feature
-router.post('/createGroup', requireAuth, authController.createGroup_post)
+router.get('/createGroup', requireAuth, authController.createGroup_get)
+router.post('/createGroup', requireAuth,upload.single('photo'), authController.createGroup_post)
+
+router.get('/groupFeed', requireAuth, authController.groupFeed_get)
+router.get('/groupLanding', requireAuth, authController.groupLanding_get)
+
+router.get('/joinGroup/:id', requireAuth, authController.joinGroup_get)
 router.post('/onboarding', requireAuth, authController.onboarding_post)
 //Post in a Group
 router.post('/postinGroup/:id', requireAuth,upload.single('photo'), authController.postinGroup_post)
-
+router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
+// router.post('/deletepost', requireAuth, authController.deletePost_post)
+//group home page
+router.get('/homeGroup', requireAuth, authController.homeGroup_get)
+router.post('/search', requireAuth, authController.search_post)
 //End
 
 
@@ -119,7 +129,10 @@ router.post('/postinGroup/:id', requireAuth,upload.single('photo'), authControll
 
 
 
-
+router.get('/likePost/:id/:gid', requireAuth,authController.likePost)
+router.get('/like/:id', requireAuth,authController.like)
+router.get('/likeProfile/:id', requireAuth,authController.like_profile)
+router.post('/comment/:id', requireAuth,authController.comment_profile)//send post's id
 
 router.get('/forgotPassword', redirectIfLoggedIn,authController.getForgotPasswordForm)
 router.post('/forgotPassword', redirectIfLoggedIn,authController.forgotPassword)
@@ -130,7 +143,7 @@ router.post(
     '/profile/picupload',
     requireAuth,
     upload.single(
-            'profilePic',
+            'photo',
       ),  
     authController.picupload_post
 )

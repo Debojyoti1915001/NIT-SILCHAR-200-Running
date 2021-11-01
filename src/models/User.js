@@ -8,11 +8,7 @@ require('dotenv').config()
 
 const userSchema = mongoose.Schema(
     {
-        short_id: 
-        {
-            type: String, 
-            trim:true, 
-        },
+        
         name: {
             type: String,
             trim: true,
@@ -48,18 +44,7 @@ const userSchema = mongoose.Schema(
             trim: true,
             validate: [utilities.phoneValidator, 'Phone number is invalid'],
         },
-        disease: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Disease',
-            },
-        ],
-        address:{
-            type:String
-        },
-        bloodGroup:{
-            type:String
-        },
+       
         //hackathon
         color:[{
             type:String
@@ -72,7 +57,16 @@ const userSchema = mongoose.Schema(
             ref:'Group'
 
         }],
+        post:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Post'
+
+        }],
+        likedPosts:[{
+            type:String,
+        }],
         //end
+        
         profilePic: {
             type: String,
             trim: true,

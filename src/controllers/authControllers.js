@@ -2,7 +2,7 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const { signupMail,passwordMail } = require('../config/nodemailer')
 const path = require('path')
-const { handleErrors,generateShortId } = require('../utilities/Utilities'); 
+const { handleErrors } = require('../utilities/Utilities'); 
 const crypto = require('crypto')
 require('dotenv').config()
 const { nanoId } = require("nanoid")
@@ -38,7 +38,6 @@ module.exports.login_get = (req, res) => {
 
 module.exports.signup_post = async (req, res) => {
     const { name, email, password, confirmPwd, phoneNumber } = req.body
-    const nominee=null
     // console.log("in sign up route",req.body);
     if (password != confirmPwd) {
         req.flash('error_msg', 'Passwords do not match. Try again')
@@ -63,9 +62,7 @@ module.exports.signup_post = async (req, res) => {
             )
             return res.redirect('/user/login')
         }
-        const short_id =  generateShortId(name,phoneNumber);
-        // console.log("Short ID generated is: ", short_id)
-        const user = new User({ email, name, password, phoneNumber, short_id ,nominee})
+        const user = new User({ email, name, password, phoneNumber})
         let saveUser = await user.save()
         // console.log(saveUser);
         req.flash(
@@ -136,7 +133,7 @@ module.exports.emailVerify_get = async (req, res) => {
 module.exports.login_post = async (req, res) => {
     const { email, password } = req.body
     // console.log('in Login route')
-    //  console.log('req.body',req.body)
+    //   console.log('req.body',req.body)
     try {
 
         const user = await User.login(email, password)
@@ -186,16 +183,40 @@ module.exports.login_post = async (req, res) => {
 }
 
 
-
+module.exports.search_post=async(req,res)=>{
+    try{
+        const group=req.body.data
+        const allGroups=await Group.find({name:group})
+        const allPosts=await Post.find({name:group})
+        res.render('./userViews/searchResults',{
+            allGroups,
+            allPosts
+        })
+    }catch(err){
+        res.send(err)
+    }
+}
 
 module.exports.profile_get = async (req, res) => {
-    res.send('Profile Page')
-    // res.render('./userViews/profile', {
-    //     path: '/user/profile',
-    //     // profilePath
-    //   })
-    //   console.log("in profile page")
+    // res.send('Profile Page')
+    try{
+        const userLocal=req.user
+        const userGroup=await userLocal.populate('post').execPopulate()
+        const user=await userGroup.populate('group').execPopulate()
+        const allGroups=[]
+        console.log(user)
+        for(var i=0; i< user.post.length;i++){
+            var post=await user.post[i].populate('group').execPopulate()
+        }
+        // res.send(user.post)
+        res.render('./userViews/profile', {
+            user,
+            allGroups,
+        })
+    }catch(err){
+        res.end(err)
     }
+}
 
 module.exports.logout_get = async (req, res) => {
     // res.cookie('jwt', '', { maxAge: 1 });
@@ -319,8 +340,13 @@ module.exports.download=async(req,res)=>{
 }
 module.exports.picupload_post=async(req,res)=>{
     const user=req.user
-    const picPath=user.profilePic
-    User.findOneAndUpdate({_id: user._id}, {$set:{profilePic:picPath}}, {new: true}, (err, doc) => {
+    const picture =req.file.path
+    console.log(picture)
+    var pic=null
+    await cloudinary.uploader.upload(picture,function(err,res){
+        pic=res.secure_url
+    })
+    User.findOneAndUpdate({_id: user._id}, {$set:{profilePic:pic}}, {new: true}, (err, doc) => {
         if (err) {
             // console.log("Something wrong when updating data!");
             req.flash("error_msg", "Something wrong when updating data!")
@@ -334,9 +360,13 @@ module.exports.picupload_post=async(req,res)=>{
 //start
 module.exports.createGroup_post = async (req, res) => {
     const id=req.user._id
-    // console.log(id)
-    const { name, desc } = req.body
-    // console.log(name,':',desc)
+
+    const picture =req.file.path
+    var pic=null
+    await cloudinary.uploader.upload(picture,function(err,res){
+        pic=res.secure_url
+    })
+    const { name, desc,visibility,category } = req.body
     try {
         const groupExists = await Group.findOne({ name })
         
@@ -345,14 +375,21 @@ module.exports.createGroup_post = async (req, res) => {
                 'success_msg',
                 'This name already exist'
             )
-            return res.redirect('/')//to be changed to groups landing page route
+            return res.redirect('/user/createGroup')//to be changed to groups landing page route
         }
         let arrayUsers=[id];
-        const group = new Group({  name, desc,arrayUsers,visibility:0})
+        const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
-
-
-         console.log(groupUser);
+        console.log(groupUser._id)
+        var groupsOfUsers=req.user.group
+        groupsOfUsers.push(groupUser._id)
+        await User.findOneAndUpdate({_id: id}, {$set:{group:groupsOfUsers}}, {new: true}, (err, doc) => {
+            if (err) {
+                // console.log("Something wrong when updating data!");
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/user/createGroup')
+            }
+        });
         req.flash(
             'success_msg',
             'Group Added'
@@ -365,7 +402,7 @@ module.exports.createGroup_post = async (req, res) => {
             'error_msg',
             'Failed'
         )
-        res.status(400).redirect('/')
+        res.status(400).redirect('/user/createGroup')
     }
 }
 module.exports.onboarding_post = async (req, res) => {
@@ -411,7 +448,7 @@ module.exports.onboarding_post = async (req, res) => {
 }
 module.exports.postinGroup_post=async (req, res) => {
     // const groupId=req.query
-    // 61784d0307a9ec177861ea70
+    // 617ae4ad48b7423f606d5f16
     // const params=new URLSearchParams(groupId)
     // const id=params.get('id')
     const id = req.params.id
@@ -421,7 +458,6 @@ module.exports.postinGroup_post=async (req, res) => {
     await cloudinary.uploader.upload(picture,function(err,res){
         // console.log(res)
         pic=res.secure_url
-        console.log(pic)
     })
     try {
         if(name.length==0||desc.length==0){
@@ -429,30 +465,89 @@ module.exports.postinGroup_post=async (req, res) => {
                 'error_msg',
                 'Enter name and desc'
             )
-            res.redirect('/')
+            res.redirect(`/user/homeGroup?id=${id}`)
         }
         else{
-        const post = new Post({ name, desc,pic})
-        console.log(post)
+        const post = new Post({ name, desc,pic,group:id})
         let savePost = await post.save()
+        const postId=savePost._id
         const groupExists = await Group.findOne({ _id:id })
         // console.log(groupExists)
         const posts=groupExists.post
-        posts.push(id)
-        await Group.findOneAndUpdate({_id: id}, {$set:{post:posts}}, {new: true}, (err, doc) => {
+        posts.push(postId)
+        const userId=req.user._id
+        const userPosts=req.user.post
+        userPosts.push(postId)
+        await User.findOneAndUpdate({_id:userId }, {$set:{post:userPosts}}, {new: true}, (err, doc) => {
             if (err) {
                 req.flash("error_msg", "Something wrong when updating data!")
-                res.redirect('/')
+                res.redirect(`/user/homeGroup?id=${id}`)
             }
             
         });
+        await Group.findOneAndUpdate({_id: id}, {$set:{post:posts}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect(`/user/homeGroup?id=${id}`)
+            }
+            
+        });
+        console.log("user:",req.user.likedPosts)
+        console.log("group:",groupExists)
+        console.log("post:",savePost)
+        
+
         req.flash(
             'success_msg',
             'Post Added'
         )
         //res.send(saveUser)
-        res.redirect('/')
+        res.redirect(`/user/homeGroup?id=${id}`)
         }
+    } catch (err) {
+        // console.log(errors)
+        req.flash(
+            'error_msg',
+            'Failed'
+        )
+        res.status(400).redirect(`/user/homeGroup?id=${id}`)
+    }
+}
+module.exports.updatePost_post = async (req, res) => {
+    const id = req.params.id
+    //how we pass matters
+    const { name, desc } = req.body
+    // console.log(color,':',favCeleb)
+    try {
+        
+        if(name.length!==0){
+            await Post.findOneAndUpdate({_id: id}, {$set:{name}}, {new: true}, (err, doc) => {
+                if (err) {
+                    // console.log("Something wrong when updating data!");
+                    req.flash("error_msg", "Something wrong when updating data!")
+                    res.redirect('/')
+                }
+                
+                // console.log(doc);
+            });
+        }
+        if(desc.length!==0){
+            await Post.findOneAndUpdate({_id: id}, {$set:{desc}}, {new: true}, (err, doc) => {
+                if (err) {
+                    // console.log("Something wrong when updating data!");
+                    req.flash("error_msg", "Something wrong when updating data!")
+                    res.redirect('/')
+                }
+                
+                // console.log(doc);
+            });
+        }
+        req.flash(
+            'success_msg',
+            'Details added'
+        )
+        //res.send(saveUser)
+        res.redirect('/')
     } catch (err) {
         // console.log(errors)
         req.flash(
@@ -461,4 +556,212 @@ module.exports.postinGroup_post=async (req, res) => {
         )
         res.status(400).redirect('/')
     }
+}
+// createGroup_get
+module.exports.createGroup_get = async (req, res) => {
+    res.render('./userViews/create-group')
+}
+
+module.exports.groupFeed_get = async (req, res) => {
+    const allGroups=await Group.find({})
+    const user = await req.user.populate('group').execPopulate()
+    const userGroups=user.group
+    res.render('./userViews/groupfeed',{
+        userGroups,
+        allGroups
+    })
+}
+module.exports.like = async (req, res) => {
+    console.log('hitting')
+    const id=req.user._id
+    const postId=req.params.id
+    const post=await Post.findOne({_id:postId})
+    const likes=post.like
+    
+    var f=0
+    for(var i=0;i<likes.length;i++){
+        if(likes[i]==id){
+            f=1
+        }        
+    }
+    if(f===0){
+        likes.push(id)
+        //likes in User
+        const likedPost=req.user.likedPosts
+        if(likedPost.length>20){
+            const c=likedPost.shift()
+        }
+        likedPost.push(post.pic)
+        await User.findOneAndUpdate({_id: id}, {$set:{likedPosts:likedPost}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+        
+        })
+    }
+    await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/user/groupLanding')
+        }
+        
+        // console.log(doc);
+    });
+    res.redirect('/user/groupLanding')
+}
+module.exports.like_profile = async (req, res) => {
+    console.log('hitting')
+    const id=req.user._id
+    const postId=req.params.id
+    console.log(postId)
+    const post=await Post.findOne({_id:postId})
+    const likes=post.like
+    
+    var f=0
+    for(var i=0;i<likes.length;i++){
+        if(likes[i]==id){
+            f=1
+        }        
+    }
+    if(f===0){
+        likes.push(id)
+        //likes in User
+        const likedPost=req.user.likedPosts
+        if(likedPost.length>20){
+            const c=likedPost.shift()
+        }
+        likedPost.push(post.pic)
+        await User.findOneAndUpdate({_id: id}, {$set:{likedPosts:likedPost}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+        
+        })
+    }
+    await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/user/profile')
+        }
+        
+        // console.log(doc);
+    });
+    res.redirect('/user/profile')
+}
+module.exports.likePost = async (req, res) => {
+    console.log('hitting')
+    const id=req.user._id
+    const gid=req.params.gid
+    const postId=req.params.id
+    const post=await Post.findOne({_id:postId})
+    const likes=post.like
+    
+    var f=0
+    for(var i=0;i<likes.length;i++){
+        if(likes[i]==id){
+            f=1
+        }        
+    }
+    if(f===0){
+        likes.push(id)
+        //likes in User
+        const likedPost=req.user.likedPosts
+        if(likedPost.length>20){
+            const c=likedPost.shift()
+        }
+        likedPost.push(post.pic)
+        await User.findOneAndUpdate({_id: id}, {$set:{likedPosts:likedPost}}, {new: true}, (err, doc) => {
+            if (err) {
+                req.flash("error_msg", "Something wrong when updating data!")
+                res.redirect('/')
+            }
+        
+        })
+    }
+    await Post.findOneAndUpdate({_id: postId}, {$set:{like:likes}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/user/homeGroup')
+        }
+        
+        // console.log(doc);
+    });
+    res.redirect(`/user/homeGroup?id=${gid}`)
+}
+//BUG
+module.exports.groupLanding_get = async (req, res) => {
+// 617ae747fe75f93fe8e8796f
+// 617ae774fe75f93fe8e87970
+// 617ae789fe75f93fe8e87971
+// 617ae7a5fe75f93fe8e87972<-id of some post
+    const user = await req.user.populate('group').execPopulate()
+    const userGroups=user.group
+    var value=[]
+    for(var i = 0; i < userGroups.length; i++) {
+        var name=userGroups[i].name
+        const post = await userGroups[i].populate('post').execPopulate()
+        const pic=userGroups[i].pic
+        value.push({name,pic,post})
+    }
+    console.log(value)
+    // res.send(value)
+    res.render('./userViews/groupLanding',{
+        value
+    })
+}  
+module.exports.joinGroup_get = async (req, res) => {
+    const groupId=req.params.id
+    const userId=req.user._id
+    const groupExists = await Group.findOne({ _id: groupId })
+    const users=groupExists.arrayUsers
+    users.push(userId)
+    await Group.findOneAndUpdate({_id: groupId}, {$set:{arrayUsers:users}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/')
+        }
+    });
+    const groups=req.user.group
+    //
+    groups.push(groupId)
+    await User.findOneAndUpdate({_id: userId}, {$set:{group:groups}}, {new: true}, (err, doc) => {
+        if (err) {
+            // console.log("Something wrong when updating data!");
+            req.flash("error_msg", "Something wrong when updating data!")
+            res.redirect('/')
+        }
+    });
+    res.redirect('/user/groupFeed')
+} 
+module.exports.homeGroup_get = async (req, res) =>{
+    // const id=req.params.id
+    // const group=await Group.findOne({_id:id})
+    // const groupContent = await group.populate('post').execPopulate()
+    const groupId=req.query
+    const params=new URLSearchParams(groupId)
+    const id=params.get('id')
+    const group=await Group.findOne({_id:id})
+    const groupC = await group.populate('post').execPopulate()
+    const groupContent=await groupC.populate('arrayUsers').execPopulate()
+    console.log(groupContent)
+    res.render('./userViews/homeGroup',{
+        groupContent
+    }
+    )
+}
+module.exports.comment_profile = async (req, res) =>{
+    const id=req.params.id
+    const comment=req.body.comment
+    const post=await Post.findOne({_id:id})
+    const postComments=post.comments
+    postComments.push(comment)
+    let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect('/user/profile')
+    
 }

@@ -9,6 +9,9 @@ const group = mongoose.Schema({
     desc:{
         type: String,
     },
+    pic:{
+        type: String,
+    },
     post: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -22,10 +25,14 @@ const group = mongoose.Schema({
         },
     ],
     visibility:{
-        type:Number,
-        default: 0,
+        type:String,
+        default: '0',
         // 0->public
         // 1->private
+    },
+    category:{
+        type:String,
+        default: '0',
     }
 })
 

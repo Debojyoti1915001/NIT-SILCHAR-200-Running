@@ -1,864 +1,1538 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
+<!-- Mirrored from demo.foxthemes.net/socialitev2.2/timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Oct 2021 20:44:33 GMT -->
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
-	<script src="https://use.fontawesome.com/67912d8e88.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="../css/NavBar.css">
-	<link rel="stylesheet" href="../css/modal.css">
-	<link rel="stylesheet" href="../css/edit-form.css">
+    <!-- Favicon -->
+    <link href="../images/favicon.png" rel="icon" type="image/png">
 
-	<link rel="stylesheet" href="../css/profileNew.css">
+    <!-- Basic Page Needs
+        ================================================== -->
+    <title>Socialite</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Socialite is - Professional A unique and beautiful collection of UI elements">
 
-	<title>Profile Page</title>
-	<link rel="shortcut icon" href="../img/medical1.png">
-</head>
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" href="../css/icons.css">
 
+    <!-- CSS 
+    ================================================== --> 
+    <link rel="stylesheet" href="../css/uikit.css">
+    <link rel="stylesheet" href="../css/style.css">
+     <link href="../unpkg/tailwindcss%402.2.17/dist/tailwind.min.css" rel="stylesheet"> 
+ 
+</head> 
 <body>
+   
+    
 
-	<%- include('../partials/navbar'); %>
 
-	
-<div id="myModal-dp-edit" class="modal-dp-edit">
-    <!-- Modal content -->
-    <div class="modal-content-dp-edit">
-      <span class="close-dp-edit">&times;</span>
-      <div class="col-md-6">
-        <form class="form-group"  method="POST" action="/user/profile/picupload" enctype="multipart/form-data">
-            <label>Upload Image</label>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <span class="btn btn-default btn-file">
-                        Browse… <input type="file" id="profilePic"name="profilePic">
+    <div id="wrapper">
+
+        <!-- Header -->
+        <%- include('../partials/nav'); %>
+
+        <!-- sidebar -->
+        <div class="sidebar">
+        
+            <div class="sidebar_inner" data-simplebar>
+        
+                <ul>
+                    <li><a href="feed.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                        </svg>
+                        <span> Feed </span> </a> 
+                    </li>
+                    <li><a href="pages.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-yellow-500">
+                          <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"></path>
+                        </svg> 
+                        <span> Pages </span> </a> 
+                    </li>
+                    <li><a href="videos.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-red-500">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm3 2h6v4H7V5zm8 8v2h1v-2h-1zm-2-2H7v4h6v-4zm2 0h1V9h-1v2zm1-4V5h-1v2h1zM5 5v2H4V5h1zm0 4H4v2h1V9zm-1 4h1v2H4v-2z" clip-rule="evenodd" />
+                        </svg>
+                        <span> Video</span></a> 
+                    </li> 
+                    <li><a href="groups.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-500">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                        </svg><span> Groups </span></a> 
+                    </li>
+                    <li><a href="jobs.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-pink-500">
+                            <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+                            <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                        </svg> <span> Jobs</span> </a> 
+                    </li> 
+                    <li><a href="courses.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-indigo-500">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                        </svg>
+                        <span> Course</span></a> 
+                    </li>
+                    <li><a href="games.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-green-500">
+                            <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
+                        </svg>  <span>  Games </span></a> 
+                    </li> 
+                    
+                    <li id="more-veiw" hidden><a href="events.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-yellow-500">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                          </svg><span>  Events </span></a> 
+                    </li>
+                    <li id="more-veiw" hidden><a href="products.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-red-500">
+                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+                        </svg>
+                        <span> Products</span></a> 
+                    </li> 
+                    <li id="more-veiw" hidden><a href="albums.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-purple-500">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                        </svg>  <span>  Photos </span></a> 
+                    </li>
+                    <li id="more-veiw" hidden><a href="blogs.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-pink-500">
+                            <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                            <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+                        </svg>
+                        <span> Blog</span></a> 
+                    </li> 
+                    <li id="more-veiw" hidden><a href="forums.html"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-500">
+                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                        </svg>
+                       <span> forum</span> </a> 
+                    </li>
+                    <li id="more-veiw" hidden><a href="birthdays.html"> 
+                        <svg fill="currentColor" class="text-yellow-500" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path></svg>
+                        <span> Birthdays </span> <span class="new">N</span></a> 
+                    </li>
+                    <li id="more-veiw" hidden><a href="fundraiser.html"> 
+                        <svg fill="currentColor" class="text-red-500" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        <span>  Fundraiser </span> <span class="new">N</span></a> 
+                    </li> 
+                </ul>
+
+                <a href="#" class="see-mover h-10 flex my-1 pl-2 rounded-xl text-gray-600" uk-toggle="target: #more-veiw; animation: uk-animation-fade"> 
+                    <span class="w-full flex items-center" id="more-veiw">
+                        <svg class="  bg-gray-100 mr-2 p-0.5 rounded-full text-lg w-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        See More  
                     </span>
-                </span>
-                <input type="text" class="form-control" placeholder="Choose a file" readonly>
+                    <span class="w-full flex items-center" id="more-veiw" hidden>
+                        <svg  class="bg-gray-100 mr-2 p-0.5 rounded-full text-lg w-7"  fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg> 
+                        See Less 
+                    </span>
+                </a>  
+                
+                <h3 class="side-title"> Contacts </h3>
+
+                <div class="contact-list my-2 ml-1">
+                    
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-1.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-7.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Stella Johnson</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-4.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Alex Dolgove</div>
+                    </a>
+    
+                </div>
+    
+                <ul class="side_links" data-sub-title="Pages">
+
+                   
+                    <li><a href="feed.html"> <ion-icon name="settings-outline" class="side-icon"></ion-icon>  <span> Setting   </span> </a> 
+                        <ul>
+                            <li><a href="pages-setting.html">layout 1</a></li>
+                            <li><a href="pages-setting2.html">layout 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> <ion-icon name="albums-outline" class="side-icon"></ion-icon> <span> Info Pages  </span> </a>
+                        <ul> 
+                            <li><a href="pages-about.html"> About </a></li>
+                            <li><a href="pages-contact.html"> Contact us </a></li>
+                            <li><a href="pages-privacy.html"> Privacy </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> <ion-icon name="document-outline" class="side-icon"></ion-icon> <span> Create Content </span>  </a> 
+                        <ul>
+                            <li><a href="create-group.html"> Create Group </a></li>
+                            <li><a href="create-page.html"> Create Page </a></li> 
+                        </ul>
+                    </li>
+                    <li><a href="#"> <ion-icon name="code-slash-outline" class="side-icon"></ion-icon> <span> Development  </span> </a>
+                        <ul> 
+                            <li><a href="development-components.html"> Compounents </a></li>
+                            <li><a href="development-plugins.html"> Plugins </a></li>
+                            <li><a href="development-icons.html"> Icons </a></li>
+                        </ul>
+                    </li>
+                       <li><a href="#"> <ion-icon name="log-in-outline" class="side-icon"></ion-icon> <span>  Authentication  </span>  </a>
+                        <ul>
+                            <li><a href="form-login.html">form login </a></li>
+                            <li><a href="form-register.html">form register</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Blog </a>
+                    <a href="#">Careers</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact Us </a>
+                    <a href="#">Developer</a>
+                    <a href="#">Terms of service</a>
+                </div>
+ 
             </div>
-            <img id='img-upload' style="max-width: 30%;"/>
-            <button type="save" class="save-dp-edit">Save</button>
-        </form>
+
+            <!-- sidebar overly for mobile -->
+            <div class="side_overly" uk-toggle="target: #wrapper ; cls: is-collapse is-active"></div>
+
+        </div> 
+
+        <!-- Main Contents -->
+        <div class="main_content">
+            <div class="mcontainer">
+
+                <!-- Profile cover -->
+                <div class="profile user-profile">
+  
+                    <div class="profiles_banner">
+                        <img src="../images/avatars/profile-cover.jpg" alt="">
+                        <div class="profile_action absolute bottom-0 right-0 space-x-1.5 p-3 text-sm z-50 hidden lg:flex">
+                          <a href="#" class="flex items-center justify-center h-8 px-3 rounded-md bg-gray-700 bg-opacity-70 text-white space-x-1.5"> 
+                              <ion-icon name="crop-outline" class="text-xl"></ion-icon>
+                              <span> Crop  </span>
+                          </a>
+                          <a href="#" class="flex items-center justify-center h-8 px-3 rounded-md bg-gray-700 bg-opacity-70 text-white space-x-1.5"> 
+                              <ion-icon name="create-outline" class="text-xl"></ion-icon>
+                              <span> Edit </span>
+                          </a>
+                      </div>
+                    </div>
+                    <div class="profiles_content">
+
+                        <div class="profile_avatar">
+                            <div class="profile_avatar_holder"> 
+                                <!-- come come -->
+                                <!-- Craete post modal -->
+    <div id="create-profile-modal" class="create-post" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
+
+            <div class="flex flex-1 items-start space-x-4 p-5">
+                <form action="/user/profile/picupload" class="form" method="POST" enctype="multipart/form-data">
+                <div class="flex-1 pt-2">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse… <input type="file" id="profilePic"name="photo">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex justify-center border-gray-100 py-8">
+                    
+                    <input
+                type="submit"
+                value="&nbsp&nbsp Submit &nbsp&nbsp"
+            />
+                </div>
+            </form>
+            </div>
+            
+            
+        </div> 
     </div>
+                                <a href="#" uk-toggle="target: #create-profile-modal"><img src=<%= (user.profilePic.length===0)?"../images/avatars/avatar-1.jpg":user.profilePic %> alt=""></a>
+                                
+                            </div>
+                            <div class="user_status status_online"></div>
+                            <div class="icon_change_photo" hidden> <ion-icon name="camera" class="text-xl"></ion-icon> </div>
+                        </div>
+
+                        <div class="profile_info">
+                            <h1> <%=user.name%> </h1>
+                            <!-- <p> Family , Food , Fashion , Fourever <a href="#">Edit </a></p> -->
+                        </div>
+
+                    </div>
+
+                    <div class="flex justify-between lg:border-t border-gray-100 flex-col-reverse lg:flex-row pt-2">
+                        <nav class="responsive-nav pl-3">
+                            <ul  uk-switcher="connect: #timeline-tab; animation: uk-animation-fade">
+                                <li><a href="#">Timeline</a></li>
+                                <li><a href="#">Groups Followed <span><%=user.group.length%></span> </a></li>
+                                
+                            </ul>
+                        </nav>
+ 
+                        <!-- button actions -->
+                        <div class="flex items-center space-x-1.5 flex-shrink-0 pr-4 mb-2 justify-center order-1 relative">
+                            
+                            <!-- add story -->
+                            <!-- <a href="#" class="flex items-center justify-center h-10 px-5 rounded-md bg-blue-600 text-white space-x-1.5 hover:text-white"  uk-toggle="target: #create-post-modal"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span> Add Your Story </span>
+                            </a>
+                            -->
+                            <!-- search icon -->
+                            <!-- <a href="#" class="flex items-center justify-center h-10 w-10 rounded-md bg-gray-100" uk-toggle="target: #profile-search;animation: uk-animation-slide-top-small"> 
+                              <ion-icon name="search" class="text-xl"></ion-icon>
+                            </a> -->
+                            <!-- search dropdown -->
+                            <div class="absolute right-3 bg-white z-10 w-full flex items-center border rounded-md"
+                                id="profile-search" hidden>
+                                <input type="text" placeholder="Search.." class="flex-1">
+                                <ion-icon name="close-outline" class="text-2xl hover:bg-gray-100 p-1 rounded-full mr-2 cursor-pointer" uk-toggle="target: #profile-search;animation: uk-animation-slide-top-small"></ion-icon>
+                            </div>
+                            
+                            <!-- more icon -->
+                            <!-- <a href="#" class="flex items-center justify-center h-10 w-10 rounded-md bg-gray-100"> 
+                                <ion-icon name="ellipsis-horizontal" class="text-xl"></ion-icon>
+                            </a> -->
+                            <!-- more drowpdown -->
+                            <!-- <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"  
+                              uk-drop="mode: click;pos: bottom-right;animation: uk-animation-slide-bottom-small; offset:5">
+                                  <ul class="space-y-1">
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <ion-icon name="arrow-redo-outline" class="pr-2 text-xl"></ion-icon> Share Profile
+                                        </a> 
+                                    </li>
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                          <ion-icon name="create-outline" class="pr-2 text-xl"></ion-icon>  Account setting 
+                                        </a> 
+                                    </li>
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                          <ion-icon name="notifications-off-outline" class="pr-2 text-lg"></ion-icon>   Disable notifications
+                                        </a> 
+                                    </li> 
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                          <ion-icon name="star-outline"  class="pr-2 text-xl"></ion-icon>  Add favorites 
+                                        </a> 
+                                    </li>
+                                    <li>
+                                      <hr class="-mx-2 my-2 dark:border-gray-800">
+                                    </li>
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-50 hover:text-red-500 rounded-md dark:hover:bg-red-600">
+                                          <ion-icon name="stop-circle-outline" class="pr-2 text-xl"></ion-icon>  Unfriend
+                                        </a> 
+                                    </li>
+                                  </ul>
+                            </div> -->
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                <div class="uk-switcher lg:mt-8 mt-4" id="timeline-tab">
+  
+                    <!-- Timeline -->
+                    <div class="md:flex md:space-x-6 lg:mx-16">
+                        <div class="space-y-5 flex-shrink-0 md:w-7/12">
+      
+                          <%for (var post of user.post){%>
+                   
+                           <div class="card lg:mx-0 uk-animation-slide-bottom-small">
+                   
+                               <!-- post header-->
+                               <div class="flex justify-between items-center lg:p-4 p-2.5">
+                                   <div class="flex flex-1 items-center space-x-4">
+                                       <a href="#">
+                                           <img src="<%=post.group.pic%>" class="bg-gray-200 border border-white rounded-full w-10 h-10">
+                                       </a>
+                                       <div class="flex-1 font-semibold capitalize">
+                                           <a href="#" class="text-black dark:text-gray-100"> <%=post.group.name%> </a>
+                                           <div class="text-gray-700 flex items-center space-x-2"> Post Name- <span><strong><%=post.name%></strong>  </span> <ion-icon name="people"></ion-icon></div>
+                                           <div class="text-gray-700 flex items-center space-x-2"> Post Desc- <span><strong><%=post.desc%></strong>  </span> <ion-icon name="people"></ion-icon></div>
+                                       </div>
+                                   </div>
+                                 <div>
+                                   <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 dark:hover:bg-gray-700"></i> </a>
+                                   <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700" 
+                                   uk-drop="mode: click;pos: bottom-right;animation: uk-animation-slide-bottom-small">
+                                 
+                                       <ul class="space-y-1">
+                                         <li> 
+                                             <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                              <i class="uil-share-alt mr-1"></i> Share
+                                             </a> 
+                                         </li>
+                                         <li> 
+                                             <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                              <i class="uil-edit-alt mr-1"></i>  Edit Post 
+                                             </a> 
+                                         </li>
+                                         <li> 
+                                             <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                              <i class="uil-comment-slash mr-1"></i>   Disable comments
+                                             </a> 
+                                         </li> 
+                                         <li> 
+                                             <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                              <i class="uil-favorite mr-1"></i>  Add favorites 
+                                             </a> 
+                                         </li>
+                                         <li>
+                                           <hr class="-mx-2 my-2 dark:border-gray-800">
+                                         </li>
+                                         <li> 
+                                             <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md dark:hover:bg-red-600">
+                                              <i class="uil-trash-alt mr-1"></i>  Delete
+                                             </a> 
+                                         </li>
+                                       </ul>
+                                   
+                                   </div>
+                                 </div>
+                               </div>
+                   
+                               <div uk-lightbox>
+                                   <a href="<%=post.pic%>">  
+                                       <img src="<%=post.pic%>" alt="" class="max-h-96 w-full object-cover">
+                                   </a>
+                               </div>
+                               
+                   
+                               <div class="p-4 space-y-3"> 
+                                  
+                                   <div class="flex space-x-4 lg:font-bold">
+                                       <a href="/user/likeProfile/<%=post._id%>" class="flex items-center space-x-2">
+                                           <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
+                                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="22" height="22" class="dark:text-gray-100">
+                                                   <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                               </svg>
+                                           </div>
+                                           <div> Like</div>
+                                       </a>
+                                       <a href="#" class="flex items-center space-x-2">
+                                           <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
+                                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="22" height="22" class="dark:text-gray-100">
+                                                   <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                                               </svg>
+                                           </div>
+                                           <div> Comment</div>
+                                       </a>
+                                       <a href="#" class="flex items-center space-x-2 flex-1 justify-end">
+                                           <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
+                                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="22" height="22" class="dark:text-gray-100">
+                                                   <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                                               </svg>
+                                           </div>
+                                           <div> Share</div>
+                                       </a>
+                                   </div>
+                                   <div class="flex items-center space-x-3 pt-2"> 
+                                    <div class="flex items-center">
+                                        <img src="../images/avatars/avatar-1.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
+                                        <img src="../images/avatars/avatar-4.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src="../images/avatars/avatar-2.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                    </div>
+                                    <div class="dark:text-gray-100">
+                                        Liked by <strong>  <%=post.like.length%> Others </strong>
+                                    </div>
+                                </div>
+                                   <% if(post.comments.length<3){ %>
+                                   <%for (var comment of post.comments){%>
+                                    <div class="border-t py-4 space-y-4 dark:border-gray-600">
+                                       
+                                        <div class="flex">
+                                            <!-- <div class="w-10 h-10 rounded-full relative flex-shrink-0">
+                                                <img src="../images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            </div> -->
+                                            <div>
+                                                <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 relative lg:ml-5 ml-2 lg:mr-12  dark:bg-gray-800 dark:text-gray-100">
+                                                    <p class="leading-6"><%=comment%></p>
+                                                    <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
+                                                </div>
+                                                <div class="text-xs flex items-center space-x-3 mt-2 ml-5">
+                                                    <a href="#" class="text-red-600"> <i class="uil-heart"></i> Love </a>
+                                                    <a href="#"> Replay </a>
+                                                    <span>  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <%}%>
+                                   <%}else{%>
+                                    <div class="border-t py-4 space-y-4 dark:border-gray-600">
+                                       
+                                        <div class="flex">
+                                            <!-- <div class="w-10 h-10 rounded-full relative flex-shrink-0">
+                                                <img src="../images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            </div> -->
+                                            <div>
+                                                <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 relative lg:ml-5 ml-2 lg:mr-12  dark:bg-gray-800 dark:text-gray-100">
+                                                    <p class="leading-6"> <%=post.comments[0]%> </p>
+                                                    <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
+                                                </div>
+                                                <div class="text-xs flex items-center space-x-3 mt-2 ml-5">
+                                                    <a href="#" class="text-red-600"> <i class="uil-heart"></i> Love </a>
+                                                    <a href="#"> Replay </a>
+                                                    <span> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="border-t py-4 space-y-4 dark:border-gray-600">
+                                       
+                                        <div class="flex">
+                                            <!-- <div class="w-10 h-10 rounded-full relative flex-shrink-0">
+                                                <img src="../images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            </div> -->
+                                            <div>
+                                                <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 relative lg:ml-5 ml-2 lg:mr-12  dark:bg-gray-800 dark:text-gray-100">
+                                                    <p class="leading-6"> <%=post.comments[0]%> </p>
+                                                    <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
+                                                </div>
+                                                <div class="text-xs flex items-center space-x-3 mt-2 ml-5">
+                                                    <a href="#" class="text-red-600"> <i class="uil-heart"></i> Love </a>
+                                                    <a href="#"> Replay </a>
+                                                    <span>  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                   <%}%>
+                                   
+                                   <%if(post.comments.length>2){%>
+                                    <div id="create-post-modal" class="create-post" uk-modal>
+                                        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
+                                            <%for (var comment of post.comments){%>
+                                            <div class="flex flex-1 items-start space-x-4 p-5">
+                                                <div class="flex-1 pt-2">
+                                                    
+                                                        <%=comment%>
+                                                    
+                                                    
+                                                </div>
+                                    
+                                            </div>
+                                            <%}%>
+                                            
+                                        </div>
+                                    </div>
+                                    <a href="#" class="flex items-center justify-center h-10 px-5 rounded-md bg-blue-600 text-white space-x-1.5 hover:text-white"  uk-toggle="target: #create-post-modal">View All Comments</a>
+                                   <!-- <a href="#" class="hover:text-blue-600 hover:underline">  View All Comments </a> -->
+                                    <%}%>
+                                   <div class="bg-gray-100 rounded-full relative dark:bg-gray-800 border-t">
+                                       <form action="/user/comment/<%=post._id%>" method="Post"><input name="comment"placeholder="Add your Comment.." class="bg-transparent max-h-10 shadow-none px-5"></form>
+                                       <div class="-m-0.5 absolute bottom-0 flex items-center right-3 text-xl">
+                                           <a href="#">
+                                               <ion-icon name="happy-outline" class="hover:bg-gray-200 p-1.5 rounded-full"></ion-icon>
+                                           </a>
+                                           <a href="#">
+                                               <ion-icon name="image-outline" class="hover:bg-gray-200 p-1.5 rounded-full"></ion-icon>
+                                           </a>
+                                           <a href="#">
+                                               <ion-icon name="link-outline" class="hover:bg-gray-200 p-1.5 rounded-full"></ion-icon>
+                                           </a> 
+                                       </div>
+                                   </div>
+                   
+                               </div>
+                   
+                           </div>
+                           <%}%>
+                           
+                   
+                           <div class="flex justify-center mt-6">
+                               <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
+                                   Load more ..</a>
+                           </div>
+                       
+      
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="w-full space-y-6">
+                        
+                            <div class="widget card p-5">
+                                <h4 class="text-lg font-semibold"> About </h4>
+                                <ul class="text-gray-600 space-y-3 mt-3">
+                                    <!-- <li class="flex items-center space-x-2"> 
+                                        <ion-icon name="home-sharp" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
+                                        Live In <strong> Cairo , Eygept  </strong>
+                                    </li>
+                                    <li class="flex items-center space-x-2"> 
+                                        <ion-icon name="globe" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
+                                        From <strong> Aden , Yemen  </strong>
+                                    </li> -->
+                                    <li class="flex items-center space-x-2"> 
+                                        <ion-icon name="heart-sharp" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
+                                        Phone Number <strong> <%=user.phoneNumber%>  </strong>
+                                    </li>
+                                    <li class="flex items-center space-x-2"> 
+                                        <ion-icon name="logo-rss" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
+                                        Email <strong> <%=user.email%> </strong>
+                                    </li>                                
+                                </ul>
+                                
+                              <a href="#" class="button gray mt-3 w-full"> Edit </a>
+                            </div>
+                        
+                            <div class="widget card p-5 border-t">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold"> Groups Followed </h4>
+                                        <p class="text-sm"> <%=user.group.length%> groups</p>
+                                    </div>
+                                    <a href="#" class="text-blue-600 ">See all</a>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3 text-gray-600 font-semibold">
+                                    <%if(user.group.length<6){%>
+                                        <%for(var g of user.group){%>
+                                            <a href="/user/homeGroup?id=<%=g._id%>">  
+                                                <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
+                                                    <img src="<%=g.pic%>" alt="" class="w-full h-full object-cover absolute">
+                                                </div>
+                                                <div class="text-sm truncate"> <%=g.name%> </div>
+                                            </a>
+                                            <%}%>
+                                    <%}else{%>
+                                        <a href="/user/homeGroup?id=<%=user.group[0]._id%>">  
+                                            <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
+                                                <img src="../images/avatars/avatar-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                                            </div>
+                                            <div class="text-sm truncate"> Erica Han </div>
+                                        </a>
+                                        <a href="/user/homeGroup?id=<%=user.group[1]._id%>">  
+                                            <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
+                                                <img src="../images/avatars/avatar-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                                            </div>
+                                            <div class="text-sm truncate"> Erica Han </div>
+                                        </a>
+                                        <a href="/user/homeGroup?id=<%=user.group[2]._id%>">  
+                                            <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
+                                                <img src="../images/avatars/avatar-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                                            </div>
+                                            <div class="text-sm truncate"> Erica Han </div>
+                                        </a>
+                                    <%}%>
+                                </div>
+                              <a href="#" class="button gray mt-3 w-full">  See all </a>
+                            </div>
+      
+                            <div class="widget card p-5 border-t">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div>
+                                        <h4 class="text-lg font-semibold"> Suggested Groups </h4>
+                                    </div>
+                                    <a href="#" class="text-blue-600 "> See all</a>
+                                </div>
+                                <div>
+                              
+                                  <div class="flex items-center space-x-4 rounded-md -mx-2 p-2 hover:bg-gray-50">
+                                      <a href="timeline-group.html" class="w-12 h-12 flex-shrink-0 overflow-hidden rounded-full relative">
+                                          <img src="../images/group/group-3.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                      </a>
+                                      <div class="flex-1">
+                                          <a href="timeline-page.html" class="text-base font-semibold capitalize"> Graphic Design  </a>
+                                          <div class="text-sm text-gray-500 mt-0.5"> 345K  Following</div>
+                                      </div>
+                                      <a href="timeline-page.html" class="flex items-center justify-center h-8 px-3 rounded-md text-sm border font-semibold bg-blue-500 text-white">
+                                          Join
+                                      </a>
+                                  </div>
+                                  
+                          
+                                </div>
+                            </div>
+      
+                        </div>
+                    </div>
+                          
+                    <!-- Friends  -->
+                    <div class="card md:p-6 p-2 max-w-3xl mx-auto">
+
+                        <!-- <h2 class="text-xl font-bold"> Friends</h2> -->
+ 
+                        <!-- <nav class="responsive-nav border-b">
+                            <ul>
+                                <li class="active"><a href="#" class="lg:px-2"> All Friends <span> 3,4510 </span> </a></li>
+                                <li><a href="#" class="lg:px-2"> Recently added </a></li>
+                                <li><a href="#" class="lg:px-2"> Family </a></li>
+                                <li><a href="#" class="lg:px-2"> University </a></li> 
+                            </ul>
+                        </nav> -->
+
+                        <div class="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4 mt-3">
+                            <!-- come here babay -->
+                            <%for(var g of user.group){%>
+                            <div class="card p-2">
+                                <a href="/user/homeGroup?id=<%=g._id%>">
+                                    <img src="<%=g.pic%>" class="h-36 object-cover rounded-md shadow-sm w-full">
+                                </a>
+                                <div class="pt-3 px-1">
+                                    <a href="/user/homeGroup?id=<%=g._id%>" class="text-base font-semibold mb-0.5"> <%=g.name%> </a>
+                                    <p class="font-medium text-sm"><%=g.arrayUsers.length%> Following </p>
+                                    <button class="bg-blue-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md text-blue-600 text-sm mb-1">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                            <%}%>
+
+                        </div>
+                             
+                        <div class="flex justify-center mt-6">
+                            <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
+                                Load more ..</a>
+                        </div>
+
+                    </div>
+
+                    <!-- Photos  -->
+                    <div class="card md:p-6 p-2 max-w-3xl mx-auto">
+
+                        <div class="flex justify-between items-start relative md:mb-4 mb-3">
+                            <div class="flex-1">
+                                <h2 class="text-xl font-bold"> Photos </h2>
+                                <nav class="responsive-nav style-2 md:m-0 -mx-4">
+                                    <ul>
+                                        <li class="active"><a href="#">  Photos of you  <span> 230</span> </a></li>
+                                        <li><a href="#"> Recently added </a></li>
+                                        <li><a href="#"> Family </a></li>
+                                        <li><a href="#"> University </a></li>
+                                        <li><a href="#"> Albums </a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <a href="#offcanvas-create" uk-toggle class="flex items-center justify-center z-10 h-10 w-10 rounded-full bg-blue-600 text-white absolute right-0"
+                            data-tippy-placement="left" title="Create New Album">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                            </a>
+                        </div>
+
+                        <div class="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-3 mt-5">
+                            <div>
+                                <div class="bg-green-400 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/post/img-1.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/post/img-2.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/avatars/avatar-3.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/post/img-4.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/avatars/avatar-7.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/avatars/avatar-4.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/post/img-1.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-200 max-w-full lg:h-44 h-36 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+                                    <img src="../images/post/img-2.jpg" class="w-full h-full absolute object-cover inset-0">
+                                    <!-- overly-->
+                                    <div class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full"></div>
+                                    <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small">
+                                        <div class="text-base"> Image description  </div>
+                                        <div class="flex justify-between text-xs">
+                                           <a href="#">  Like</a>
+                                           <a href="#">  Comment </a>
+                                           <a href="#">  Share </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center mt-6">
+                            <a href="#" class="bg-white dark:bg-gray-900 font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
+                                Load more ..</a>
+                        </div>
+
+                    </div>
+
+                    <!-- Pages  -->
+                    <div class="card md:p-6 p-2 max-w-3xl mx-auto">
+
+                        <h2 class="text-xl font-bold"> Pages</h2>
+                        <nav class="responsive-nav border-b md:m-0 -mx-4">
+                            <ul>
+                                <li class="active"><a href="#" class="lg:px-2"> Following </a></li>
+                                <li><a href="#" class="lg:px-2"> Newest </a></li>
+                                <li><a href="#" class="lg:px-2"> My pages</a></li>
+                                <li><a href="#" class="lg:px-2"> Suggestions</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 mt-5">
+                            
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-4.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5"> John Michael  </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-3.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5"> 
+                                        Alex Dolgove </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-5.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5"> Dennis Han  </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-7.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5">  Monroe Parker   </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-6.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5"> Erica Jones </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-2.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5">  Stella Johnson</a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-4.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5"> John Michael  </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="card">
+                                <a href="timeline-page.html">
+                                    <img src="../images/avatars/avatar-3.jpg" class="h-36 object-cover rounded-t-md shadow-sm w-full">
+                                </a>
+                                <div class="p-3">
+                                    <a href="timeline-page.html" class="text-base font-semibold mb-0.5"> 
+                                        Alex Dolgove </a>
+                                    <p class="font-medium text-sm">843K Following </p>
+                                    <button class="bg-gray-100 w-full flex font-semibold h-8 items-center justify-center mt-3 px-3 rounded-md  text-sm">
+                                        Following
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                         
+                        <div class="flex justify-center mt-6">
+                            <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
+                                Load more ..</a>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Groups  -->
+                    <div class="card md:p-6 p-2 max-w-3xl mx-auto">
+
+                        <div class="flex justify-between items-start relative md:mb-4 mb-3">
+                            <div class="flex-1">
+                                <h2 class="text-xl font-bold"> Groups </h2>
+                                <nav class="responsive-nav style-2 md:m-0 -mx-4">
+                                    <ul>
+                                        <li class="active"><a href="#"> Joined <span> 230</span> </a></li>
+                                        <li><a href="#"> My Groups </a></li>
+                                        <li><a href="#"> Discover </a></li> 
+                                    </ul>
+                                </nav>
+                            </div>
+                            <a href="create-group.html" data-tippy-placement="left" data-tippy="" data-original-title="Create New Album" class="bg-blue-100 font-semibold py-2 px-6 rounded-md text-sm md:mt-0 mt-3 text-blue-600">
+                                Create       
+                            </a>
+                        </div>
+
+                        <div class="grid md:grid-cols-2  grid-cols-2 gap-x-2 gap-y-4 mt-3"> 
+                             
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-3.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize">Graphic Design </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-4.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize"> Mountain Riders  </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-2.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize">  Coffee Addicts  </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-5.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize">  Property Rent  </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-1.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize"> Architecture </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-3.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize">Graphic Design </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-4.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize"> Mountain Riders  </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            <div class="flex items-center flex-col md:flex-row justify-center p-4 rounded-md shadow hover:shadow-md md:space-x-4">
+                                <a href="timeline-group.html" iv="" class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full relative">
+                                    <img src="../images/group/group-2.jpg" class="absolute w-full h-full inset-0 " alt="">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline-page.html" class="text-base font-semibold capitalize">  Coffee Addicts  </a>
+                                    <div class="text-sm text-gray-500"> 54 mutual friends </div>
+                                </div>
+                                <button class="bg-gray-100 font-semibold py-2 px-3 rounded-md text-sm md:mt-0 mt-3">
+                                    Following
+                                </button>
+                            </div>
+                            
+                        </div>
+
+                        <div class="flex justify-center mt-6">
+                            <a href="#" class="bg-white dark:bg-gray-900 font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
+                                Load more ..</a>
+                        </div>
+
+                    </div>
+
+                     <!-- Videos -->
+                    <div class="card md:p-6 p-2 max-w-3xl mx-auto">  
+                        
+                        <h2 class="text-xl font-semibold"> Friend</h2>
+                        <nav class="responsive-nav border-b">
+                            <ul>
+                                <li class="active"><a href="#" class="lg:px-2">   Suggestions </a></li>
+                                <li><a href="#" class="lg:px-2"> Newest </a></li>
+                                <li><a href="#" class="lg:px-2"> My Videos </a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="grid md:grid-cols-3 grid-cols-2  gap-x-2 gap-y-4 mt-3">  
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-1.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-2.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-3.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-4.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-5.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                                
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-6.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-3.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-2.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="video-watch.html" class="w-full h-36 overflow-hidden rounded-lg relative block">
+                                    <img src="../images/video/img-4.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="../images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center mt-6">
+                            <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
+                                Load more ..</a>
+                        </div>
+                        
+                    </div>
+ 
+
+                </div>
+
+            </div>
+        </div>
+        
     </div>
-  </div>
-		<div id="myModalEdit" class="modal fadeIn">
-			<div class="modal-content-edit">
-				<div class="row">
-					<div class="content-top-edit ">
-						<% if (user.profilePic){%>
-							<a href="#"><img src="../uploads/<%=user.email%>/profilePic/<%=user.profilePic%>"  id="profileImg" style="width:10px"></a>
-							<%}else{%>
-								<a href="#"><img src="../img/ProfilePic.png"  id="profileImg"></a>
-							<%}%>
-						<span><button type="button" class="cancel-edit fadeOut"
-								data-dismiss="modal">CANCEL</button></span>
-						<h4>Profile details</h4>
-					</div>
-				</div>
-				<form class="form-modal-edit" method="POST">
-					<!--Dont remove the enctype-->
-					<div class="group1">
-						<input type="text" name="nomineeName" ><span
-							class="highlight1"></span><span class="bar1"></span>
-						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Nominee
-							Name</label>
-						<span><button class="save1-edit" formaction="profile/editDetails">SAVE</button></span>
-						<!-- Dont remove the name and value attribute-->
-					</div>
-					<div class="group1-edit">
-						<input type="text" name="nomineeEmail" ><span
-							class="highlight1"></span><span class="bar1"></span>
-						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Nominee
-							Email</label>
-
-						<!-- Dont remove the name and value attribute-->
-					</div>
-					<div class="group1">
-						<input type="text" name="nomineePhn" ><span
-							class="highlight1"></span><span class="bar1"></span>
-						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Nominee
-							Phone Number </label>
-
-						<!-- Dont remove the name and value attribute-->
-					</div>
-					<div class="group1">
-						<input type="text" name="address" ><span
-							class="highlight1"></span><span class="bar1"></span>
-						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">User
-							Address  </label>
-
-						<!-- Dont remove the name and value attribute-->
-					</div>
-					<div class="group1">
-						<input type="text" name="bloodGroup" ><span
-							class="highlight1"></span><span class="bar1"></span>
-						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">User
-							Blood-Group: </label>
-
-						<!-- Dont remove the name and value attribute-->
-					</div>
-				</form>
-			</div>
-		</div>
-
-		<div id="myModal" class="modal fadeIn">
-			<div class="modal-content">
-				<div class="row">
-					<div class="content-top ">
-						<a href="#" class="img-rounded"><img src="../img/ProfilePic.png" id="profileImg1"></a>
-						<span><button type="button" class="cancel fadeOut" data-dismiss="modal">CANCEL</button></span>
-						<h4>ADD DISEASE</h4>
-					</div>
-				</div>
-				<form class="form-modal" method="POST" enctype="multipart/form-data">
-					<!--Dont remove the enctype-->
-					<div class="group1">
-						<input type="text" name="name" aria-required="true" required><span
-							class="highlight1"></span><span class="bar1"></span>
-						<label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Disease
-							Name</label>
-						<span><button class="save1" formaction="profile/upload" value="upload">SAVE</button></span>
-						<!-- Dont remove the name and value attribute-->
-					</div>
-					<div class="group2" style=" margin-bottom: -51px; margin-top: 15px;">
-						<!--<input type="text"><span class="highlight1"></span><span class="bar1"></span>-->
-						<p
-							style="margin-top: -9px; font-size:18px; font-weight: normal; margin-left: 5px;	color:#a5a5a5;">
-							Medicine</p>
-						<div class="custom-file" style="border-radius: 4rem; margin-top: -26px;">
-							<!--<input type="file" class="custom-file-input" id="customFile">
-						<label class="custom-file-label" for="customFile">Choose file</label>-->
-							<input id="input-b3" name="medicine" type="file" class="file" multiple
-								data-show-upload="false" data-show-caption="true"
-								data-msg-placeholder="Select {files} for upload...">
-						</div>
-					</div>
-					<span class="UD">Upload Documents</span>
-					<div class="zone">
-						<span class="UD"
-							style="z-index: 1000; overflow: hidden; display: flex; text-align: start; margin-left: 25px;">Upload
-							Documents</span>
-						<div id="dropZ">
-							<i class="fa fa-cloud-upload"></i>
-							<div>Select your file here</div>
-							<div class="selectFile">
-								<input type="file" name="document" id="file" multiple>
-								<!--Dont remove the name attribute -->
-							</div>
-							<p>File size limit : 10 MB</p>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-
-		<div class="desktop-view">
-			<div class="container-fluid profile-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<%- include('../partials/message'); %>
-					</div>
-					<div class="col-lg-2 col-sm-4 col-12 order-3 order-sm-1" id="pSec1">
-						<div id="leftPanel">
-							<div class="<%= path === '/user/profile' ? 'lists active-list' : 'lists' %>">
-								<a href="/user/profile">Profile</a>
-								<img src="../img/profile.png" class="Icons Icons-invert">
-							</div>
-							<!-- <div class="lists">
-							<a href="#" onclick="myFunction()" class="dropbtn">Disease</a>
-							<img src="../img/disease.png" class="Icons">
-							 <div id="myDropdown" class="dropdown-content">
-								<a id="myBtn" onclick=openModal()>Add New</a>
-							</div>
-						</div> -->
-							<!-- <div class="lists dropdown"> -->
-							<div
-								class="<%= path === '/user/disease' ? 'lists active-list dropdown' : 'lists dropdown' %>">
-								<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">
-									Diseases
-								</a>
-								<img src="../img/disease.png" class="Icons">
-								<div id="myDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a id="myBtn" class="dropdown-item" onclick=openModal()>Add New</a>
-									<% for(var d of user.disease) { %>
-										<a class="dropdown-item" href="/user/disease?id=<%= d._id %>"><span
-												class="dropAnchor">
-												<%= d.name %>
-											</span></a>
-										<% } %>
-								</div>
-							</div>
-							<div class="lists">
-								<a href="#">Appointments</a>
-								<img src="../img/appointment.png" class="Icons">
-							</div>
-							<div class="lists">
-								<a href="#">Progress Report</a>
-								<img src="../img/progress.png" class="Icons">
-							</div>
-							<div class="lists">
-								<a href="#">Message</a>
-								<img src="../img/message.png" class="Icons">
-							</div>
-							<div class="hospital-list">
-								<div class="Doctor-list">
-									<div id="mySidenavTab" class="sidenav">
-										<div id="Dr">
-											<p class="sidenavHeader">Hospitals</p>
-											<a href="javascript:void(0)" class="closebtn" onclick="closeNavtab()"><i
-													class="fa fa-angle-left sideNav " aria-hidden="true"></i></a>
-										</div>
-										<form method="POST" action="/user/hospitalSearch" id="hospital-search"
-											class="sidenav-form">
-											<input type="text" placeholder="Search..."
-												class="mobile-preview shadow floating-animate" name="hname"
-												id="id_search">
-											<button id="id_search_button">click</button>
-										</form>
-										<%if (path==='/user/hospitalSearch' ) { %>
-
-											<%- include('../partials/hospitalSearch'); %>
-												<% } %>
-													<% if(path!=='/user/userHospitalD' ) { %>
-														<ul id="patientList">
-															<% for(var d of hospitals) { %>
-																<div id="patientId2">
-																	<div id="patientImage2">
-																		<img src="../img/ProfilePic.png">
-																	</div>
-																	<div id="patientName2">
-																		<a
-																			href="/user/userHospital?id=<%=d.hospitalId._id%>">
-																			<%= d.hospitalId.hospitalName %>
-																		</a>
-																	</div>
-																</div>
-																<% } %>
-														</ul>
-														<% } %>
-									</div>
-									<!-- <div id="Drs"><button class=" sideNavButton" onclick=openNavtab() type="button ">Doctors<i class="fa fa-angle-right sideNav" aria-hidden="true" onclick=openNav()></i></button></div>				 -->
-
-									<div id="Drs">
-										<button
-											class="<%= path === '/user/userHospital' ? 'sideNavButton lists active-list' : 'sideNavButton lists' %>"
-											onclick=openNavtab() type="button ">
-											<a>Hospitals</a><img src="../img/doctor-icon.png" class="Icons Icons-invert"
-												onclick=openNavtab()></button>
-									</div>
-								</div>
-							</div>
-							<!-- <div class=" Doctor-list">
-							<div id="mySidenavTab" class="sidenav">
-								<div id="Dr"><p class="sidenavHeader">Doctors<a href="javascript:void(0)" class="closebtn" onclick="closeNavtab()"><i class="fa fa-angle-left sideNav " aria-hidden="true"></i></a></p></div>
-							</div>
-							<div id="Drs"><button class=" sideNavButton" onclick=openNavtab() type="button ">Doctors<i class="fa fa-angle-right sideNav" aria-hidden="true" onclick=openNav()></i></button></div>				
-							<div id="Drs"><button class=" sideNavButton lists" onclick=openNavtab() type="button "><a>Doctors</a><img src="../img/doctor-icon.png" class="Icons doctor-icon"  onclick=openNav()></button></div>				
-						</div> -->
-							<div class="lists">
-								<a href="#">Settings</a>
-								<img src="../img/Settings.png" class="Icons">
-							</div>
-						</div>
-					</div>
-					<%if (path==='/user/profile' ||path==='/user/hospitalSearch' ) { %>
-
-						<div class="col-lg-8 col-sm-8 col-12 order-1 order-sm-2" id="pSec2">
-							<div id="sub1">
-								<div class="images">
-									<img src="../img/CoverPhoto.png" id="coverImg">
-									<% if (user.profilePic){%>
-										<a href="#"><img src="../uploads/<%=user.email%>/profilePic/<%=user.profilePic%>"  id="profileImg"></a>
-										<%}else{%>
-											<a href="#"><img src="../img/ProfilePic.png"  id="profileImg"></a>
-											<%}%>
-									<img src="../img/camera.png" id="Camera">
-								</div>
-								<div class="name-id">
-									<h5 id="name">
-										<%if (user.name) { %>
-											<%=user.name %>
-												<% } %>
-									</h5>
-									<h4 id="heading1">Patient Id-<%if (user.short_id) { %>
-											<%=user.short_id %>
-												<% } %><span id="patientId"></span></h4>
-								</div>
-								<div id="patientDetails">
-									<div class="heading-and-edit-icon">
-										<h3 id="heading2">Patient Details</h3>
-										<button id="myBtnEdit" data-toggle="modal" data-target="#myModalEdit"
-											onclick=modalEdit()>
-											<img src="../img/profile-edit-icon.png">
-										</button>
-									</div>
-									<label for="bloodGroup" class="detailLevels">Blood Group : <%if (user.bloodGroup) { %>
-										<%=user.bloodGroup %>
-										<% } %></label>
-									<!-- <input type="text" class="detailFields" id="bloodGroup"> -->
-									<br>
-									<label for="Address" class="detailLevels">Address :<%if (user.address) { %>
-										<%=user.address %>
-										<% } %> </label>
-									<!-- <input type="text" class="detailFields" id="Address"> -->
-									<br>
-									<label for="PhoneNo" class="detailLevels">Phone No. : <%if (user.phoneNumber) { %>
-											<%=user.phoneNumber %>
-												<% } %> </label>
-									<!-- <input type="tel" class="detailFields" id="PhoneNo"> -->
-									<br>
-									<label for="Email" class="detailLevels">Email:<%if (user.email) { %>
-											<%=user.email %>
-												<% } %> </label>
-									<!-- <input type="email" class="detailFields" id="Email"> -->
-									<br>
-								</div>
-							</div>
-						</div>
-						<% } %>
-							<%if (path==='/user/disease' ) { %>
-								<%- include('../partials/diseaseContent'); %>
-									<% } %>
-										<%if (path==='/user/userHospital' ) { %>
-											<%- include('../partials/HospitalProfileContent'); %>
-												<% } %>
-													<%if (path==='/user/userHospitalD' ) { %>
-														<%- include('../partials/HospitalProfileContentD'); %>
-															<% } %>
-																<div class="col-lg-2 col-sm-0 col-12 order-2 order-sm-3"
-																	id="pSec3">
-																	<div id="Dr"><a>Doctors </a><img
-																			src="../img/doctor-icon.png"
-																			class="Icons doctor-icon"></div>
-																	<form method="POST" action="/user/hospitalSearch"
-																		id="search-form">
-																		<input type="text" placeholder="Search..."
-																			class="mobile-preview shadow floating-animate"
-																			name="hname" id="id_search1">
-																		<button id="id_search_button1">click</button>
-																	</form>
-																	<%if (path==='/user/hospitalSearch' ) { %>
-																		<%- include('../partials/hospitalSearch'); %>
-																			<% } %>
-																				<% if(path!=='/user/userHospitalD' ) {
-																					%>
-																					<ul id="patientList">
-																						<% for(var d of hospitals) { %>
-																							<div id="patientId2">
-																								<div id="patientImage2">
-																									<img
-																										src="../img/ProfilePic.png">
-																								</div>
-																								<div id="patientName2">
-																									<a
-																										href="/user/userHospital?id=<%=d.hospitalId._id%>">
-																										<%= d.hospitalId.hospitalName
-																											%>
-																									</a>
-																								</div>
-																							</div>
-																							<% } %>
-																					</ul>
-																					<% } %>
-																</div>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="mobile-view">
-			<div class="container-fluid profile-body">
-				<%if (path==='/user/profile' ||path==='/user/hospitalSearch' ||path==='/user/userHospitalD' ) { %>
-					<div class="row">
-						<div class="col-sm-12">
-							<%- include('../partials/message'); %>
-						</div>
-						<div class="col-lg-2 col-sm-4 col-12 order-3 order-sm-1" id="pSec1">
-							<div id="leftPanel">
-								<div class="lists active-list">
-									<a href="/user/profile">Profile</a>
-									<img src="../img/profile.png" class="Icons profile-icon">
-								</div>
-								<!-- <div class="lists">
-						<a  onclick=myFunctionMobile() class="dropbtn">Disease</a>
-						<img src="../img/disease.png" class="Icons">
-						 <div  id="myDropdownMobile" class="dropdown-content">
-							<a id="myBtn" data-toggle="modal" onclick=openModal() data-target="#myModal">Add New</a>
-						</div> 
-					</div> -->
-								<div class="lists dropdown">
-									<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false" onclick=myFunctionMobile()>
-										Diseases
-									</a>
-									<img src="../img/disease.png" class="Icons">
-									<div id="myDropdownMobile" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										<!-- <a id="myBtn" class="dropdown-item" onclick=openModal()>Add New</a> -->
-										<a id="myBtn" class="dropdown-item" data-toggle="modal" onclick=openModal()
-											data-target="#myModal">Add New</a>
-										<% for(var d of user.disease) { %>
-											<a class="dropdown-item" href="/user/disease?id=<%= d._id %>"><span
-													class="dropAnchor">
-													<%= d.name %>
-												</span></a>
-											<% } %>
-									</div>
-								</div>
-								<div class="lists">
-									<a href="#">Appointments</a>
-									<img src="../img/appointment.png" class="Icons">
-								</div>
-								<div class="lists">
-									<a href="#">Progress Report</a>
-									<img src="../img/progress.png" class="Icons">
-								</div>
-								<div class="lists">
-									<a href="#">Message</a>
-									<img src="../img/message.png" class="Icons">
-								</div>
-								<!-- <div class=" Doctor-list">
-						<div id="mySidenavTab" class="sidenav">
-							<div id="Dr"><p class="sidenavHeader">Doctors<a href="javascript:void(0)" class="closebtn" onclick="closeNavtab()"><i class="fa fa-angle-left sideNav " aria-hidden="true"></i></a></p></div>
-						</div>
-						<div id="Drs"><button class=" sideNavButton" onclick=openNavtab() type="button ">Doctors<i class="fa fa-angle-right sideNav" aria-hidden="true" onclick=openNav()></i></button></div>				
-						<div id="Drs"><button class=" sideNavButton lists" onclick=openNavtab() type="button "><a>Doctors</a><img src="../img/doctor-icon.png" class="Icons doctor-icon"  onclick=openNav()></button></div>				
-					</div> -->
-								<div class="lists">
-									<a href="#">Settings</a>
-									<img src="../img/Settings.png" class="Icons">
-								</div>
-							</div>
-						</div>
-						<%if (path==='/user/profile' ||path==='/user/hospitalSearch' ) { %>
-							<div class="col-lg-8 col-sm-8 col-12 order-1 order-sm-2" id="pSec2">
-								<div id="sub1">
-									<div class="images">
-										<img src="../img/CoverPhoto.png" id="coverImg">
-										<% if (user.profilePic){%>
-											<a href="#"><img src="../uploads/<%=user.email%>/profilePic/<%=user.profilePic%>"  id="profileImg"></a>
-											<%}else{%>
-												<a href="#"><img src="../img/ProfilePic.png"  id="profileImg"></a>
-												<%}%>
-										<img src="../img/camera.png" id="CameraMobile">
-									</div>
-									<div class="name-id">
-										<h5 id="name">
-											<%if (user.name) { %>
-												<%=user.name %>
-													<% } %>
-										</h5>
-										<h4 id="heading1">Patient Id- <%if (user.short_id) { %>
-												<%=user.short_id %>
-													<% } %>
-														<span id="patientId"></span></h4>
-									</div>
-									<div id="patientDetails">
-										<div class="heading-and-edit-icon">
-											<h3 id="heading2">Patient Details</h3>
-											<button id="myBtnEdit" data-toggle="modal" data-target="#myModalEdit"
-												onclick=modalEdit()>
-												<img src="../img/profile-edit-icon.png">
-											</button>
-										</div>
-										<label for="bloodGroup" class="detailLevels">Blood Group : </label>
-										<!-- <input type="text" class="detailFields" id="bloodGroup"> -->
-										<br>
-										<label for="Address" class="detailLevels">Address : </label>
-										<!-- <input type="text" class="detailFields" id="Address"> -->
-										<br>
-										<label for="PhoneNo" class="detailLevels">Phone No. : <%if (user.phoneNumber) {
-												%>
-												<%=user.phoneNumber %>
-													<% } %></label>
-										<!-- <input type="tel" class="detailFields" id="PhoneNo"> -->
-										<br>
-										<label for="Email" class="detailLevels">Email : <%if (user.email) { %>
-												<%=user.email %>
-													<% } %></label>
-										<!-- <input type="email" class="detailFields" id="Email"> -->
-										<br>
-									</div>
-								</div>
-							</div>
-							<% } %>
-
-
-								<div class="col-lg-2 col-sm-0 col-12 order-2 order-sm-3" id="pSec3">
-									<div id="mySidenav" class="sidenav">
-										<div id="Dr">
-											<p class="sidenavHeader">Hospitals</p>
-											<a href="javascript:void(0)" class="closebtn" onclick=closeNav()><i
-													class="fa fa-angle-left sideNav " aria-hidden="true"></i></a>
-										</div>
-										<form method="POST" action="/user/hospitalSearch" class="sidenav-form">
-											<input type="text" placeholder="Search..."
-												class="mobile-preview shadow floating-animate" name="hname"
-												id="id_search">
-											<button id="id_search_button">click</button>
-										</form>
-										<%if (path==='/user/hospitalSearch' ) { %>
-
-											<%- include('../partials/hospitalSearch'); %>
-												<% } %>
-													<%if(path!==' /user/userHospitalD') { %>
-														<ul id="patientList">
-															<% for(var d of hospitals) { %>
-																<div id="patientId2">
-																	<div id="patientImage2">
-																		<img src="../img/ProfilePic.png">
-																	</div>
-																	<div id="patientName2">
-																		<a
-																			href="/user/userHospital?id=<%=d.hospitalId._id%>">
-																			<%= d.hospitalId.hospitalName %>
-																		</a>
-																	</div>
-																</div>
-																<% } %>
-														</ul>
-														<% } %>
-									</div>
-									<div id="Dr-sec3">
-										<button class="sideNavButton" onclick=openNav()>
-											<a>Doctors</a><img src="../img/doctor-icon.png"
-												class="Icons doctor-icon"></button>
-									</div>
-								</div>
-
-					</div>
-					<%}%>
-						<%if (path==='/user/disease' ) { %>
-							<%- include('../partials/diseaseContent'); %>
-								<% } %>
-
-									<%if (path==='/user/userHospital' ) { %>
-										<%- include('../partials/HospitalProfileContent'); %>
-											<% } %>
-			</div>
-		</div>
-		<%- include('../partials/footer'); %>
-
-			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 
 
-			<script>
-				function modalEdit() {
-					var modal = document.getElementById("myModalEdit");
-					var btn = document.getElementById("myBtnEdit");
-					var span = document.getElementsByClassName("cancel-edit")[0];
-					btn.onclick = function () {
-						modal.style.display = "block";
-					}
-					span.onclick = function () {
-						modal.style.display = "none";
-					}
-					window.onclick = function (event) {
-						if (event.target == modal) {
-							modal.style.display = "none";
-						}
-					}
-					var span = document.getElementsByClassName("save1-edit")[0];
-					btn.onclick = function () {
-						modal.style.display = "block";
-					}
-					span.onclick = function () {
-						modal.style.display = "none";
-					}
-					window.onclick = function (event) {
-						if (event.target == modal) {
-							modal.style.display = "none";
-						}
-					}
-				}
-			</script>
-			<script>
-				$(window, document, undefined).ready(function () {
-					$('input').blur(function () {
-						var $this = $(this);
-						if ($this.val())
-							$this.addClass('used');
-						else
-							$this.removeClass('used');
-					});
-					var $ripples = $('.ripples');
-					$ripples.on('click.Ripples', function (e) {
-						var $this = $(this);
-						var $offset = $this.parent().offset();
-						var $circle = $this.find('.ripplesCircle');
-						var x = e.pageX - $offset.left;
-						var y = e.pageY - $offset.top;
-						$circle.css({
-							top: y + 'px',
-							left: x + 'px'
-						});
-						$this.addClass('is-active');
-					});
-					$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function (e) {
-						$(this).removeClass('is-active');
-					});
-				});
+    <!-- open chat box -->
+    <div uk-toggle="target: #offcanvas-chat" class="start-chat">
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+        </svg>
+    </div>
+    
+    <div id="offcanvas-chat" uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar bg-white p-0 w-full lg:w-80 shadow-2xl">
 
-			</script>
-			<script>
-				$(document).ready(function () {
-					$(document).on('change', '.btn-file :file', function () {
-						var input = $(this),
-							label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-						input.trigger('fileselect', [label]);
-					});
 
-					$('.btn-file :file').on('fileselect', function (event, label) {
+            <div class="relative pt-5 px-4">
 
-						var input = $(this).parents('.input-group').find(':text'),
-							log = label;
+                <h3 class="text-2xl font-bold mb-2"> Chats </h3>
 
-						if (input.length) {
-							input.val(log);
-						} else {
-							if (log) alert(log);
-						}
+                <div class="absolute right-3 top-4 flex items-center space-x-2">
 
-					});
-					function readURL(input) {
-						if (input.files && input.files[0]) {
-							var reader = new FileReader();
+                    <button class="uk-offcanvas-close  px-2 -mt-1 relative rounded-full inset-0 lg:hidden blcok"
+                        type="button" uk-close></button>
 
-							reader.onload = function (e) {
-								$('#img-upload').attr('src', e.target.result);
-							}
+                    <a href="#" uk-toggle="target: #search;animation: uk-animation-slide-top-small">
+                        <ion-icon name="search" class="text-xl hover:bg-gray-100 p-1 rounded-full"></ion-icon>
+                    </a>
+                    <a href="#">
+                        <ion-icon name="settings-outline" class="text-xl hover:bg-gray-100 p-1 rounded-full"></ion-icon>
+                    </a>
+                    <a href="#">
+                        <ion-icon name="ellipsis-vertical" class="text-xl hover:bg-gray-100 p-1 rounded-full"></ion-icon>
+                    </a>
+                    <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"  
+                    uk-drop="mode: click;pos: bottom-right;animation: uk-animation-slide-bottom-small; offset:5">
+                        <ul class="space-y-1">
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                 <ion-icon name="checkbox-outline" class="pr-2 text-xl"></ion-icon> Mark all as read
+                              </a> 
+                          </li>
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                <ion-icon name="settings-outline" class="pr-2 text-xl"></ion-icon>  Chat setting 
+                              </a> 
+                          </li>
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                <ion-icon name="notifications-off-outline" class="pr-2 text-lg"></ion-icon>   Disable notifications
+                              </a> 
+                          </li> 
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                <ion-icon name="star-outline"  class="pr-2 text-xl"></ion-icon>  Create a group chat 
+                              </a> 
+                          </li>
+                        </ul>
+                    </div>
+                              
 
-							reader.readAsDataURL(input.files[0]);
-						}
-					}
+                </div>
 
-					$("#imgInp").change(function () {
-						readURL(this);
-					});
-				});
-			</script>
-<script>
-	$(document).ready( function() {
-    	$(document).on('change', '.btn-file :file', function() {
-		var input = $(this),
-			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [label]);
-		});
 
-		$('.btn-file :file').on('fileselect', function(event, label) {
-		    
-		    var input = $(this).parents('.input-group').find(':text'),
-		        log = label;
-		    
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
-	    
-		});
-		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
-		        }
-		        
-		        reader.readAsDataURL(input.files[0]);
-		    }
-		}
+            </div>
 
-		$("#imgInp").change(function(){
-		    readURL(this);
-		}); 	
-	});
-</script>
-<script>
-	var modal = document.getElementById("myModal-dp-edit");
-	
-	var btn = document.getElementById("Camera");
-	
-	var span = document.getElementsByClassName("close-dp-edit")[0];
-	
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	
-	  var span = document.getElementsByClassName("save-dp-edit")[0];
-	
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	
-	var modal = document.getElementById("myModal-dp-edit");
-	var btn = document.getElementById("Camera");
-	var span = document.getElementsByClassName("close-dp-edit")[0];
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	  var span = document.getElementsByClassName("save-dp-edit")[0];
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-		modal.style.display = "none";
-	  }
-	} 
-	
-	</script>
-	<script>
-		$(document).bind('dragover', function (e) {
-			var dropZone = $('.zone'),
-				timeout = window.dropZoneTimeout;
-			if (!timeout) {
-				dropZone.addClass('in');
-			} else {
-				clearTimeout(timeout);
-			}
-			var found = false,
-				node = e.target;
-			do {
-				if (node === dropZone[0]) {
-					found = true;
-					break;
-				}
-				node = node.parentNode;
-			} while (node != null);
-			if (found) {
-				dropZone.addClass('hover');
-			} else {
-				dropZone.removeClass('hover');
-			}
-			window.dropZoneTimeout = setTimeout(function () {
-				window.dropZoneTimeout = null;
-				dropZone.removeClass('in hover');
-			}, 100);
-		});
-	</script>
-	<script>
-		// Get the modal
-	var modal = document.getElementById("myModal-dp-edit");
-	// Get the button that opens the modal
-	var btn = document.getElementById("CameraMobile");
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close-dp-edit")[0];
-	// When the user clicks on the button, open the modal
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	// When the user clicks anywhere outside of the modal, close it
-	  var span = document.getElementsByClassName("save-dp-edit")[0];
-	// When the user clicks on the button, open the modal
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-		modal.style.display = "none";
-	  }
-	} 
-	</script>
-	
-	<script>
-		$(window, document, undefined).ready(function () {
-			$('input').blur(function () {
-				var $this = $(this);
-				if ($this.val())
-					$this.addClass('used');
-				else
-					$this.removeClass('used');
-			});
-			var $ripples = $('.ripples');
-			$ripples.on('click.Ripples', function (e) {
-				var $this = $(this);
-				var $offset = $this.parent().offset();
-				var $circle = $this.find('.ripplesCircle');
-				var x = e.pageX - $offset.left;
-				var y = e.pageY - $offset.top;
-				$circle.css({
-					top: y + 'px',
-					left: x + 'px'
-				});
-				$this.addClass('is-active');
-			});
-			$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function (e) {
-				$(this).removeClass('is-active');
-			});
-		});
-	</script>
-	<script>
-		$(document).bind('dragover', function (e) {
-			var dropZone = $('.zone'),
-				timeout = window.dropZoneTimeout;
-			if (!timeout) {
-				dropZone.addClass('in');
-			} else {
-				clearTimeout(timeout);
-			}
-			var found = false,
-				node = e.target;
-			do {
-				if (node === dropZone[0]) {
-					found = true;
-					break;
-				}
-				node = node.parentNode;
-			} while (node != null);
-			if (found) {
-				dropZone.addClass('hover');
-			} else {
-				dropZone.removeClass('hover');
-			}
-			window.dropZoneTimeout = setTimeout(function () {
-				window.dropZoneTimeout = null;
-				dropZone.removeClass('in hover');
-			}, 100);
-		});
-	</script>
+            <div class="absolute bg-white z-10 w-full -mt-5 lg:-mt-2 transform translate-y-1.5 py-2 border-b items-center flex"
+                id="search" hidden>
+                <input type="text" placeholder="Search.." class="flex-1">
+                <ion-icon name="close-outline" class="text-2xl hover:bg-gray-100 p-1 rounded-full mr-4 cursor-pointer"
+                    uk-toggle="target: #search;animation: uk-animation-slide-top-small"></ion-icon> 
+            </div>
 
-	<script src="../js/sideNav.js"></script>
-	<!-- <script src="../js/profilePage.js"></script> -->
-	<!-- <script src="../js/sideNav.js"></script> -->
-	<script src="../js/modal.js"></script>
+            <nav class="responsive-nav border-b extanded mb-2 -mt-2">
+                <ul uk-switcher="connect: #chats-tab; animation: uk-animation-fade">
+                    <li class="uk-active"><a class="active" href="#0"> Friends </a></li>
+                    <li><a href="#0">Groups <span> 10 </span> </a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-list px-2 uk-switcher" id="chats-tab">
+
+                <div class="p-1">
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-7.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Alex Dolgove</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-8.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-3.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Stella Johnson</div>
+                    </a>
+                    
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Adrian Mohani </div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-6.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Jonathan Madano</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-1.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                   
+
+                </div>
+               <div class="p-1">
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-7.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Alex Dolgove</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-8.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-3.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Stella Johnson</div>
+                    </a>
+                    
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Adrian Mohani </div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-6.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Jonathan Madano</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="../images/avatars/avatar-1.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                   
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Craete post modal -->
+    <!-- <div id="create-post-modal" class="create-post" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
+
+            <div class="flex flex-1 items-start space-x-4 p-5">
+                <div class="flex-1 pt-2">
+                    MODAL
+                </div>
+    
+            </div>
+            
+            
+        </div>
+    </div> -->
+    
+    <!-- Create new album -->
+
+    <div id="offcanvas-create" uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar lg:w-4/12 w-full dark:bg-gray-700 dark:text-gray-300 p-0 bg-white flex flex-col justify-center">
+    
+            <button class="uk-offcanvas-close absolute" type="button" uk-close></button>
+
+            <!-- notivication header -->
+            <div class="-mb-1 border-b font-semibold px-5 py-5 text-lg">
+                <h4> Create album </h4>
+            </div>
+
+            <div class="p-6 space-y-3 flex-1">
+                <div>
+                    <label> Album Name  </label>
+                    <input type="text" class="with-border" placeholder="">
+                </div>
+                <div>
+                    <label> Visibilty   </label>
+                    <select id="" name=""  class="shadow-none selectpicker with-border">
+                        <option data-icon="uil-bullseye"> Private </option>
+                        <option data-icon="uil-chat-bubble-user">My Following</option>
+                        <option data-icon="uil-layer-group-slash">Unlisted</option>
+                        <option data-icon="uil-globe" selected>Puplic</option>
+                    </select>
+                </div>
+                <div uk-form-custom class="w-full py-3">
+                        <div class="bg-gray-100 border-2 border-dashed flex flex-col h-32 items-center justify-center relative w-full rounded-lg dark:bg-gray-800 dark:border-gray-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12">
+                                <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                                <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
+                            </svg>
+                        </div>
+                    <input type="file">
+                </div>
+               
+            </div>
+            <div class="p-5">
+                <button type="button"  class="button w-full">
+                    Create Now
+                </button>
+            </div>
+
+            
+        </div>
+    </div>
+
+    
+    <!-- For Night mode -->
+    <script>
+        (function (window, document, undefined) {
+            'use strict';
+            if (!('localStorage' in window)) return;
+            var nightMode = localStorage.getItem('gmtNightMode');
+            if (nightMode) {
+                document.documentElement.className += ' night-mode';
+            }
+        })(window, document);
+    
+        (function (window, document, undefined) {
+    
+            'use strict';
+    
+            // Feature test
+            if (!('localStorage' in window)) return;
+    
+            // Get our newly insert toggle
+            var nightMode = document.querySelector('#night-mode');
+            if (!nightMode) return;
+    
+            // When clicked, toggle night mode on or off
+            nightMode.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('gmtNightMode', true);
+                    return;
+                }
+                localStorage.removeItem('gmtNightMode');
+            }, false);
+    
+        })(window, document);
+    </script>
+  
+    <!-- Javascript
+    ================================================== -->
+     <script src="..code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/tippy.all.min.js"></script>
+    <script src="../js/uikit.js"></script>
+    <script src="../js/simplebar.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/bootstrap-select.min.js"></script>
+    <script src="../unpkg.com/ionicons%405.2.3/dist/ionicons.js"></script>
+
 </body>
 
+<!-- Mirrored from demo.foxthemes.net/socialitev2.2/timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Oct 2021 20:45:53 GMT -->
 </html>
