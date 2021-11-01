@@ -755,6 +755,11 @@ module.exports.homeGroup_get = async (req, res) =>{
     }
     )
 }
+module.exports.homegroupPage=async (req, res) =>{
+    const name=req.params.name
+    const group=await Group.findOne({name})
+    res.redirect(`/user/homeGroup?id=${group._id}`)
+}
 module.exports.comment_profile = async (req, res) =>{
     const id=req.params.id
     const comment=req.body.comment

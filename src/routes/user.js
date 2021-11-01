@@ -121,6 +121,7 @@ router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
 //group home page
 router.get('/homeGroup', requireAuth, authController.homeGroup_get)
 router.post('/search', requireAuth, authController.search_post)
+router.get('/homegroupPage/:name', requireAuth, authController.homegroupPage)//send name to get group home page
 //End
 
 
