@@ -18,7 +18,7 @@ const joinGroupMail = (group,user, host, protocol) => {
         to: `${user.email}`,
         subject: `Hey,${user.name} you have joined Group:${group.name}` ,
         html:
-            `<h3>${group.name}</h3><br><h4>Is delighted to have you as one of its members</h4>`,
+            `<h3>${group.name}</h3><br><h4>Is delighted to have you as one of its members</h4><br><h4>-THE SORTED STORE</h4>`,
     }
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
