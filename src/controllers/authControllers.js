@@ -1,6 +1,6 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-const { signupMail,passwordMail } = require('../config/nodemailer')
+const { signupMail,passwordMail,joinGroupMail } = require('../config/nodemailer')
 const path = require('path')
 const { handleErrors } = require('../utilities/Utilities'); 
 const crypto = require('crypto')
@@ -724,9 +724,11 @@ module.exports.groupLanding_get = async (req, res) => {
 module.exports.joinGroup_get = async (req, res) => {
     const groupId=req.params.id
     const userId=req.user._id
+    const user=req.user
     const groupExists = await Group.findOne({ _id: groupId })
     const users=groupExists.arrayUsers
     users.push(userId)
+    joinGroupMail(groupExists,user,req.hostname, req.protocol)
     await Group.findOneAndUpdate({_id: groupId}, {$set:{arrayUsers:users}}, {new: true}, (err, doc) => {
         if (err) {
             // console.log("Something wrong when updating data!");
