@@ -240,7 +240,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <a href="create-group.html" class="flex items-center justify-center h-9 lg:px-5 px-2 rounded-md bg-blue-600 text-white space-x-1.5 absolute right-0">
+                    <a href="/user/createGroup" class="flex items-center justify-center h-9 lg:px-5 px-2 rounded-md bg-blue-600 text-white space-x-1.5 absolute right-0">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
@@ -264,7 +264,7 @@
                                         <div class="absolute bg-red-100 font-semibold px-2.5 py-1 rounded-lg text-red-500 text-xs top-2.5 left-2.5"> Trend </div>
                                     </div>
                                     <div class="card-body">
-                                        <a href="timeline-group.html" class="font-semibold text-lg truncate"> <%=d.name%> </a>
+                                        <a href="/user/homeGroup?id=<%=d._id%>" class="font-semibold text-lg truncate"> <%=d.name%> </a>
                                         <div class="flex items-center flex-wrap space-x-1 mt-1 text-sm text-gray-500 capitalize">
                                             <a href="#"> <span> <%=d.arrayUsers.length%> members </span> </a>
                                             <a href="#"> <span> <%=d.post.length%> post </span> </a>
@@ -398,7 +398,7 @@
                                     <img src="../images/group/group-3.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover" alt="">
                                 </div>
                                 <div class="flex-1">
-                                    <a href="timeline-group.html"  class="text-lg font-semibold capitalize"> Graphic Design </a>
+                                    <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"> Graphic Design </a>
                                     <div class="text-sm text-gray-500 mt-0.5"> 215K Member</div>
                                 </div>
                                 <a href="#" class="flex items-center justify-center h-9 px-4 rounded-md bg-gray-200 font-semibold"> 
@@ -411,7 +411,7 @@
                                     <img src="<%=d.pic%>" class="absolute w-full h-full inset-0 rounded-md object-cover" alt="">
                                 </div>
                                 <div class="flex-1">
-                                    <a href="timeline-group.html"  class="text-lg font-semibold capitalize"><%= d.name %></a>
+                                    <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"><%= d.name %></a>
                                     <div class="text-sm text-gray-500 mt-0.5"> <%= d.arrayUsers.length %></div>
                                 </div>
                                 <a href="#" class="flex items-center justify-center h-9 px-4 rounded-md bg-gray-200 font-semibold"> 
@@ -432,7 +432,7 @@
                                 <img src="../images/events/img-2.jpg" alt="" class="">
                             </div>
                             <div class="card-body">
-                                <a href="timeline-group.html"  class="font-semibold text-lg truncate mb-1">   Graphic Design </a>
+                                <a href="/user/homeGroup?id=<%=d._id%>"  class="font-semibold text-lg truncate mb-1">   Graphic Design </a>
                                 <div class="flex items-center space-x-1 text-sm text-gray-500 capitalize">
                                     <a href="#"> <span> 232k members </span> </a>
                                     <a href="#"> <span> 1.7k post a day </span> </a>
@@ -452,7 +452,7 @@
                                 <img src="../images/events/img-2.jpg" alt="" class="">
                             </div>
                             <div class="card-body">
-                                <a href="timeline-group.html"  class="font-semibold text-lg truncate mb-1">   Graphic Design </a>
+                                <a href="/user/homeGroup?id=<%=d._id%>"  class="font-semibold text-lg truncate mb-1">   Graphic Design </a>
                                 <div class="flex items-center space-x-1 text-sm text-gray-500 capitalize">
                                     <a href="#"> <span> 232k members </span> </a>
                                     <a href="#"> <span> 1.7k post a day </span> </a>
@@ -486,7 +486,7 @@
                             <img src="../images/group/group-4.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href="timeline-group.html"  class="text-lg font-semibold capitalize"> Mountain Riders</a>
+                            <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"> Mountain Riders</a>
                             <div class="flex space-x-2 items-center text-sm">
                                 <div> 16K Members</div>
                                 <div>·</div>
@@ -510,7 +510,7 @@
                             <img src="../images/group/group-5.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href="timeline-group.html"  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
+                            <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
                             <div class="flex space-x-2 items-center text-sm">
                                 <div> 16K Members</div>
                                 <div>·</div>
@@ -534,7 +534,7 @@
                             <img src="../images/group/group-3.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href="timeline-group.html"  class="text-lg font-semibold capitalize"> Graphic Design </a>
+                            <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"> Graphic Design </a>
                             <div class="flex space-x-2 items-center text-sm">
                                 <div> 16K Members</div>
                                 <div>·</div>
@@ -558,7 +558,7 @@
                             <img src="../images/group/group-2.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href="timeline-group.html"  class="text-lg font-semibold capitalize"> Coffee Addicts </a>
+                            <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"> Coffee Addicts </a>
                             <div class="flex space-x-2 items-center text-sm">
                                 <div> 16K Members</div>
                                 <div>·</div>
@@ -582,7 +582,7 @@
                             <img src="../images/group/group-1.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href="timeline-group.html"  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
+                            <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
                             <div class="flex space-x-2 items-center text-sm">
                                 <div> 16K Members</div>
                                 <div>·</div>
@@ -607,7 +607,7 @@
                             <img src="../images/group/group-cover-3.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href="timeline-group.html"  class="text-lg font-semibold capitalize"> Architecture </a>
+                            <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"> Architecture </a>
                             <div class="flex space-x-2 items-center text-sm">
                                 <div> 16K Members</div>
                                 <div>·</div>
