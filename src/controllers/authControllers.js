@@ -397,7 +397,7 @@ module.exports.createGroup_post = async (req, res) => {
             'Group Added'
         )
         //res.send(saveUser)
-        res.redirect('/')
+        res.redirect('/user/groupFeed')
     } catch (err) {
         // console.log(errors)
         req.flash(
