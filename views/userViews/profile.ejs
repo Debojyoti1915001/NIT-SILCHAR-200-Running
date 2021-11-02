@@ -383,7 +383,7 @@
                                            <img src="<%=post.group.pic%>" class="bg-gray-200 border border-white rounded-full w-10 h-10">
                                        </a>
                                        <div class="flex-1 font-semibold capitalize">
-                                           <a href="#" class="text-black dark:text-gray-100"> <%=post.group.name%> </a>
+                                           <a href="/user/homeGroup?id=<%=post.group._id%>" class="text-black dark:text-gray-100"> <%=post.group.name%> </a>
                                            <div class="text-gray-700 flex items-center space-x-2"> Post Name- <span><strong><%=post.name%></strong>  </span> <ion-icon name="people"></ion-icon></div>
                                            <div class="text-gray-700 flex items-center space-x-2"> Post Desc- <span><strong><%=post.desc%></strong>  </span> <ion-icon name="people"></ion-icon></div>
                                        </div>
@@ -399,8 +399,41 @@
                                               <i class="uil-share-alt mr-1"></i> Share
                                              </a> 
                                          </li>
+
+                                         <!-- commmmmmmmmmmmmmmmm -->
                                          <li> 
-                                             <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                            <div id="edit-post-modal" class="create-post" uk-modal>
+                                                <div
+                                                    class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
+                                            
+                                                    <form action="/user/updatepost/<%=post._id%>" class="form" method="POST" >
+                                                        <div class="p-10 space-y-7">
+                                        
+                                                            <div class="line">
+                                                                <input class="line__input" id="" name="name" type="text"  autocomplete="off">
+                                                                <span for="username" class="line__placeholder"> Post Name </span>
+                                                            </div>
+                                        
+                                                           
+                                        
+                                                            <div class="line h-32"> 
+                                                                <textarea class="line__input h-32"  id="" name="desc" type="text" autocomplete="off"></textarea>
+                                                                <span for="username" class="line__placeholder"> Post description </span> 
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <!-- form footer -->
+                                                        <div class="flex justify-center border-gray-100 py-8">
+                                                            
+                                                            <input
+                                                        type="submit"
+                                                        value="&nbsp&nbsp Create Now &nbsp&nbsp"
+                                                    />
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                             <a href="#"id="edit-post-modal" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800"uk-toggle="target: #edit-post-modal">
                                               <i class="uil-edit-alt mr-1"></i>  Edit Post 
                                              </a> 
                                          </li>
@@ -624,7 +657,7 @@
                                     <a href="#" class="text-blue-600 ">See all</a>
                                 </div>
                                 <div class="grid grid-cols-3 gap-3 text-gray-600 font-semibold">
-                                    <%if(user.group.length<6){%>
+                                    <%if(user.group.length<4){%>
                                         <%for(var g of user.group){%>
                                             <a href="/user/homeGroup?id=<%=g._id%>">  
                                                 <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
@@ -636,21 +669,21 @@
                                     <%}else{%>
                                         <a href="/user/homeGroup?id=<%=user.group[0]._id%>">  
                                             <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
-                                                <img src="../images/avatars/avatar-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                                                <img src="<%=user.group[0].pic%>" alt="" class="w-full h-full object-cover absolute">
                                             </div>
-                                            <div class="text-sm truncate"> Erica Han </div>
+                                            <div class="text-sm truncate"> <%=user.group[0].name%> </div>
                                         </a>
                                         <a href="/user/homeGroup?id=<%=user.group[1]._id%>">  
                                             <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
-                                                <img src="../images/avatars/avatar-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                                                <img src="<%=user.group[1].pic%>" alt="" class="w-full h-full object-cover absolute">
                                             </div>
-                                            <div class="text-sm truncate"> Erica Han </div>
+                                            <div class="text-sm truncate"> <%=user.group[1].name%> </div>
                                         </a>
                                         <a href="/user/homeGroup?id=<%=user.group[2]._id%>">  
                                             <div class="avatar relative rounded-md overflow-hidden w-full h-24 mb-2"> 
-                                                <img src="../images/avatars/avatar-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                                                <img src="<%=user.group[2].pic%>" alt="" class="w-full h-full object-cover absolute">
                                             </div>
-                                            <div class="text-sm truncate"> Erica Han </div>
+                                            <div class="text-sm truncate"> <%=user.group[2].name%> </div>
                                         </a>
                                     <%}%>
                                 </div>

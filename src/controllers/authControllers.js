@@ -206,7 +206,7 @@ module.exports.profile_get = async (req, res) => {
         const userGroup=await userLocal.populate('post').execPopulate()
         const user=await userGroup.populate('group').execPopulate()
         const allGroups=[]
-        console.log(user)
+        // console.log(user)
         for(var i=0; i< user.post.length;i++){
             var post=await user.post[i].populate('group').execPopulate()
         }
@@ -494,9 +494,9 @@ module.exports.postinGroup_post=async (req, res) => {
             }
             
         });
-        console.log("user:",req.user.likedPosts)
-        console.log("group:",groupExists)
-        console.log("post:",savePost)
+        // console.log("user:",req.user.likedPosts)
+        // console.log("group:",groupExists)
+        // console.log("post:",savePost)
         
 
         req.flash(
@@ -519,6 +519,8 @@ module.exports.updatePost_post = async (req, res) => {
     const id = req.params.id
     //how we pass matters
     const { name, desc } = req.body
+    // console.log(name)
+    // console.log(desc)
     // console.log(color,':',favCeleb)
     try {
         
@@ -527,7 +529,7 @@ module.exports.updatePost_post = async (req, res) => {
                 if (err) {
                     // console.log("Something wrong when updating data!");
                     req.flash("error_msg", "Something wrong when updating data!")
-                    res.redirect('/')
+                    res.redirect('/user/profile')
                 }
                 
                 // console.log(doc);
@@ -538,7 +540,7 @@ module.exports.updatePost_post = async (req, res) => {
                 if (err) {
                     // console.log("Something wrong when updating data!");
                     req.flash("error_msg", "Something wrong when updating data!")
-                    res.redirect('/')
+                    res.redirect('/user/profile')
                 }
                 
                 // console.log(doc);
@@ -549,14 +551,14 @@ module.exports.updatePost_post = async (req, res) => {
             'Details added'
         )
         //res.send(saveUser)
-        res.redirect('/')
+        res.redirect('/user/profile')
     } catch (err) {
         // console.log(errors)
         req.flash(
             'error_msg',
             'Failed'
         )
-        res.status(400).redirect('/')
+        res.status(400).redirect('/user/profile')
     }
 }
 // createGroup_get
