@@ -221,7 +221,7 @@
             
         </div> 
     </div>
-                                <a href="#" uk-toggle="target: #create-profile-modal"><img src=<%= (user.profilePic.length===0)?"../images/avatars/avatar-1.jpg":user.profilePic %> alt=""></a>
+                                <a href="#" uk-toggle="target: #create-profile-modal"><img src=<%= (user.profilePic==null)?"../images/avatars/avatar-1.jpg":user.profilePic %> alt=""></a>
                                 
                             </div>
                             <div class="user_status status_online"></div>
