@@ -768,33 +768,43 @@ module.exports.homegroupPage=async (req, res) =>{
 module.exports.comment_profile = async (req, res) =>{
     const id=req.params.id
     const user=req.user
-    const comment=req.body.comment
+    const content=req.body.comment
     const post=await Post.findOne({_id:id})
     const postComments=post.comments
-    postComments.push(comment)
-    let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
-    res.redirect('/user/profile',{
-        user
-    })
+    const postedBy=user.name
+    console.log(postedBy)
+    postComments.push({content,postedBy})
+    
+    await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    // res.send(doc)
+    res.redirect('/user/profile')
     
 }
 module.exports.comment_homeGroup= async (req, res) =>{
     const id=req.params.id
-    const comment=req.body.comment
+    const user=req.user
+    const content=req.body.comment
     const post=await Post.findOne({_id:id})
     const postComments=post.comments
-    postComments.push(comment)
-    let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    const postedBy=user.name
+    console.log(postedBy)
+    postComments.push({content,postedBy})
+    
+    await Post.findOneAndUpdate({_id:id}, {comments:postComments});
     res.redirect(`/user/groupLanding`)
 }
 module.exports.comment_home= async (req, res) =>{
     console.log("Hey here")
-    const id=req.params.id
     const gid=req.params.gid
-    const comment=req.body.comment
+    const id=req.params.id
+    const user=req.user
+    const content=req.body.comment
     const post=await Post.findOne({_id:id})
     const postComments=post.comments
-    postComments.push(comment)
-    let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    const postedBy=user.name
+    console.log(postedBy)
+    postComments.push({content,postedBy})
+    
+    await Post.findOneAndUpdate({_id:id}, {comments:postComments});
     res.redirect(`/user/homeGroup?id=${gid}`)
 }

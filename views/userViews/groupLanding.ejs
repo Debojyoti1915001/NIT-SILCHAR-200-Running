@@ -810,7 +810,7 @@
                                              </div> -->
                                              <div>
                                                  <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 relative lg:ml-5 ml-2 lg:mr-12  dark:bg-gray-800 dark:text-gray-100">
-                                                     <p class="leading-6"><%=comment%></p>
+                                                     <p class="leading-6"><strong><%=comment.postedBy%></strong><br> <%=comment.content%></p>
                                                      <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
                                                  </div>
                                                  <div class="text-xs flex items-center space-x-3 mt-2 ml-5">
@@ -832,7 +832,7 @@
                                              </div> -->
                                              <div>
                                                  <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 relative lg:ml-5 ml-2 lg:mr-12  dark:bg-gray-800 dark:text-gray-100">
-                                                     <p class="leading-6"> <%=p.comments[0]%> </p>
+                                                    <p class="leading-6"><strong><%=p.comments[0].postedBy%></strong><br> <%=p.comments[0].content%> </p>
                                                      <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
                                                  </div>
                                                  <div class="text-xs flex items-center space-x-3 mt-2 ml-5">
@@ -852,7 +852,7 @@
                                              </div> -->
                                              <div>
                                                  <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 relative lg:ml-5 ml-2 lg:mr-12  dark:bg-gray-800 dark:text-gray-100">
-                                                     <p class="leading-6"> <%=p.comments[0]%> </p>
+                                                     <p class="leading-6"><strong><%=p.comments[1].postedBy%></strong><br> <%=p.comments[1].content%> </p>
                                                      <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
                                                  </div>
                                                  <div class="text-xs flex items-center space-x-3 mt-2 ml-5">
@@ -873,7 +873,8 @@
                                              <div class="flex flex-1 items-start space-x-4 p-5">
                                                  <div class="flex-1 pt-2">
                                                      
-                                                         <%=comment%>
+                                                    <strong><%=comment.postedBy%></strong><br>
+                                                    <%=comment.content%>
                                                      
                                                      
                                                  </div>
