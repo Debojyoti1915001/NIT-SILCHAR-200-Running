@@ -121,6 +121,7 @@ router.post('/updatepost/:id', requireAuth, authController.updatePost_post)
 //group home page
 router.get('/homeGroup', requireAuth, authController.homeGroup_get)
 router.post('/search', requireAuth, authController.search_post)
+router.get('/homegroupPage/:name', requireAuth, authController.homegroupPage)//send name to get group home page
 //End
 
 
@@ -133,7 +134,8 @@ router.get('/likePost/:id/:gid', requireAuth,authController.likePost)
 router.get('/like/:id', requireAuth,authController.like)
 router.get('/likeProfile/:id', requireAuth,authController.like_profile)
 router.post('/comment/:id', requireAuth,authController.comment_profile)//send post's id
-
+router.post('/commentGroup/:id', requireAuth,authController.comment_homeGroup)
+router.post('/commentHome/:id/:gid', requireAuth,authController.comment_home)
 router.get('/forgotPassword', redirectIfLoggedIn,authController.getForgotPasswordForm)
 router.post('/forgotPassword', redirectIfLoggedIn,authController.forgotPassword)
 router.get('/resetPassword/:id/:token',authController.getPasswordResetForm)

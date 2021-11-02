@@ -185,12 +185,14 @@ module.exports.login_post = async (req, res) => {
 
 module.exports.search_post=async(req,res)=>{
     try{
+        const user=req.user
         const group=req.body.data
         const allGroups=await Group.find({name:group})
         const allPosts=await Post.find({name:group})
         res.render('./userViews/searchResults',{
             allGroups,
-            allPosts
+            allPosts,
+            user
         })
     }catch(err){
         res.send(err)
@@ -204,7 +206,7 @@ module.exports.profile_get = async (req, res) => {
         const userGroup=await userLocal.populate('post').execPopulate()
         const user=await userGroup.populate('group').execPopulate()
         const allGroups=[]
-        console.log(user)
+        // console.log(user)
         for(var i=0; i< user.post.length;i++){
             var post=await user.post[i].populate('group').execPopulate()
         }
@@ -395,7 +397,7 @@ module.exports.createGroup_post = async (req, res) => {
             'Group Added'
         )
         //res.send(saveUser)
-        res.redirect('/')
+        res.redirect('/user/groupFeed')
     } catch (err) {
         // console.log(errors)
         req.flash(
@@ -492,9 +494,9 @@ module.exports.postinGroup_post=async (req, res) => {
             }
             
         });
-        console.log("user:",req.user.likedPosts)
-        console.log("group:",groupExists)
-        console.log("post:",savePost)
+        // console.log("user:",req.user.likedPosts)
+        // console.log("group:",groupExists)
+        // console.log("post:",savePost)
         
 
         req.flash(
@@ -517,6 +519,8 @@ module.exports.updatePost_post = async (req, res) => {
     const id = req.params.id
     //how we pass matters
     const { name, desc } = req.body
+    // console.log(name)
+    // console.log(desc)
     // console.log(color,':',favCeleb)
     try {
         
@@ -525,7 +529,7 @@ module.exports.updatePost_post = async (req, res) => {
                 if (err) {
                     // console.log("Something wrong when updating data!");
                     req.flash("error_msg", "Something wrong when updating data!")
-                    res.redirect('/')
+                    res.redirect('/user/profile')
                 }
                 
                 // console.log(doc);
@@ -536,7 +540,7 @@ module.exports.updatePost_post = async (req, res) => {
                 if (err) {
                     // console.log("Something wrong when updating data!");
                     req.flash("error_msg", "Something wrong when updating data!")
-                    res.redirect('/')
+                    res.redirect('/user/profile')
                 }
                 
                 // console.log(doc);
@@ -547,14 +551,14 @@ module.exports.updatePost_post = async (req, res) => {
             'Details added'
         )
         //res.send(saveUser)
-        res.redirect('/')
+        res.redirect('/user/profile')
     } catch (err) {
         // console.log(errors)
         req.flash(
             'error_msg',
             'Failed'
         )
-        res.status(400).redirect('/')
+        res.status(400).redirect('/user/profile')
     }
 }
 // createGroup_get
@@ -564,11 +568,13 @@ module.exports.createGroup_get = async (req, res) => {
 
 module.exports.groupFeed_get = async (req, res) => {
     const allGroups=await Group.find({})
+    
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
     res.render('./userViews/groupfeed',{
         userGroups,
-        allGroups
+        allGroups,
+        user
     })
 }
 module.exports.like = async (req, res) => {
@@ -711,7 +717,8 @@ module.exports.groupLanding_get = async (req, res) => {
     console.log(value)
     // res.send(value)
     res.render('./userViews/groupLanding',{
-        value
+        value,
+        user
     })
 }  
 module.exports.joinGroup_get = async (req, res) => {
@@ -755,13 +762,51 @@ module.exports.homeGroup_get = async (req, res) =>{
     }
     )
 }
+module.exports.homegroupPage=async (req, res) =>{
+    const name=req.params.name
+    const group=await Group.findOne({name})
+    res.redirect(`/user/homeGroup?id=${group._id}`)
+}
 module.exports.comment_profile = async (req, res) =>{
     const id=req.params.id
-    const comment=req.body.comment
+    const user=req.user
+    const content=req.body.comment
     const post=await Post.findOne({_id:id})
     const postComments=post.comments
-    postComments.push(comment)
-    let doc = await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    const postedBy=user.name
+    console.log(postedBy)
+    postComments.push({content,postedBy})
+    
+    await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    // res.send(doc)
     res.redirect('/user/profile')
     
+}
+module.exports.comment_homeGroup= async (req, res) =>{
+    const id=req.params.id
+    const user=req.user
+    const content=req.body.comment
+    const post=await Post.findOne({_id:id})
+    const postComments=post.comments
+    const postedBy=user.name
+    console.log(postedBy)
+    postComments.push({content,postedBy})
+    
+    await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect(`/user/groupLanding`)
+}
+module.exports.comment_home= async (req, res) =>{
+    console.log("Hey here")
+    const gid=req.params.gid
+    const id=req.params.id
+    const user=req.user
+    const content=req.body.comment
+    const post=await Post.findOne({_id:id})
+    const postComments=post.comments
+    const postedBy=user.name
+    console.log(postedBy)
+    postComments.push({content,postedBy})
+    
+    await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect(`/user/homeGroup?id=${gid}`)
 }

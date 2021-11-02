@@ -9,10 +9,19 @@ const post = mongoose.Schema({
         type: String,
         trim : true
     },
-    comments :[ {
-        type: String,
-        trim : true
-    }],
+    comments :[ 
+        {
+            content:{
+                type: String,
+                trim : true
+            },
+            postedBy:{
+                type: String,
+                trim : true
+            },
+        },
+
+    ],
     like :[ {
         type : String,
     }],
