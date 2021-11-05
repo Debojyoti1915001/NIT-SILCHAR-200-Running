@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHOPPING BAG</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/home.css" />
+    <style>
+      main {
+        height: 75vh;
+        display: flex;
+        font-family: Whitney, Helvetica, Arial, sans-serif !important;
+        text-align: center;
+      }
+
+      main img {
+        margin: auto !important;
+        width: 40%;
+      }
+      main h3 {
+        color: #000000;
+        font-size: 20px;
+        font-weight: 1000;
+        padding-bottom: 10px;
+      }
+      main p {
+        color: #000000;
+        font-size: 15px;
+        font-weight: 400;
+        padding-bottom: 10px;
+      }
+
+      main > div > div {
+        border: 2px solid #ed4f7a;
+        padding: 10px 0;
+        color: #ed4f7a;
+        font-size: 15px;
+      }
+      main > div {
+        margin: auto;
+      }
+      a {
+        color: #ed4f7a;
+        text-decoration: none;
+      }
+    </style>
+
+    <!-- <link rel="stylesheet" href="/static/css/bag.css" /> -->
+  </head>
+  <body>
+    <%- include('navbar.ejs') -%>
+
+    <main>
+      <div>
+        <h3><strong>YOUR WISHLIST IS EMPTY</strong></h3>
+        <p>
+          Add items that you like to your wishlist. <br />
+          Review them anytime and easily move them to the bag.
+        </p>
+        <img
+          src="https://mahendrajewellers.com/wp-content/plugins/mahendrajewellers-products/public//image/wish-list-Small.png"
+          alt=""
+        />
+        <div><a href="/home">Continue Shopping</a></div>
+      </div>
+    </main>
+
+    <%- include("footer.ejs") -%>
+  </body>
+</html>
+
+<script src="/static/js/bag.js"></script>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHOPPING BAG</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/bag.css" />
+  </head>
+  <body>
+    <div class="header">
+      <a href="/home"
+        ><img
+          class="myntraLogo"
+          src="https://www.searchpng.com/wp-content/uploads/2019/01/Myntra-logo-png-icon.png"
+      /></a>
+
+      <div class="headerCenter">
+        <a href="\bag">BAG --------</a>
+        <a href="\address">ADDRESS --------</a>
+        <a href="\payment">PAYMENT</a>
+      </div>
+      <div class="headerRight">
+        <img
+          class="image2"
+          src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"
+        />
+        <h4 style="float: right">100% SECURE</h4>
+      </div>
+    </div>
+
+    <main>
+      <div>
+        <img
+          src="https://constant.myntassets.com/checkout/assets/img/empty-bag.webp"
+          alt=""
+        />
+        <h3>Hey, it feels so light!</h3>
+        <p>There is nothing in your bag. Let's add some items.</p>
+        <div onclick="redirect()">ADD ITEMS FROM WISHLIST</div>
+      </div>
+    </main>
+
+    <div class="footer">
+      <div class="container3">
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
+        />
+      </div>
+
+      <a class="contact" href=""><span>Need Help? Contact Us</span></a>
+    </div>
+  </body>
+</html>
+
+<script src="/static/js/bag.js"></script>
+<script>
+  function redirect() {
+    let userObj = JSON.parse(localStorage.getItem("token"));
+    let userId = userObj.id;
+    window.location.href = `/wishlist/${userId}`;
+  }
+</script>

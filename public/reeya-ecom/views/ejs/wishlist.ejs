@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WISHLIST</title>
+
+    <!-- <link rel="stylesheet" href="/static/css/bag.css" /> -->
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/home.css" />
+    <link rel="stylesheet" href="/static/css/products.css" />
+    <style>
+      #products-right {
+        margin-top: 100px;
+      }
+      button {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('navbar.ejs') -%>
+    <!-- <div>   
+        <div class = "center" id = "center">
+            <% items.map((pro) => { %>
+            <div class = "par">
+                <div id = "addImages">
+                    <img id = "img2" src = "<%= pro[0].images[0] %>"/>
+                    <div class = "child">
+                        <p class = "p"><%=pro[0].brandName%><br>
+                        <%= pro.productName %>
+                        <h5>Sold By : Vision Star</h5></p>
+                    </div>
+                    <div>
+                        <p id = "discount">
+                            <s>Rs. <%=pro[0].price * pro[1]%></s><br>
+                            Rs. <%=(Math.ceil((pro[0].price * (100 - pro[0].discount)) / 100) * pro[1])%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>                
+    </div> -->
+
+    <div id="products-right">
+      <% items.map((pro) => { %>
+      <a class="each-product">
+        <div>
+          <img
+            onclick="redirect('<%= pro[0]._id %>')"
+            src="<%= pro[0].images[0] %>"
+            alt=""
+          />
+          <div class="brand"><%= pro[0].brandName %></div>
+          <div class="name"><%= pro[0].productName %></div>
+          <div class="price">
+            Rs. <%= Math.ceil(pro[0].price * (100 - pro[0].discount) / 100)%>
+            <span class="line-through"> Rs. <%= pro[0].price %></span>
+            <span class="discount" font-size="5px !important"
+              >(<%= pro[0].discount %> % OFF)</span
+            >
+          </div>
+          <div class="newdiv">
+            <button class="wishbtn" onclick="deleteItem('<%=pro[0]._id %>')">
+              Delete Item
+            </button>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+
+    <%- include('footer.ejs') -%>
+  </body>
+</html>
+
+<script>
+  async function deleteItem(prodId) {
+    const userObj = JSON.parse(localStorage.getItem("token"));
+    const userId = userObj.id;
+
+    const result = await fetch("/wishlist/deleteItem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId,
+        prodId,
+      }),
+    }).then((res) => res.json());
+    alert("Item Removed");
+    window.location.reload();
+  }
+  function redirect(x) {
+    window.location.href = `/moda/${x}`;
+  }
+</script>

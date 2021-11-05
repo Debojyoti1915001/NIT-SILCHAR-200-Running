@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>myntra.com</title>
+    <link rel="stylesheet" href="/static/css/login.css" />
+  </head>
+  <body>
+    <div class="header sticky">
+      <div>
+        <a href="\home"
+          ><img
+            src="https://cdn.freelogovectors.net/wp-content/uploads/2021/02/myntra-logo-freelogovectors.net_.png"
+            alt="logo"
+        /></a>
+      </div>
+      <div class="categories">
+        <ul>
+          <li class="dropdown-content">
+            <a href="\mens">Men</a>
+            <!-- <ul class="dropdown-men">
+                      <li><a href="#">Link 1</a></li>
+                      <li><a href="#">Link 2</a></li>
+                      <li><a href="#">Link 3</a></li>
+                    </ul> -->
+          </li>
+          <li><a href="">Women</a></li>
+          <li><a href="">Kids</a></li>
+          <li><a href="">Home & Living</a></li>
+          <li><a href="">Beauty</a></li>
+        </ul>
+      </div>
+
+      <!-- Search Div -->
+      <div class="search-div">
+        <img
+          id="searchpng"
+          src="https://image.flaticon.com/icons/png/128/49/49116.png"
+          alt=""
+        />
+
+        <input type="text" placeholder="Search for products, brands and more" />
+      </div>
+
+      <div class="nav-last">
+        <div>
+          <a href="">
+            <img
+              id="svg"
+              src="https://www.svgrepo.com/show/198180/user-profile.svg"
+              alt=""
+            />
+          </a>
+
+          <div>Profile</div>
+        </div>
+
+        <div>
+          <a href="">
+            <img
+              id="svg"
+              src="https://www.svgrepo.com/show/14970/heart.svg"
+              alt=""
+            />
+          </a>
+
+          <div>Wishlist</div>
+        </div>
+
+        <div>
+          <a href="">
+            <img
+              id="svg"
+              src="https://www.svgrepo.com/show/17522/bag.svg"
+              alt=""
+            />
+          </a>
+
+          <div>Bag</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loginbox">
+      <img
+        src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2021/7/14/1db28809-f3db-48b1-b303-d937716565661626257521634-Banner_Hamburger--2---1-.jpg"
+      />
+      <div class="loginbody">
+        <div class="loginheader">Login</div>
+        <form id="login">
+          <input type="text" placeholder="Mobile No." id="Username" />
+          <input type="password" placeholder="Password" id="Password" />
+          <input class="login-btn" type="submit" value="Login" />
+        </form>
+        <p>
+          By continuing I agree to the<span class="smallhead">
+            Terms of Use </span
+          >&<span id="small"> Privacy Policy</span>
+        </p>
+        <p>Don't have account <span onclick="signinpage()">Signup</span></p>
+        <div id="alert"></div>
+        <!-- <div class="continue" onclick="checkcredentials()">CONTINUE</div> -->
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="/static/js/login.js"></script>
+
+<script>
+  const form = document.getElementById("login");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const username = document.getElementById("Username").value;
+    const password = document.getElementById("Password").value;
+
+    const result = await fetch("/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        token: localStorage.getItem("token"),
+      }),
+    }).then((res) => res.json());
+    if (result.status === "ok") {
+      localStorage.setItem("token", JSON.stringify(result.data));
+
+      return (window.location.href = "/home");
+      // alert("success");
+    }
+
+    alert("Invalid Username or Password");
+  });
+</script>
