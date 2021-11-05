@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="../css/successfulpayment.css" />
+  </head>
+  <body>
+    <!-- <div class="parent">
+      <h2>Payment Successful</h2>
+      <img
+        id="gif"
+        src="https://user-images.githubusercontent.com/12693087/31615154-9c8c4886-b280-11e7-828d-2f64e4250c53.gif"
+      />
+      <br /><br /><br /><br />
+      <a id="link" href="\home">Return to Home Page</a>
+    </div> -->
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img
+          src="https://www.yourideacounts.com/wp-content/plugins/yic-subscription/img/wait.gif"
+          style="width: 30%; padding-left: 35%"
+        />
+      </div>
+
+      <div class="mySlides fade">
+        <img
+          src="https://techctice.com/wp-content/uploads/2020/10/Checkmark.gif"
+          style="width: 30%; padding-left: 35%"
+        />
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let timerID;
+  var slideIndex = 0;
+  showSlides(slideIndex);
+
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    slides[slideIndex - 1].style.display = "block";
+
+    timerID = setTimeout(() => {
+      showSlides();
+      timerID = null;
+    }, 3000); // Change image every 3 seconds
+    setTimeout(function () {
+      window.location.href = "/home";
+    }, 5500);
+  }
+</script>
