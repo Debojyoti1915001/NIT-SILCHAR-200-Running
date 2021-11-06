@@ -16,16 +16,7 @@
     <div class="content" id="content">
       <div class="leftcontent">
         <div class="img-grid-container common-clearfix">
-          <img src="<%=el.images[0] %>" />
-          <img
-            src="
-            <%=el.images[1]
-            %>"
-          />
-        </div>
-        <div class="img-grid-container common-clearfix">
-          <img src="<%=el.images[2] %>" />
-          <img src="<%=el.images[3]%>" />
+          <img src="<%=el.images %>" />
         </div>
       </div>
       <div class="rightcontent">
@@ -42,9 +33,8 @@
         <div class="hr"></div>
         <div class="disline">
           <span class="cost"
-            >Rs.<%= Math.ceil(el.price * (100 - el.discount) / 100)%></span
-          ><s class="totalcost">Rs. <%= el.price %></s
-          ><span class="discount">(<%= el.discount %>% OFF)</span>
+            >Rs. <%= el.price %></span
+          >
         </div>
         <div class="smalltext">Inclusive of all taxes</div>
         <div>

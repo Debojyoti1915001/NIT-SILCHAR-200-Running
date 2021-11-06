@@ -382,7 +382,7 @@ module.exports.createGroup_post = async (req, res) => {
         let arrayUsers=[id];
         const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
-        console.log(groupUser._id)
+        console.log(groupUser)
         var groupsOfUsers=req.user.group
         groupsOfUsers.push(groupUser._id)
         await User.findOneAndUpdate({_id: id}, {$set:{group:groupsOfUsers}}, {new: true}, (err, doc) => {
@@ -746,7 +746,7 @@ module.exports.joinGroup_get = async (req, res) => {
             res.redirect('/')
         }
     });
-    res.redirect('/user/groupFeed')
+    res.redirect(`/user/homeGroup?id=${groupId}`)
 } 
 module.exports.homeGroup_get = async (req, res) =>{
     // const id=req.params.id
@@ -755,12 +755,23 @@ module.exports.homeGroup_get = async (req, res) =>{
     const groupId=req.query
     const params=new URLSearchParams(groupId)
     const id=params.get('id')
+    const user=req.user
+    // console.log(user.group)
+    var isPresent=false
+    // console.log(id)
+    for(var i=0;i<user.group.length;i++){
+        if(user.group[i]==id){
+            isPresent=true
+        }
+    }
     const group=await Group.findOne({_id:id})
     const groupC = await group.populate('post').execPopulate()
     const groupContent=await groupC.populate('arrayUsers').execPopulate()
-    console.log(groupContent)
+    // console.log(groupContent)
     res.render('./userViews/homeGroup',{
-        groupContent
+        groupContent,
+        user,
+        isPresent
     }
     )
 }
