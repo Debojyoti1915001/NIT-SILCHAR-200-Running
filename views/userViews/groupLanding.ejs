@@ -423,7 +423,7 @@
 
                                <% for(var v of value){ %>
                                 <!-- Debo: insert group link -->
-                                    <a href="#">
+                                    <a href="/user/homegroupPage/<%=v.name%>">
                                         <div class="contact-avatar">
                                             <img src="<%=v.pic%>" alt="">
                                             <span class="user_status"></span>
@@ -439,36 +439,16 @@
                                             <div class="contact-username">  <%=v.name%> </div>
                                             <div class="contact-list-box-btns">
                                                 <!-- Debo: insert group link -->
-                                                <!-- <a href="#"> -->
+                                                <a href="/user/homegroupPage/<%=v.name%>">
                                                 <button type="button" class="button primary flex-1 block mr-2">
                                                     Visit Group</button>
-                                                <!-- </a> -->
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                <% }%>
                 
-                                <a href="#">
-                                    <div class="contact-avatar">
-                                        <img src="../images/avatars/avatar-2.jpg" alt="">
-                                        <span class="user_status"></span>
-                                    </div>
-                                    <div class="contact-username">  Another Group</div>
-                                </a>
-                                <div uk-drop="pos: left-center ;animation: uk-animation-slide-left-small">
-                                    <div class="contact-list-box">
-                                        <div class="contact-avatar">
-                                            <img src="../images/avatars/avatar-1.jpg" alt="">
-                                            <span class="user_status"></span>
-                                        </div>
-                                        <div class="contact-username">  Another Group </div>
-                                        <div class="contact-list-box-btns">
-                                            <button type="button" class="button primary flex-1 block mr-2">
-                                                <i></i>Visit Group</button>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                 
                             </div>
 
