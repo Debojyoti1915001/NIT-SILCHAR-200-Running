@@ -24,6 +24,9 @@
 /* ---------------------------------- */
 /* Buttons
 ------------------------------------- */
+body{
+  background-color: #87ceeb;
+}
 button {
   vertical-align: middle;
 }
@@ -226,6 +229,7 @@ body .button i.icon-material-outline-arrow-right-alt {
 }
 
 .card {
+  
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
@@ -5986,7 +5990,12 @@ template {
 ------------------------------------- */
 .sidebar {
   width: 300px;
-  background-color: #f9fafb;
+  /* Rimpi ui changes */
+  background-color: #73c2fb;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* background-color: #f9fafb; */
   -webkit-transition: all 300ms 0s ease-in-out;
   transition: all 300ms 0s ease-in-out;
   position: fixed;
@@ -6686,8 +6695,13 @@ template {
 }
 
 header {
+  /* Rimpi ui changes */
+  background-color: #0197f6;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* background-color: #fff; */
   position: fixed;
-  background-color: #fff;
   z-index: 99;
   left: 0;
   top: 0;
@@ -6697,6 +6711,7 @@ header {
 }
 
 header .header_inner {
+  
   height: 65px;
   width: 100%;
   display: -webkit-box;
@@ -7194,6 +7209,8 @@ header .header_inner .right_side {
 
 /* header profile dropdown */
 .header_dropdown.profile_dropdown {
+  /* Rimpi ui changes */
+  background-color: #73c2fb;
   width: 270px !important;
   padding-bottom: 10px;
   width: 300px;
@@ -7413,6 +7430,20 @@ header .header_inner .right_side {
   border: 1px solid #f1f3f4;
   display: none;
 }
+/* 
+Rimpi ui changes */
+.about-card{
+background-color: #73c2fb;
+box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+}
+.group-card{
+  background-color: #73c2fb;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
 
 /* search icon mobile */
 .header-search-icon {
@@ -7445,14 +7476,17 @@ header .header_inner .right_side {
 }
 
 .profile {
+  /* Rimpi ui changes */
+  background-color: #73c2fb;
   position: relative;
   margin-top: -1rem;
   border-radius: 1rem;
   margin-bottom: 2rem;
-  background-color: white;
+  /* background-color: white; */
   border: 1px solid #ebe9e6;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+         
 }
 
 .profile .profiles_banner {
@@ -7462,6 +7496,7 @@ header .header_inner .right_side {
   overflow: hidden;
   border-radius: 12px 12px 0 0;
   height: 250px;
+  
 }
 
 .profile .profiles_banner::before {
@@ -7598,6 +7633,7 @@ header .header_inner .right_side {
 
 .profile.user-profile .profiles_banner {
   height: 285px;
+  
 }
 
 .profile.user-profile .profiles_banner::before {
@@ -8294,6 +8330,7 @@ header .header_inner .right_side {
 }
 
 .main_content {
+  
   padding-top: 65px;
 }
 
@@ -9140,6 +9177,7 @@ body.story-active header .header_widgets .is_link {
 /* ---------------------------------- */
 /*  contactt list  
 /* ---------------------------------- */
+
 .contact-list a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9183,7 +9221,12 @@ body.story-active header .header_widgets .is_link {
 }
 
 .contact-list-box {
-  background: #fff;
+  /* Rimpi ui changes */
+  background-color: #73c2fb;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* background: #fff; */
   color: #474747;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -9354,6 +9397,7 @@ body.story-active header .header_widgets .is_link {
     display: inline !important;
   }
 }
+
 
 @media (min-width: 1024px) {
   header .header_wrap {

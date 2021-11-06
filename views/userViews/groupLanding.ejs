@@ -92,10 +92,8 @@
                     </span>
                 </a>  
                 
-                <h3 class="side-title"> My Groups </h3>
-
-                <div class="contact-list my-2 ml-1">
-                    
+                <!-- <h3 class="side-title"> My Groups </h3>
+                <div class="contact-list my-2 ml-1">                  
                     <a href="chats-friend.html">
                         <div class="contact-avatar">
                             <img src="../images/avatars/avatar-1.jpg" alt="">
@@ -103,8 +101,7 @@
                         </div>
                         <div class="contact-username"> Dennis Han</div>
                     </a>
-    
-                </div>
+                </div> -->
 <!--     
                 <ul class="side_links" data-sub-title="Pages">
                     <li><a href="feed.html"> <ion-icon name="settings-outline" class="side-icon"></ion-icon>  <span> Setting  </span> </a> 
@@ -406,22 +403,20 @@
                 
                     </div>
                     <div class="lg:w-72 w-full">
-
-                        <h3 class="text-xl font-semibold"> Groups </h3>
-                
+                        
                         <div class="" uk-sticky="offset:80">
                 
                             <nav class="responsive-nav border-b extanded mb-2 -mt-2">
                                 <ul uk-switcher="connect: #group-details; animation: uk-animation-fade">
-
-                                    <li class="uk-active"><a class="active" href="#0">  My Groups(to be worked on) <span> 310 </span> </a></li>
-                                    <li><a href="#0">Suggestions</a></li>
+                                    
+                                    <li class="uk-active"><a class="active" href="#0">  My Groups <span> <%=userGroups.length%> </span> </a></li>
+                                   
                                 </ul>
                             </nav>
                 
                             <div class="contact-list">
-
-                               <% for(var v of value){ %>
+                                <% for(var v of value){ %>
+                               
                                 <!-- Debo: insert group link -->
                                     <a href="#">
                                         <div class="contact-avatar">
@@ -448,7 +443,7 @@
                                     </div>
                                <% }%>
                 
-                                <a href="#">
+                                <!-- <a href="#">
                                     <div class="contact-avatar">
                                         <img src="../images/avatars/avatar-2.jpg" alt="">
                                         <span class="user_status"></span>
@@ -469,7 +464,7 @@
                                         </div>
                                     </div>
                                 </div>
-                
+                 -->
                             </div>
 
                         </div>
