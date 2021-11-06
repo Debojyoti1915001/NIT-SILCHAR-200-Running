@@ -123,7 +123,7 @@ router.get('/homeGroup', requireAuth, authController.homeGroup_get)
 router.post('/search', requireAuth, authController.search_post)
 router.get('/homegroupPage/:name', requireAuth, authController.homegroupPage)//send name to get group home page
 //End
-
+router.post('/groupEdit/:id', requireAuth, authController.groupEdit)
 
 //router.get('/profileNew'/*, requireAuth,*/, authController.profileNew_get)
 

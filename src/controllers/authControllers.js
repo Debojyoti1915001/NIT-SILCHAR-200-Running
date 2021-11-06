@@ -730,9 +730,9 @@ module.exports.groupLanding_get = async (req, res) => {
         const pic=userGroups[i].pic
         value.push({name,pic,post})
     }
-    // value.post.sort( function(a, b){
-    //     var nameA = a.time.toUpperCase(); // ignore upper and lowercase
-    //     var nameB = b.time.toUpperCase(); // ignore upper and lowercase
+    // value.sort( function(a, b){
+    //     var nameA = a.post.post.time.toUpperCase(); // ignore upper and lowercase
+    //     var nameB = b.post.post.time.toUpperCase(); // ignore upper and lowercase
     //     if (nameA > nameB) {
     //       return -1;
     //     }
@@ -743,7 +743,7 @@ module.exports.groupLanding_get = async (req, res) => {
     //     // names must be equal
     //     return 0;
     //   })
-    console.log(value)
+    // console.log(value[0])
     // res.send(value)
     res.render('./userViews/groupLanding',{
         value,
@@ -863,5 +863,13 @@ module.exports.comment_home= async (req, res) =>{
     postComments.push({content,postedBy})
     
     await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect(`/user/homeGroup?id=${gid}`)
+}
+module.exports.groupEdit= async (req, res) =>{
+    console.log("Hey here")
+    const gid=req.params.id
+    const user=req.user
+    const desc=req.body.desc
+    await Group.findOneAndUpdate({_id:gid}, {desc});
     res.redirect(`/user/homeGroup?id=${gid}`)
 }
