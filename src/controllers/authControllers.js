@@ -730,6 +730,19 @@ module.exports.groupLanding_get = async (req, res) => {
         const pic=userGroups[i].pic
         value.push({name,pic,post})
     }
+    value.post.sort( function(a, b){
+        var nameA = a.time.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.time.toUpperCase(); // ignore upper and lowercase
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0;
+      })
     console.log(value)
     // res.send(value)
     res.render('./userViews/groupLanding',{
