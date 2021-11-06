@@ -9,6 +9,7 @@ const { nanoId } = require("nanoid")
 const mongoose=require('mongoose')
 const Group = require('../models/Group')
 const Post = require('../models/Post')
+const axios = require('axios')
 const cloudinary = require('cloudinary').v2
 cloudinary.config({
     cloud_name:process.env.Cloud_Name,
@@ -583,10 +584,35 @@ module.exports.createGroup_get = async (req, res) => {
 }
 
 module.exports.groupFeed_get = async (req, res) => {
-    const allGroups=await Group.find({})
-    
+    const allGroups={};    
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
+
+    // await axios
+    //     .post('http://127.0.0.1:5000/group', {
+    //         des: 'Discussion group winter fashion, winter trends, winter style, outfit inspiration, flared pants'
+    //     })
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    //     .catch(error => {
+    //         console.error(error)
+    //     })
+
+    userGroups.forEach( async group =>{
+        console.log(group.name)
+        await axios
+        .post('http://127.0.0.1:5000/group', {
+            des: group.desc
+        })
+        .then(res => {
+            allgroups.push(res.data);
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    } )
+    console.log(allgroups)
     res.render('./userViews/groupfeed',{
         userGroups,
         allGroups,
