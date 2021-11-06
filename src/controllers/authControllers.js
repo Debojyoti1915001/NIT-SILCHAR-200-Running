@@ -609,7 +609,7 @@ module.exports.groupFeed_get = async (req, res) => {
             allgroups.push(res.data);
         })
         .catch(error => {
-            //console.error(error)
+            console.error(error)
         })
     } )
     console.log(allgroups)
