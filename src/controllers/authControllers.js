@@ -185,14 +185,14 @@ module.exports.login_post = async (req, res) => {
 
 module.exports.search_post=async(req,res)=>{
     try{
-        const user=req.user
+        const userLocal=req.user
         const group=req.body.data
         const allGroups=await Group.find({name:group})
         const allPosts=await Post.find({name:group})
         res.render('./userViews/searchResults',{
             allGroups,
             allPosts,
-            user
+            userLocal
         })
     }catch(err){
         res.send(err)
@@ -212,6 +212,8 @@ module.exports.profile_get = async (req, res) => {
         }
         // res.send(user.post)
         res.render('./userViews/profile', {
+            // Rimpi changes
+            userLocal,
             user,
             allGroups,
         })
@@ -568,13 +570,16 @@ module.exports.createGroup_get = async (req, res) => {
 
 module.exports.groupFeed_get = async (req, res) => {
     const allGroups=await Group.find({})
-    
+    // Rimpi changes
+    const userLocal=req.user
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
+    
     res.render('./userViews/groupfeed',{
         userGroups,
         allGroups,
-        user
+        user,
+        userLocal
     })
 }
 module.exports.like = async (req, res) => {
@@ -705,6 +710,9 @@ module.exports.groupLanding_get = async (req, res) => {
 // 617ae774fe75f93fe8e87970
 // 617ae789fe75f93fe8e87971
 // 617ae7a5fe75f93fe8e87972<-id of some post
+
+    // Rimpi changes
+    const userLocal=req.user
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
     var value=[]
@@ -718,7 +726,9 @@ module.exports.groupLanding_get = async (req, res) => {
     // res.send(value)
     res.render('./userViews/groupLanding',{
         value,
-        user
+        user,
+        userGroups,
+        userLocal
     })
 }  
 module.exports.joinGroup_get = async (req, res) => {
@@ -752,6 +762,9 @@ module.exports.homeGroup_get = async (req, res) =>{
     // const id=req.params.id
     // const group=await Group.findOne({_id:id})
     // const groupContent = await group.populate('post').execPopulate()
+
+    // Rimpi changes
+    const userLocal=req.user
     const groupId=req.query
     const params=new URLSearchParams(groupId)
     const id=params.get('id')
@@ -760,7 +773,8 @@ module.exports.homeGroup_get = async (req, res) =>{
     const groupContent=await groupC.populate('arrayUsers').execPopulate()
     console.log(groupContent)
     res.render('./userViews/homeGroup',{
-        groupContent
+        groupContent,
+        userLocal
     }
     )
 }
