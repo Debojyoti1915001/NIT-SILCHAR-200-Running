@@ -228,6 +228,36 @@
                                 </svg>
                                 <span> Add Post </span>
                             </a>
+                            <a href="#" class="is_link" uk-toggle="target: #edit-group-modal">  Edit Desc </a>
+                            <div id="edit-group-modal" class="create-post" uk-modal>
+                                <div
+                                    class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
+                            
+                                    <form action="/user/groupEdit/<%=groupContent._id%>" class="form" method="POST" >
+                                        <div class="p-10 space-y-7">
+                        
+                                           
+                        
+                                           
+                        
+                                            <div class="line h-32"> 
+                                                <textarea class="line__input h-32"  id="" name="desc" type="text" onkeyup="this.setAttribute('value', this.value);" value="" autocomplete="off"></textarea>
+                                                <span for="username" class="line__placeholder"> Update Group Description </span> 
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <!-- form footer -->
+                                        <div class="flex justify-center border-gray-100 py-8">
+                                            
+                                            <input
+                                        type="submit"
+                                        value="&nbsp&nbsp Update Now &nbsp&nbsp"
+                                    />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                            <%}else{%>
                             <a href="/user/joinGroup/<%=groupContent._id%>" class="is_link">  Join Group </a>
                             <%}%>

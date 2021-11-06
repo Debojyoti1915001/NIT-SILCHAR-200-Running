@@ -211,6 +211,19 @@ module.exports.profile_get = async (req, res) => {
         for(var i=0; i< user.post.length;i++){
             var post=await user.post[i].populate('group').execPopulate()
         }
+        user.post.sort( function(a, b){
+            var nameA = a.time.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.time.toUpperCase(); // ignore upper and lowercase
+            if (nameA > nameB) {
+              return -1;
+            }
+            if (nameA < nameB) {
+              return 1;
+            }
+          
+            // names must be equal
+            return 0;
+          })
         // res.send(user.post)
         res.render('./userViews/profile', {
             user,
@@ -471,7 +484,10 @@ module.exports.postinGroup_post=async (req, res) => {
             res.redirect(`/user/homeGroup?id=${id}`)
         }
         else{
-        const post = new Post({ name, desc,pic,group:id})
+            let time=Date.now()
+            console.log(time)
+        const post = new Post({ name, desc,pic,group:id,time})
+        console.log(post)
         let savePost = await post.save()
         const postId=savePost._id
         const groupExists = await Group.findOne({ _id:id })
@@ -740,7 +756,20 @@ module.exports.groupLanding_get = async (req, res) => {
         const pic=userGroups[i].pic
         value.push({name,pic,post})
     }
-    console.log(value)
+    // value.sort( function(a, b){
+    //     var nameA = a.post.post.time.toUpperCase(); // ignore upper and lowercase
+    //     var nameB = b.post.post.time.toUpperCase(); // ignore upper and lowercase
+    //     if (nameA > nameB) {
+    //       return -1;
+    //     }
+    //     if (nameA < nameB) {
+    //       return 1;
+    //     }
+      
+    //     // names must be equal
+    //     return 0;
+    //   })
+    // console.log(value[0])
     // res.send(value)
     res.render('./userViews/groupLanding',{
         value,
@@ -793,6 +822,19 @@ module.exports.homeGroup_get = async (req, res) =>{
     const group=await Group.findOne({_id:id})
     const groupC = await group.populate('post').execPopulate()
     const groupContent=await groupC.populate('arrayUsers').execPopulate()
+    groupContent.post.sort( function(a, b){
+        var nameA = a.time.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.time.toUpperCase(); // ignore upper and lowercase
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0;
+      })
     // console.log(groupContent)
     res.render('./userViews/homeGroup',{
         groupContent,
@@ -847,5 +889,13 @@ module.exports.comment_home= async (req, res) =>{
     postComments.push({content,postedBy})
     
     await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect(`/user/homeGroup?id=${gid}`)
+}
+module.exports.groupEdit= async (req, res) =>{
+    console.log("Hey here")
+    const gid=req.params.id
+    const user=req.user
+    const desc=req.body.desc
+    await Group.findOneAndUpdate({_id:gid}, {desc});
     res.redirect(`/user/homeGroup?id=${gid}`)
 }
