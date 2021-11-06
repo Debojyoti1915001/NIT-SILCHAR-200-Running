@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/productsR.css" />
+    <link rel="stylesheet" href="../css/navbarR.css" />
+    <link rel="stylesheet" href="../css/uikit.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/homeR.css" />
+    <link href="../unpkg/tailwindcss%402.2.17/dist/tailwind.min.css" rel="stylesheet"> 
+  </head>
+  <body>
+    <main>
+      <%- include('../partials/nav'); %>
+
+      <!-- content -->
+      <div class="content">
+        <!-- <div class="midsize">Home / <span>All Products</span></div> -->
+        <div class="midsizeplus padding">
+          Products <span> - <%= products.length %> Items</span>
+        </div>
+
+        <div class="products-catalogue">
+          <div class="filter-left">
+            <!-- <div class="midsizeplus" style="padding: 20px 20px">FILTERS</div> -->
+            <div class="filters">
+              
+
+              
+                
+              </div>
+            </div>
+          </div>
+
+          
+            <div id="products-right">
+              <% products.map((el) => { %> <% let id = el._id %>
+              <a class="each-product" onclick="changePage('<%= el._id %>')">
+                <div>
+                  <img src="<%= el.images %>" alt="" />
+                  <div class="brand"><%= el.brandName %></div>
+                  <div class="name"><%= el.productName %></div>
+                  <div class="price">
+                    Rs. <%= el.price %>
+                  </div>
+                </div>
+              </a>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<script src="../js/products.js"></script>
+<script src="../js/allfiles.js"></script>

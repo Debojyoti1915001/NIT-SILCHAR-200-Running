@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="icon"
+      href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
+      type="image/icon type"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/home.css" />
+  </head>
+  <body>
+    <div class="autocom"></div>
+    <div class="header sticky">
+      <div>
+        <a href="\home"
+          ><img
+            src="https://cdn.freelogovectors.net/wp-content/uploads/2021/02/myntra-logo-freelogovectors.net_.png"
+            alt="logo"
+        /></a>
+      </div>
+      <div class="categories">
+        <ul>
+          <li class="dropdown-content1 dropdown-content">
+            <a href="\mens">Men</a>
+          </li>
+          <li class="dropdown-content2 dropdown-content">
+            <a href="">Women</a>
+          </li>
+          <li class="dropdown-content3 dropdown-content">
+            <a href="">Kids</a>
+          </li>
+          <li class="dropdown-content4 dropdown-content">
+            <a href="">Home & Living</a>
+          </li>
+          <li class="dropdown-content5 dropdown-content">
+            <a href="">Beauty</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Search Div -->
+      <div class="search-div">
+        <img
+          id="searchpng"
+          src="https://image.flaticon.com/icons/png/128/49/49116.png"
+          alt=""
+        />
+
+        <input type="text" placeholder="Search for products, brands and more" />
+      </div>
+
+      <div class="nav-last">
+        <div class="dropdown-content dropdown-content6">
+          <a href="">
+            <img
+              id="svg"
+              src="https://www.svgrepo.com/show/198180/user-profile.svg"
+              alt=""
+            />
+          </a>
+
+          <div>Profile</div>
+        </div>
+
+        <div>
+          <a href="#" onclick="wishPage()">
+            <img
+              id="svg"
+              src="https://www.svgrepo.com/show/14970/heart.svg"
+              alt=""
+            />
+          </a>
+
+          <div>Wishlist</div>
+        </div>
+
+        <div>
+          <a href="#" onclick="bagPage()">
+            <img
+              id="svg"
+              src="https://www.svgrepo.com/show/17522/bag.svg"
+              alt=""
+            />
+          </a>
+
+          <div>Bag</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- dropdown -->
+    <div class="dropdown-menu1 dropdown-menu">
+      <ul>
+        <li><a href="\products/type/tshirt">Shirts</a></li>
+        <li><a href="\products/type/tshirt">Tshirts</a></li>
+        <li><a href="\products">Jeans</a></li>
+        <li><a href="\products">Shoes</a></li>
+        <li><a href="\products">Accessories</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown-menu2 dropdown-menu">
+      <ul>
+        <li><a href="\products2/ethnic">Ethnic</a></li>
+        <li><a href="\products">western wear</a></li>
+        <li><a href="\products">Footwear</a></li>
+        <li><a href="\products">sports wear</a></li>
+        <li><a href="\products">Accessories</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown-menu3 dropdown-menu">
+      <ul>
+        <li><a href="\products">Boys Clothing</a></li>
+        <li><a href="\products">Girls Clothing</a></li>
+        <li><a href="\products">infants</a></li>
+        <li><a href="\products">boys footwear</a></li>
+        <li><a href="\products">girls footwear</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown-menu4 dropdown-menu">
+      <ul>
+        <li><a href="\products">Bed Linen</a></li>
+        <li><a href="\products">Flooring</a></li>
+        <li><a href="\products">bath</a></li>
+        <li><a href="\products">home decor</a></li>
+        <li><a href="\products">kitchen</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown-menu5 dropdown-menu">
+      <ul>
+        <li><a href="\products">make up</a></li>
+        <li><a href="\products">skincare</a></li>
+        <li><a href="\products">haircare</a></li>
+        <li><a href="\products">fragrances</a></li>
+        <li><a href="\products">mens grooming</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown-menu6 dropdown-menu changediv">
+      <ul>
+        <li><a href="\signin">Login/SignUp</a></li>
+        <li><a href="\bag">Bag</a></li>
+        <li><a href="\wishlist">Wishlist</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script src="/static/js/home.js"></script>
+
+<script src="/static/js/search.js"></script>
+
+<script>
+  function changeProfile() {
+    let token = JSON.parse(localStorage.getItem("token"));
+    if (token != null || token != undefined) {
+      let div = document.querySelector(".changediv");
+      div.innerHTML = `<ul>
+          <li ><a href="#">${token.name}</a></li>
+          <li><a href="/bag/${token.id}">Bag</a></li>
+          <li><a href="/wishlist/${token.id}">Wishlist</a></li>
+          <li><a href="/home" onclick="logout()">Logout</a></li>
+        </ul>`;
+    }
+  }
+  changeProfile();
+
+  function dropDown1() {
+    let content = document.querySelector(".dropdown-content1");
+
+    content.addEventListener("mouseover", function () {
+      let menu = document.querySelector(".dropdown-menu1");
+      menu.style.display = "block";
+    });
+
+    let menu = document.querySelector(".dropdown-menu1");
+    menu.addEventListener("mouseover", function () {
+      menu.style.display = "block";
+      menu.addEventListener("mouseout", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    content.addEventListener("mouseout", function () {
+      let menu = document.querySelector(".dropdown-menu1");
+      menu.style.display = "none";
+    });
+  }
+  dropDown1();
+
+  function dropDown2() {
+    let content = document.querySelector(".dropdown-content2");
+
+    content.addEventListener("mouseover", function () {
+      let menu = document.querySelector(".dropdown-menu2");
+      menu.style.display = "block";
+    });
+
+    let menu = document.querySelector(".dropdown-menu2");
+    menu.addEventListener("mouseover", function () {
+      menu.style.display = "block";
+      menu.addEventListener("mouseout", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    content.addEventListener("mouseout", function () {
+      let menu = document.querySelector(".dropdown-menu2");
+      menu.style.display = "none";
+    });
+  }
+  dropDown2();
+
+  function dropDown3() {
+    let content = document.querySelector(".dropdown-content3");
+
+    content.addEventListener("mouseover", function () {
+      let menu = document.querySelector(".dropdown-menu3");
+      menu.style.display = "block";
+    });
+
+    let menu = document.querySelector(".dropdown-menu3");
+    menu.addEventListener("mouseover", function () {
+      menu.style.display = "block";
+      menu.addEventListener("mouseout", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    content.addEventListener("mouseout", function () {
+      let menu = document.querySelector(".dropdown-menu3");
+      menu.style.display = "none";
+    });
+  }
+  dropDown3();
+
+  function dropDown4() {
+    let content = document.querySelector(".dropdown-content4");
+
+    content.addEventListener("mouseover", function () {
+      let menu = document.querySelector(".dropdown-menu4");
+      menu.style.display = "block";
+    });
+
+    let menu = document.querySelector(".dropdown-menu4");
+    menu.addEventListener("mouseover", function () {
+      menu.style.display = "block";
+      menu.addEventListener("mouseout", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    content.addEventListener("mouseout", function () {
+      let menu = document.querySelector(".dropdown-menu4");
+      menu.style.display = "none";
+    });
+  }
+  dropDown4();
+
+  function dropDown5() {
+    let content = document.querySelector(".dropdown-content5");
+
+    content.addEventListener("mouseover", function () {
+      let menu = document.querySelector(".dropdown-menu5");
+      menu.style.display = "block";
+    });
+
+    let menu = document.querySelector(".dropdown-menu5");
+    menu.addEventListener("mouseover", function () {
+      menu.style.display = "block";
+      menu.addEventListener("mouseout", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    content.addEventListener("mouseout", function () {
+      let menu = document.querySelector(".dropdown-menu5");
+      menu.style.display = "none";
+    });
+  }
+  dropDown5();
+  // conflicts
+  function dropDown6() {
+    let content = document.querySelector(".dropdown-content6");
+
+    content.addEventListener("mouseover", function () {
+      let menu = document.querySelector(".dropdown-menu6");
+      menu.style.display = "block";
+    });
+
+    let menu = document.querySelector(".dropdown-menu6");
+    menu.addEventListener("mouseover", function () {
+      menu.style.display = "block";
+      menu.addEventListener("mouseout", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    content.addEventListener("mouseout", function () {
+      let menu = document.querySelector(".dropdown-menu6");
+      menu.style.display = "none";
+    });
+  }
+  dropDown6();
+
+  function bagPage() {
+    let user = JSON.parse(localStorage.getItem("token"));
+
+    if (user == null || user == undefined) {
+      window.location.href = "/user/login";
+      return alert("Please Login First");
+    }
+    let userId = user.id;
+
+    window.location.href = `/bag/${userId}`;
+  }
+
+  function wishPage() {
+    let user = JSON.parse(localStorage.getItem("token"));
+
+    if (user == null || user == undefined) {
+      window.location.href = "/user/login";
+      return alert("Please Login First");
+    }
+    let userId = user.id;
+
+    window.location.href = `/wishlist/${userId}`;
+  }
+
+  function logout() {
+    localStorage.removeItem("token");
+    // window.location.href = "/home"
+  }
+</script>

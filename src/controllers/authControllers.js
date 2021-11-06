@@ -9,6 +9,7 @@ const { nanoId } = require("nanoid")
 const mongoose=require('mongoose')
 const Group = require('../models/Group')
 const Post = require('../models/Post')
+const axios = require('axios')
 const cloudinary = require('cloudinary').v2
 cloudinary.config({
     cloud_name:process.env.Cloud_Name,
@@ -210,6 +211,19 @@ module.exports.profile_get = async (req, res) => {
         for(var i=0; i< user.post.length;i++){
             var post=await user.post[i].populate('group').execPopulate()
         }
+        user.post.sort( function(a, b){
+            var nameA = a.time.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.time.toUpperCase(); // ignore upper and lowercase
+            if (nameA > nameB) {
+              return -1;
+            }
+            if (nameA < nameB) {
+              return 1;
+            }
+          
+            // names must be equal
+            return 0;
+          })
         // res.send(user.post)
         res.render('./userViews/profile', {
             user,
@@ -382,7 +396,7 @@ module.exports.createGroup_post = async (req, res) => {
         let arrayUsers=[id];
         const group = new Group({  name, desc,arrayUsers,visibility,pic,category})
         let groupUser = await group.save()
-        console.log(groupUser._id)
+        console.log(groupUser)
         var groupsOfUsers=req.user.group
         groupsOfUsers.push(groupUser._id)
         await User.findOneAndUpdate({_id: id}, {$set:{group:groupsOfUsers}}, {new: true}, (err, doc) => {
@@ -470,7 +484,10 @@ module.exports.postinGroup_post=async (req, res) => {
             res.redirect(`/user/homeGroup?id=${id}`)
         }
         else{
-        const post = new Post({ name, desc,pic,group:id})
+            let time=Date.now()
+            console.log(time)
+        const post = new Post({ name, desc,pic,group:id,time})
+        console.log(post)
         let savePost = await post.save()
         const postId=savePost._id
         const groupExists = await Group.findOne({ _id:id })
@@ -567,15 +584,66 @@ module.exports.createGroup_get = async (req, res) => {
 }
 
 module.exports.groupFeed_get = async (req, res) => {
-    const allGroups=await Group.find({})
-    
+    let allGroups=[];    
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
+
+    // await axios
+    //     .post('http://127.0.0.1:5000/group', {
+    //         des: 'Discussion group winter fashion, winter trends, winter style, outfit inspiration, flared pants'
+    //     })
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    //     .catch(error => {
+    //         console.error(error)
+    //     })
+
+   
+        // userGroups.forEach( async group =>{
+        //     // console.log(group.name)
+        //     await axios
+        //     .post('http://127.0.0.1:5000/group', {
+        //         des: group.desc
+        //     })
+        //     .then(res => {
+        //         console.log(res.data)
+        //         allGroups.push(res.data.group);
+        //     })
+        //     .catch(error => {
+        //         console.log('error')
+        //     })
+        // } )
+        var i=0;
+        for(i=0;i<userGroups.length;i++){
+            await axios
+            .post('http://127.0.0.1:5000/group', {
+                des: userGroups[i].desc
+            })
+            .then(res => {
+                // console.log(res.data)
+                allGroups.push(res.data.group);
+            })
+            .catch(error => {
+                console.log('error')
+            })
+        }
+    
+    if(i===userGroups.length){
+        console.log(allGroups)
+        var j=0;
+        const allGroup=[]
+        for(j=0;j<allGroups.length;j++){
+            const c=await Group.findOne({name:allGroups[j]})
+            allGroup.push(c)
+        }
+        console.log(allGroup)
     res.render('./userViews/groupfeed',{
         userGroups,
-        allGroups,
+        allGroup,
         user
     })
+    }
 }
 module.exports.like = async (req, res) => {
     console.log('hitting')
@@ -714,7 +782,20 @@ module.exports.groupLanding_get = async (req, res) => {
         const pic=userGroups[i].pic
         value.push({name,pic,post})
     }
-    console.log(value)
+    // value.sort( function(a, b){
+    //     var nameA = a.post.post.time.toUpperCase(); // ignore upper and lowercase
+    //     var nameB = b.post.post.time.toUpperCase(); // ignore upper and lowercase
+    //     if (nameA > nameB) {
+    //       return -1;
+    //     }
+    //     if (nameA < nameB) {
+    //       return 1;
+    //     }
+      
+    //     // names must be equal
+    //     return 0;
+    //   })
+    // console.log(value[0])
     // res.send(value)
     res.render('./userViews/groupLanding',{
         value,
@@ -746,7 +827,7 @@ module.exports.joinGroup_get = async (req, res) => {
             res.redirect('/')
         }
     });
-    res.redirect('/user/groupFeed')
+    res.redirect(`/user/homeGroup?id=${groupId}`)
 } 
 module.exports.homeGroup_get = async (req, res) =>{
     // const id=req.params.id
@@ -755,12 +836,36 @@ module.exports.homeGroup_get = async (req, res) =>{
     const groupId=req.query
     const params=new URLSearchParams(groupId)
     const id=params.get('id')
+    const user=req.user
+    // console.log(user.group)
+    var isPresent=false
+    // console.log(id)
+    for(var i=0;i<user.group.length;i++){
+        if(user.group[i]==id){
+            isPresent=true
+        }
+    }
     const group=await Group.findOne({_id:id})
     const groupC = await group.populate('post').execPopulate()
     const groupContent=await groupC.populate('arrayUsers').execPopulate()
-    console.log(groupContent)
+    groupContent.post.sort( function(a, b){
+        var nameA = a.time.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.time.toUpperCase(); // ignore upper and lowercase
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0;
+      })
+    // console.log(groupContent)
     res.render('./userViews/homeGroup',{
-        groupContent
+        groupContent,
+        user,
+        isPresent
     }
     )
 }
@@ -810,5 +915,13 @@ module.exports.comment_home= async (req, res) =>{
     postComments.push({content,postedBy})
     
     await Post.findOneAndUpdate({_id:id}, {comments:postComments});
+    res.redirect(`/user/homeGroup?id=${gid}`)
+}
+module.exports.groupEdit= async (req, res) =>{
+    console.log("Hey here")
+    const gid=req.params.id
+    const user=req.user
+    const desc=req.body.desc
+    await Group.findOneAndUpdate({_id:gid}, {desc});
     res.redirect(`/user/homeGroup?id=${gid}`)
 }

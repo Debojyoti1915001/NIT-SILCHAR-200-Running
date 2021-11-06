@@ -33,6 +33,10 @@ const post = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Group',
         },
+        time:{
+            type:String,
+            default:'0'
+        }
 })
 
 const Post = mongoose.model('Post', post)
