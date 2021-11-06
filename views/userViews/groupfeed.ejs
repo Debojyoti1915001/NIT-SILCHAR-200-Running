@@ -44,18 +44,25 @@
             <div class="sidebar_inner" data-simplebar>
         
                 <ul>
-                    <li><a href="feed.html"> 
+                    <li><a href="feed.html">
+                        <svg fill="currentColor" class="text-blue-600" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg> 
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                        </svg> -->
+                        <span> Ecommerce</span> </a> 
+                    </li>
+                    <li><a href="/user/groupLanding"> 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
                             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                         </svg>
                         <span> Feed </span> </a> 
                     </li>
                   
-                    <li class="active"><a href="groups.html"> 
+                    <!-- <li class="active"><a href="/user/groupFeed"> 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-500">
                             <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                         </svg><span> Groups </span></a> 
-                    </li>
+                    </li> -->
                     <li id="more-veiw" hidden><a href="albums.html"> 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-purple-500">
                             <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
@@ -185,7 +192,7 @@
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <span class="md:block hidden"> Create </span>
+                        <span class="md:block hidden"> Create group</span>
                     </a> 
                 </div>
                
@@ -239,78 +246,6 @@
                     </div>
                 </div>
 
-                <div class="sm:my-6 my-3 flex items-center justify-between border-b pb-3">
-                    <div>
-                        <h2 class="text-xl font-semibold"> Categories </h2>
-                        <p class="font-medium text-gray-500 leading-6"> Find a group by browsing top categories. </p>
-                    </div>
-                    <a href="#" class="text-blue-500 sm:block hidden"> See all </a>
-                </div> 
-
-                <div class="relative -mt-3" uk-slider="finite: true">
-                
-                    <div class="uk-slider-container px-1 py-3">
-                        <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid">
-                
-                            <li>
-                                <div class="rounded-md overflow-hidden relative w-full h-36">
-                                    <div class="absolute w-full h-3/4 -bottom-12 bg-gradient-to-b from-transparent to-gray-800 z-10">
-                                    </div>
-                                    <img src="../images/category/travel.jpg" class="absolute w-full h-full object-cover" alt="">
-                                    <div class="absolute bottom-0 w-full p-3 text-white z-20 font-semibold text-lg"> Travel </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rounded-md overflow-hidden relative w-full h-36">
-                                    <div class="absolute w-full h-3/4 -bottom-12 bg-gradient-to-b from-transparent to-gray-800 z-10">
-                                    </div>
-                                    <img src="../images/category/business.jpg" class="absolute w-full h-full object-cover" alt="">
-                                    <div class="absolute bottom-0 w-full p-3 text-white z-20 font-semibold text-lg"> Business </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rounded-md overflow-hidden relative w-full h-36">
-                                    <div class="absolute w-full h-3/4 -bottom-12 bg-gradient-to-b from-transparent to-gray-800 z-10">
-                                    </div>
-                                    <img src="../images/category/health.jpg" class="absolute w-full h-full object-cover" alt="">
-                                    <div class="absolute bottom-0 w-full p-3 text-white z-20 font-semibold text-lg"> Health </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rounded-md overflow-hidden relative w-full h-36">
-                                    <div class="absolute w-full h-3/4 -bottom-12 bg-gradient-to-b from-transparent to-gray-800 z-10">
-                                    </div>
-                                    <img src="../images/category/science-and-tech.jpg" class="absolute w-full h-full object-cover"
-                                        alt="">
-                                    <div class="absolute bottom-0 w-full p-3 text-white z-20 font-semibold text-lg"> Science </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rounded-md overflow-hidden relative w-full h-36">
-                                    <div class="absolute w-full h-3/4 -bottom-12 bg-gradient-to-b from-transparent to-gray-800 z-10">
-                                    </div>
-                                    <img src="../images/category/Buy-and-sell.jpg" class="absolute w-full h-full object-cover"
-                                        alt="">
-                                    <div class="absolute bottom-0 w-full p-3 text-white z-20 font-semibold text-lg"> Buy & sell</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rounded-md overflow-hidden relative w-full h-36">
-                                    <div class="absolute w-full h-3/4 -bottom-12 bg-gradient-to-b from-transparent to-gray-800 z-10">
-                                    </div>
-                                    <img src="../images/category/travel.jpg" class="absolute w-full h-full object-cover" alt="">
-                                    <div class="absolute bottom-0 w-full p-3 text-white z-20 font-semibold text-lg"> Travel </div>
-                                </div>
-                            </li>
-                
-                        </ul>
-                    </div>
-                    
-                    <a class="absolute bg-white top-16 flex items-center justify-center p-2 -left-4 rounded-full shadow-md text-xl w-9 z-10 dark:bg-gray-800 dark:text-white" href="#" uk-slider-item="previous"> <i class="icon-feather-chevron-left"></i></a>
-                    <a class="absolute bg-white top-16 flex items-center justify-center p-2 -right-4 rounded-full shadow-md text-xl w-9 z-10 dark:bg-gray-800 dark:text-white" href="#" uk-slider-item="next"> <i class="icon-feather-chevron-right"></i></a>
-
-                </div>
-
                 <br>  
                 
                 <div class="lg:flex lg:space-x-12">
@@ -322,17 +257,14 @@
                         <nav class="responsive-nav border-b">
                             <ul>
                                 <li class="active"><a href="#" class="lg:px-2"> All Groups <span> <%=userGroups.length %></span> </a></li>
-                                <li><a href="#" class="lg:px-2"> Recently added </a></li>
-                                <li><a href="#" class="lg:px-2"> Family </a></li>
-                                <li><a href="#" class="lg:px-2"> University </a></li>
-                                <li><a href="#" class="lg:px-2"> more </a></li>
+                                <!-- <li><a href="#" class="lg:px-2"> Recently added </a></li>
+                                <li><a href="#" class="lg:px-2"> more </a></li> -->
                             </ul>
                         </nav>
 
 
                         <div class="grid md:grid-cols-2 divide divide-gray-200 gap-x-4 mt-4">
                         
-                            
                             <% for(var d of userGroups) { %>
                                     <div class="flex items-center space-x-4 py-3 hover:bg-gray-100 rounded-md -mx-2 px-2">
                                 <div class="w-14 h-14 flex-shrink-0 rounded-md relative"> 
@@ -340,50 +272,22 @@
                                 </div>
                                 <div class="flex-1">
                                     <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"><%= d.name %></a>
-                                    <div class="text-sm text-gray-500 mt-0.5"> <%= d.arrayUsers.length %></div>
+                                    <div class="text-sm text-gray-500 mt-0.5"> <%= d.arrayUsers.length %> Members</div>
                                 </div>
-                                <a href="#" class="flex items-center justify-center h-9 px-4 rounded-md bg-gray-200 font-semibold"> 
-                                    Join
+                                <a href="/user/homeGroup?id=<%=d._id%>" class="flex items-center justify-center h-9 px-4 rounded-md bg-gray-200 font-semibold"> 
+                                    Visit
                                </a>
                             </div> 
                             <% } %>
 
                         </div> 
                     </div>
-                    <div class="lg:w-1/4 flex-shrink-0 space-y-5"> 
-                    
-                        <h2 class="text-xl font-semibold mt-7"> Suggested For You </h2>
-
-                        
-                        <div class="card">
-                            <div class="card-media h-28">
-                                <div class="card-media-overly"></div>
-                                <img src="../images/events/img-2.jpg" alt="" class="">
-                            </div>
-                            <div class="card-body">
-                                <a href=""  class="font-semibold text-lg truncate mb-1">   Graphic Design </a>
-                                <div class="flex items-center space-x-1 text-sm text-gray-500 capitalize">
-                                    <a href="#"> <span> 232k members </span> </a>
-                                    <a href="#"> <span> 1.7k post a day </span> </a>
-                                </div>  
-
-                                <div class="flex mt-3 space-x-2 text-sm">
-                                    <a href="#" class="bg-blue-600 flex flex-1 h-8 items-center justify-center rounded-md text-white capitalize"> 
-                                        Join 
-                                    </a>
-                                </div>    
-
-                            </div>
-                        </div>
-
-                    </div>
-
                 </div>
 
                 <div class="my-6 flex items-center justify-between border-b pb-3">
                     <div>
                         <h2 class="text-xl font-semibold"> Suggestions  </h2>
-                        <p class="font-medium text-gray-500 leading-6"> Find a groups You Might Be Interested In. </p>
+                        <p class="font-medium text-gray-500 leading-6"> Find groups You Might Be Interested In. </p>
                     </div>
                     <a href="#" class="text-blue-500 sm:block hidden"> See all </a>
                 </div> 
@@ -404,14 +308,11 @@
                             <div class="flex items-center mt-2">
                                 <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
                                 <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                <div class="text-sm text-gray-500 ml-2"> 2 friends are members</div>
                             </div>
 
                         </div>
                         <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 mr-2">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
-                                    </svg>Follow
+                                    Join
                                 </a>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -420,70 +321,14 @@
                         </div> 
                         <div class="flex-1 border-b pb-3">
                             <a href=""  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
-                            <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
-                                <div>·</div>
-                                <div> 12 posts a week</div>
-                            </div>
                             <div class="flex items-center mt-2">
                                 <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
                                 <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                <div class="text-sm text-gray-500 ml-2"> 2 friends are members</div>
+                                
                             </div>
 
                         </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 mr-2">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
-                                    </svg>Follow
-                                </a>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-20 h-20 flex-shrink-0 rounded-md relative mb-3"> 
-                            <img src="../images/group/group-3.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
-                        </div> 
-                        <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize"> Graphic Design </a>
-                            <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
-                                <div>·</div>
-                                <div> 12 posts a week</div>
-                            </div>
-                            <div class="flex items-center mt-2">
-                                <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
-                                <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                <div class="text-sm text-gray-500 ml-2"> 2 friends are members</div>
-                            </div>
-
-                        </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 mr-2">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
-                                    </svg>Follow
-                                </a>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-20 h-20 flex-shrink-0 rounded-md relative mb-3"> 
-                            <img src="../images/group/group-2.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
-                        </div> 
-                        <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize"> Coffee Addicts </a>
-                            <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
-                                <div>·</div>
-                                <div> 12 posts a week</div>
-                            </div>
-                            <div class="flex items-center mt-2">
-                                <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
-                                <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                <div class="text-sm text-gray-500 ml-2"> 2 friends are members</div>
-                            </div>
-
-                        </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 mr-2">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
-                                    </svg>Follow
+                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join
                                 </a>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -504,11 +349,7 @@
                             </div>
 
                         </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 mr-2">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
-                                    </svg>Follow
-                                </a>
+                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join</a>
                     </div>
                    
                     <div class="flex items-center space-x-4">
@@ -529,11 +370,7 @@
                             </div>
 
                         </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 mr-2">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
-                                    </svg>Follow
-                                </a>
+                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join</a>
                     </div>
                 </div>
                 
