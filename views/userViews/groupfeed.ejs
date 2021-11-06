@@ -233,7 +233,7 @@
                                             <!-- <a href="/user/joinGroup/<%=d._id%>" class="bg-blue-600 flex flex-1 h-8 items-center justify-center rounded-md text-white capitalize"> 
                                                 Join 
                                             </a> -->
-                                            <a href="#" class="bg-gray-200 flex flex-1 h-8 items-center justify-center rounded-md capitalize"> 
+                                            <a href="/user/homeGroup?id=<%=d._id%>" class="bg-gray-200 flex flex-1 h-8 items-center justify-center rounded-md capitalize"> 
                                                 View 
                                             </a>
                                         </div>    
@@ -263,67 +263,24 @@
                 </div> 
 
                 <div class="grid md:grid-cols-2 divide divide-gray-200 gap-x-6 gap-y-4">
-
+                    <%for(var group of allGroup){%>
                     <div class="flex items-center space-x-4">
                         <div class="w-20 h-20 flex-shrink-0 rounded-md relative mb-3"> 
-                            <img src="../images/group/group-4.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
+                            <img src="<%=group.pic%>" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize"> Mountain Riders</a>
+                            <a href=""  class="text-lg font-semibold capitalize"> <%=group.name%></a>
                             <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
+                                <div> <%=group.arrayUsers.length%></div>
                                 <div>·</div>
-                                <div> 12 posts a week</div>
+                                <div> <%=group.post.length%> posts </div>
                             </div>
                         </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
+                        <a href="/joinGroup/<%=group._id%>" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
                                     Join
                                 </a>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-20 h-20 flex-shrink-0 rounded-md relative mb-3"> 
-                            <img src="../images/group/group-5.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
-                        </div> 
-                        <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
-                            <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
-                                <div>·</div>
-                                <div> 12 posts a week</div>
-                            </div>
-                        </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join
-                                </a>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-20 h-20 flex-shrink-0 rounded-md relative mb-3"> 
-                            <img src="../images/group/group-1.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
-                        </div> 
-                        <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
-                            <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
-                                <div>·</div>
-                                <div> 12 posts a week</div>
-                            </div>
-                        </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join</a>
-                    </div>
-                   
-                    <div class="flex items-center space-x-4">
-                        <div class="w-20 h-20 flex-shrink-0 rounded-md relative mb-3"> 
-                            <img src="../images/group/group-cover-3.jpg" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
-                        </div> 
-                        <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize"> Architecture </a>
-                            <div class="flex space-x-2 items-center text-sm">
-                                <div> 16K Members</div>
-                                <div>·</div>
-                                <div> 12 posts a week</div>
-                            </div>
-                        </div>
-                        <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join</a>
-                    </div>
+                    <%}%>
                 </div>
             
             </div>

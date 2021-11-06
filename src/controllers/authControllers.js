@@ -584,7 +584,7 @@ module.exports.createGroup_get = async (req, res) => {
 }
 
 module.exports.groupFeed_get = async (req, res) => {
-    const allGroups={};    
+    let allGroups=[];    
     const user = await req.user.populate('group').execPopulate()
     const userGroups=user.group
 
@@ -599,25 +599,51 @@ module.exports.groupFeed_get = async (req, res) => {
     //         console.error(error)
     //     })
 
-    userGroups.forEach( async group =>{
-        console.log(group.name)
-        await axios
-        .post('http://127.0.0.1:5000/group', {
-            des: group.desc
-        })
-        .then(res => {
-            allgroups.push(res.data);
-        })
-        .catch(error => {
-            console.error(error)
-        })
-    } )
-    console.log(allgroups)
+   
+        // userGroups.forEach( async group =>{
+        //     // console.log(group.name)
+        //     await axios
+        //     .post('http://127.0.0.1:5000/group', {
+        //         des: group.desc
+        //     })
+        //     .then(res => {
+        //         console.log(res.data)
+        //         allGroups.push(res.data.group);
+        //     })
+        //     .catch(error => {
+        //         console.log('error')
+        //     })
+        // } )
+        var i=0;
+        for(i=0;i<userGroups.length;i++){
+            await axios
+            .post('http://127.0.0.1:5000/group', {
+                des: userGroups[i].desc
+            })
+            .then(res => {
+                // console.log(res.data)
+                allGroups.push(res.data.group);
+            })
+            .catch(error => {
+                console.log('error')
+            })
+        }
+    
+    if(i===userGroups.length){
+        console.log(allGroups)
+        var j=0;
+        const allGroup=[]
+        for(j=0;j<allGroups.length;j++){
+            const c=await Group.findOne({name:allGroups[j]})
+            allGroup.push(c)
+        }
+        console.log(allGroup)
     res.render('./userViews/groupfeed',{
         userGroups,
-        allGroups,
+        allGroup,
         user
     })
+    }
 }
 module.exports.like = async (req, res) => {
     console.log('hitting')

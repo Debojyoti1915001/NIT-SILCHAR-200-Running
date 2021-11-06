@@ -107,7 +107,7 @@
                     
                     
                 </div>
-
+                <%if(allGroups.length!==0){%>
                 <div class="relative" uk-slider="finite: true">
                 
                     <div class="uk-slider-container px-1 py-3">
@@ -178,7 +178,9 @@
                 
                     </div>
                 </div>
-                
+                <%}else{%>
+                    NOT FOUND
+                <%}%>
             </div>
         </div>
         
