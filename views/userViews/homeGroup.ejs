@@ -43,7 +43,7 @@
             <div class="sidebar_inner" data-simplebar>
         
                 <ul>
-                    <li><a href="/user/groupLanding"> 
+                    <li><a href="/"> 
                         <!-- <a href="#" class="is_icon" uk-tooltip="title: Cart">
                             <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
                         </a> -->
@@ -228,7 +228,7 @@
                                 </svg>
                                 <span> Add Post </span>
                             </a>
-                            <a href="#" class="is_link" uk-toggle="target: #edit-group-modal">  Edit Desc </a>
+                            
                             <div id="edit-group-modal" class="create-post" uk-modal>
                                 <div
                                     class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical rounded-lg p-0 lg:w-5/12 relative shadow-2xl uk-animation-slide-bottom-small">
@@ -247,7 +247,6 @@
                                             
                                             
                                         </div>
-                                        <!-- form footer -->
                                         <div class="flex justify-center border-gray-100 py-8">
                                             
                                             <input
@@ -258,64 +257,16 @@
                                     </form>
                                 </div>
                             </div>
+                        
                            <%}else{%>
                             <a href="/user/joinGroup/<%=groupContent._id%>" class="is_link">  Join Group </a>
                             <%}%>
-                            <!-- search icon -->
-                            <a href="#" class="flex items-center justify-center h-10 w-10 rounded-md bg-gray-100" uk-toggle="target: #profile-search;animation: uk-animation-slide-top-small"> 
-                              <ion-icon name="search" class="text-xl"></ion-icon>
-                            </a>
-                            <!-- search dropdown -->
-                            <div class="absolute right-3 bg-white z-10 w-full flex items-center border rounded-md"
-                                id="profile-search" hidden>
-                                <input type="text" placeholder="Search.." class="flex-1">
-                                <ion-icon name="close-outline" class="text-2xl hover:bg-gray-100 p-1 rounded-full mr-2 cursor-pointer" uk-toggle="target: #profile-search;animation: uk-animation-slide-top-small"></ion-icon>
-                            </div>
                             
-                            <!-- more icon -->
-                            <a href="#" class="flex items-center justify-center h-10 w-10 rounded-md bg-gray-100"> 
-                                <ion-icon name="ellipsis-horizontal" class="text-xl"></ion-icon>
-                            </a>
-                            <!-- more drowpdown -->
-                            <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"  
-                              uk-drop="mode: click;pos: bottom-right;animation: uk-animation-slide-bottom-small; offset:5">
-                                  <ul class="space-y-1">
-                                    <li> 
-                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                                           <ion-icon name="arrow-redo-outline" class="pr-2 text-xl"></ion-icon> Share Profile
-                                        </a> 
-                                    </li>
-                                    <li> 
-                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                                          <ion-icon name="create-outline" class="pr-2 text-xl"></ion-icon>  Account setting 
-                                        </a> 
-                                    </li>
-                                    <li> 
-                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                                          <ion-icon name="notifications-off-outline" class="pr-2 text-lg"></ion-icon>   Disable notifications
-                                        </a> 
-                                    </li> 
-                                    <li> 
-                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                                          <ion-icon name="star-outline"  class="pr-2 text-xl"></ion-icon>  Add favorites 
-                                        </a> 
-                                    </li>
-                                    <li>
-                                      <hr class="-mx-2 my-2 dark:border-gray-800">
-                                    </li>
-                                    <li> 
-                                        <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-50 hover:text-red-500 rounded-md dark:hover:bg-red-600">
-                                          <ion-icon name="stop-circle-outline" class="pr-2 text-xl"></ion-icon>  Unfriend
-                                        </a> 
-                                    </li>
-                                  </ul>
-                            </div>
                         </div>
 
                     </div>
 
                 </div>
-                
                 <div class="uk-switcher lg:mt-8 mt-4" id="timeline-tab">
   
                     <!-- Timeline -->
@@ -585,7 +536,7 @@
                                   <img src="../images/avatars/avatar-4.jpg" alt="" class="rounded-lg">
                                   <img src="../images/avatars/avatar-5.jpg" alt="" class="rounded-lg"> 
                               </div> -->
-                              <a href="#" class="button gray mt-3 w-full"> Edit </a>
+                              <a href="#" class="is_link button gray mt-3 w-full" uk-toggle="target: #edit-group-modal">  Edit</a>
                             </div>
 <!--                         
                             <div class="widget card p-5 border-t">
