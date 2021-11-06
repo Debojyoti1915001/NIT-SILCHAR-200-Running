@@ -70,12 +70,35 @@ const userSchema = mongoose.Schema(
         profilePic: {
             type: String,
             trim: true,
-        },
+        },username: {
+            type: String,
+            required: true,
+            unique: true,
+          },
+          bagItems: [
+            {
+              productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
+              quantity: { type: Number, default: 1 },
+              // price: { type: Number, default: 0 },
+            },
+          ],
+          wishListItems: [
+            {
+              productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
+              // price: { type: Number, default: 0 },
+            },
+          ],
+          activeR: 
+          { 
+              type: Boolean, 
+              default: false 
+            },
         passwordResetToken: String,
         passwordResetExpires: Date,
     },
     
     {
+        versionKey: false,
         timestamps: true,
     },
 
