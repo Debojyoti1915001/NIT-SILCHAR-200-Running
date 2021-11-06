@@ -180,9 +180,9 @@
                         <h2 class="text-2xl font-semibold"> Groups </h2>
                         <nav class="responsive-nav border-b md:m-0 -mx-4">
                             <ul>
-                                <li class="active"><a href="#" class="lg:px-2">   Suggestions </a></li>
-                                <li><a href="#" class="lg:px-2"> Newest </a></li>
-                                <li><a href="#" class="lg:px-2"> My group </a></li>
+                                <li class="active"><a href="#" class="lg:px-2">   My Groups </a></li>
+                                <!-- <li><a href="#" class="lg:px-2"> Newest </a></li>
+                                <li><a href="#" class="lg:px-2"> My group </a></li> -->
                             </ul>
                         </nav>
                     </div>
@@ -198,16 +198,20 @@
                
                 <div class="relative" uk-slider="finite: true">
                 
+                <!-- Start -->
+
+                <!-- End -->
+
                     <div class="uk-slider-container px-1 py-3">
                         <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid-small uk-grid">
-                            <% for(var d of allGroups) { %>
+                            <% for(var d of userGroups) { %>
                             <li>
                                 <div class="card">
                                     <div class="card-media h-28">
                                         <div class="card-media-overly"></div>
                                         
                                             <img src="<%=d.pic%>" alt="" class="">
-                                        <div class="absolute bg-red-100 font-semibold px-2.5 py-1 rounded-lg text-red-500 text-xs top-2.5 left-2.5"> Trend </div>
+        
                                     </div>
                                     <div class="card-body">
                                         <a href="/user/homeGroup?id=<%=d._id%>" class="font-semibold text-lg truncate"> <%=d.name%> </a>
@@ -215,7 +219,7 @@
                                             <a href="#"> <span> <%=d.arrayUsers.length%> members </span> </a>
                                             <a href="#"> <span> <%=d.post.length%> post </span> </a>
                                         </div>  
-                                        <div class="flex mt-3.5 space-x-2">
+                                        <!-- <div class="flex mt-3.5 space-x-2">
                                             <div class="flex items-center -space-x-2 -mt-1">
                                                 <img alt="Image placeholder" src="../images/avatars/avatar-6.jpg" class="border-2 border-white rounded-full w-7">
                                                 <img alt="Image placeholder" src="../images/avatars/avatar-5.jpg" class="border-2 border-white rounded-full w-7">
@@ -223,12 +227,12 @@
                                             <div class="flex-1 leading-5 text-sm">
                                                 <div> <strong>Johnson</strong> and 5 freind are members </div>
                                             </div>
-                                        </div>
+                                        </div> -->
     
                                         <div class="flex mt-3.5 space-x-2 text-sm font-medium">
-                                            <a href="/user/joinGroup/<%=d._id%>" class="bg-blue-600 flex flex-1 h-8 items-center justify-center rounded-md text-white capitalize"> 
+                                            <!-- <a href="/user/joinGroup/<%=d._id%>" class="bg-blue-600 flex flex-1 h-8 items-center justify-center rounded-md text-white capitalize"> 
                                                 Join 
-                                            </a>
+                                            </a> -->
                                             <a href="#" class="bg-gray-200 flex flex-1 h-8 items-center justify-center rounded-md capitalize"> 
                                                 View 
                                             </a>
@@ -248,41 +252,7 @@
 
                 <br>  
                 
-                <div class="lg:flex lg:space-x-12">
-
-                    <div class="lg:w-3/4"> 
-
-
-                        <h3 class="text-xl font-semibold"> Your Groups </h3>
-                        <nav class="responsive-nav border-b">
-                            <ul>
-                                <li class="active"><a href="#" class="lg:px-2"> All Groups <span> <%=userGroups.length %></span> </a></li>
-                                <!-- <li><a href="#" class="lg:px-2"> Recently added </a></li>
-                                <li><a href="#" class="lg:px-2"> more </a></li> -->
-                            </ul>
-                        </nav>
-
-
-                        <div class="grid md:grid-cols-2 divide divide-gray-200 gap-x-4 mt-4">
-                        
-                            <% for(var d of userGroups) { %>
-                                    <div class="flex items-center space-x-4 py-3 hover:bg-gray-100 rounded-md -mx-2 px-2">
-                                <div class="w-14 h-14 flex-shrink-0 rounded-md relative"> 
-                                    <img src="<%=d.pic%>" class="absolute w-full h-full inset-0 rounded-md object-cover" alt="">
-                                </div>
-                                <div class="flex-1">
-                                    <a href="/user/homeGroup?id=<%=d._id%>"  class="text-lg font-semibold capitalize"><%= d.name %></a>
-                                    <div class="text-sm text-gray-500 mt-0.5"> <%= d.arrayUsers.length %> Members</div>
-                                </div>
-                                <a href="/user/homeGroup?id=<%=d._id%>" class="flex items-center justify-center h-9 px-4 rounded-md bg-gray-200 font-semibold"> 
-                                    Visit
-                               </a>
-                            </div> 
-                            <% } %>
-
-                        </div> 
-                    </div>
-                </div>
+                
 
                 <div class="my-6 flex items-center justify-between border-b pb-3">
                     <div>
@@ -305,11 +275,6 @@
                                 <div>·</div>
                                 <div> 12 posts a week</div>
                             </div>
-                            <div class="flex items-center mt-2">
-                                <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
-                                <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                            </div>
-
                         </div>
                         <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500"> 
                                     Join
@@ -321,12 +286,11 @@
                         </div> 
                         <div class="flex-1 border-b pb-3">
                             <a href=""  class="text-lg font-semibold capitalize">  Property Rent And Sale </a>
-                            <div class="flex items-center mt-2">
-                                <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
-                                <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                
+                            <div class="flex space-x-2 items-center text-sm">
+                                <div> 16K Members</div>
+                                <div>·</div>
+                                <div> 12 posts a week</div>
                             </div>
-
                         </div>
                         <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join
                                 </a>
@@ -342,12 +306,6 @@
                                 <div>·</div>
                                 <div> 12 posts a week</div>
                             </div>
-                            <div class="flex items-center mt-2">
-                                <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
-                                <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                <div class="text-sm text-gray-500 ml-2"> 2 friends are members</div>
-                            </div>
-
                         </div>
                         <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join</a>
                     </div>
@@ -363,18 +321,11 @@
                                 <div>·</div>
                                 <div> 12 posts a week</div>
                             </div>
-                            <div class="flex items-center mt-2">
-                                <img src="../images/avatars/avatar-2.jpg" class="w-6 rounded-full border-2 border-gray-200 -mr-2" alt="">
-                                <img src="../images/avatars/avatar-4.jpg" class="w-6 rounded-full border-2 border-gray-200" alt="">
-                                <div class="text-sm text-gray-500 ml-2"> 2 friends are members</div>
-                            </div>
-
                         </div>
                         <a href="#" class="flex items-center justify-center h-9 px-3 rounded-md bg-blue-100 text-blue-500">Join</a>
                     </div>
                 </div>
-                
-        
+            
             </div>
         </div>
         
@@ -523,55 +474,6 @@
                         </div>
                         <div class="contact-username"> Alex Dolgove</div>
                     </a>
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-8.jpg" alt="">
-                            <span class="user_status status_online"></span>
-                        </div>
-                        <div class="contact-username"> Dennis Han</div>
-                    </a>
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-2.jpg" alt="">
-                            <span class="user_status"></span>
-                        </div>
-                        <div class="contact-username"> Erica Jones</div>
-                    </a>
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-3.jpg" alt="">
-                        </div>
-                        <div class="contact-username">Stella Johnson</div>
-                    </a>
-                    
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-5.jpg" alt="">
-                        </div>
-                        <div class="contact-username">Adrian Mohani </div>
-                    </a>
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-6.jpg" alt="">
-                        </div>
-                        <div class="contact-username"> Jonathan Madano</div>
-                    </a>
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-2.jpg" alt="">
-                            <span class="user_status"></span>
-                        </div>
-                        <div class="contact-username"> Erica Jones</div>
-                    </a>
-                    <a href="chats-group.html">
-                        <div class="contact-avatar">
-                            <img src="../images/avatars/avatar-1.jpg" alt="">
-                            <span class="user_status status_online"></span>
-                        </div>
-                        <div class="contact-username"> Dennis Han</div>
-                    </a>
-                   
-
                 </div>
 
             </div>
