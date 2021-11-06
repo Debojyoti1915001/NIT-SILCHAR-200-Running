@@ -1,16 +1,40 @@
 const express = require('express')
+const jwt = require('jsonwebtoken')
 const router = express.Router()
 const Contact = require('../models/Contact');
+const User = require('../models/User');
 const { contactMail } = require('../config/nodemailer');
 //Route for homepage
 router.get('/', (req, res) => {
     var c=false
     const cookie=req.cookies.jwt
-    // console.log(req.cookies.jwt)
-    if(cookie!==undefined)c=true
+    
+    var user={profilePic:null,name:null};
+    // console.log(user)
+    const token = req.cookies.jwt
+    // console.log(token);
+    // check json web token exists & is verified
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+           
+                user = await User.findById(decodedToken.id)
+                if(cookie!==undefined)c=true
     res.render('./userViews/product',{
-        c
+        c,
+        user
     })
+        })
+        
+    }else{
+        if(cookie!==undefined)c=true
+    res.render('./userViews/product',{
+        c,
+        user
+    })
+    } 
+    
+    // console.log(req.cookies.jwt)
+    
 });
 
 router.post('/contact',async(req,res)=>{

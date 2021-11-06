@@ -88,19 +88,18 @@
                              
 
                             
-        
                             <a href="#">
-                                <img src="../images/avatars/avatar-2.jpg" class="is_avatar" alt="">
+                                <img src="<%=user.profilePic%>" class="is_avatar" alt="">
                             </a>
                             <div uk-drop="mode: click;offset:5" class="header_dropdown profile_dropdown">
 
                                 <a href="/user/profile" class="user">
                                     <div class="user_avatar">
-                                        <img src="../images/avatars/avatar-2.jpg" alt="">
+                                        <img src="<%=user.profilePic%>" alt="">
                                     </div>
                                     <div class="user_name">
-                                        <div> Stella Johnson </div>
-                                        <span> @johnson</span>
+                                        <div> <%=user.name%> </div>
+                                       
                                     </div>
                                 </a>
                                 <hr>
@@ -124,6 +123,7 @@
                                 
                             </div>
                             <%}%>
+                           
                         </div>
                         
                     </div>
