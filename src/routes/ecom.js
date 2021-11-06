@@ -4,6 +4,7 @@ const Bag = require("../models/bag.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { requireAuth, redirectIfLoggedIn } = require('../middleware/userAuth')
 
 const Product = require("../models/product.model");
 
@@ -129,11 +130,13 @@ router.get("/address", async (req, res) => {
   router.get("/mens", async (req, res) => {
     return res.render("ejs/mens", {});
   });
-  router.get("/moda/:id", async (req, res) => {
+  router.get("/moda/:id",requireAuth, async (req, res) => {
     try {
       const el = await Product.findById(req.params.id).lean().exec();
+      const user=req.user
       return res.render("\ejs/moda", {
         el
+        ,user
       });
     } catch (error) {
       res.send(error.message);
@@ -147,10 +150,12 @@ router.get("/address", async (req, res) => {
   router.get("/payment/process", async (req, res) => {
     return res.render("ejs/successfulPayment");
   });
-  router.get("/products", async (req, res) => {
+  router.get("/products",requireAuth, async (req, res) => {
     const products = await Product.find({}).lean();
+    const user=req.user
     return res.render("ejs/products", {
       products: products,
+      user
     });
   });
   
@@ -170,7 +175,7 @@ router.get("/address", async (req, res) => {
 
 // Routes for Categories
 
-router.get("/product2/ethnic", async (req, res) => {
+router.get("/product2/ethnic",requireAuth, async (req, res) => {
     const products = await Product.find({ $or: [{ category: "Saree" }, { category: "Kurta" }] }).lean();
     //   res.json(products);
     return res.render("ejs/products2", {
