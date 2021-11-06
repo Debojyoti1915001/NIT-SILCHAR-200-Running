@@ -221,13 +221,16 @@
                         <div class="flex items-center space-x-1.5 flex-shrink-0 pr-4 mb-2 justify-center order-1 relative">
                             
                             <!-- add story -->
+                            <%if(isPresent===true){ %>
                             <a href="/user/postinGroup/<%=groupContent._id%>" class="flex items-center justify-center h-10 px-5 rounded-md bg-blue-600 text-white space-x-1.5 hover:text-white"  uk-toggle="target: #create-post-modal"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
                                 </svg>
                                 <span> Add Post </span>
                             </a>
-                           
+                           <%}else{%>
+                            <a href="/user/joinGroup/<%=groupContent._id%>" class="is_link">  Join Group </a>
+                            <%}%>
                             <!-- search icon -->
                             <a href="#" class="flex items-center justify-center h-10 w-10 rounded-md bg-gray-100" uk-toggle="target: #profile-search;animation: uk-animation-slide-top-small"> 
                               <ion-icon name="search" class="text-xl"></ion-icon>
@@ -287,6 +290,7 @@
   
                     <!-- Timeline -->
                     <div class="md:flex md:space-x-6 lg:mx-16">
+                        <%if(groupContent.visibility==='0'||isPresent===true){%>
                         <div class="space-y-5 flex-shrink-0 md:w-7/12">
       
                            <!-- create post  -->
@@ -507,7 +511,7 @@
                        
       
                         </div>
-
+                        <%}%>
                         <!-- Sidebar -->
                         <div class="w-full space-y-6">
                         
@@ -520,7 +524,7 @@
                                     </li>
                                     <li class="flex items-center space-x-2"> 
                                         <ion-icon name="globe" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
-                                        Visibilty <strong> <%if(groupContent.visibilty==='0'){%>Public<%}else{%>Private<%}%>  </strong>
+                                        Visibilty <strong> <%if(groupContent.visibility=='0'){%>Public<%}else{%>Private<%}%>  </strong>
                                     </li>
                                     <li class="flex items-center space-x-2"> 
                                         <ion-icon name="heart-sharp" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
