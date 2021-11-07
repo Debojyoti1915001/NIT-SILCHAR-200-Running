@@ -79,7 +79,7 @@ app.listen(PORT, () => {
 
 // const  User = require('./models/Post')
 //  const databasedlt= async()=>{
-//     const user = await User.find({})
+//     const user = await User.find({desc:'Desc1'})
 //     user.forEach(async(data)=>{
 //          await User.findByIdAndDelete(data._id)
 //     })
