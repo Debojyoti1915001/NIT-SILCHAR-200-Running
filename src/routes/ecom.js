@@ -3,7 +3,7 @@ const router = express.Router()
 const Bag = require("../models/bag.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const user = require("../models/User");
+const User = require("../models/User");
 const axios = require("axios");
 const { requireAuth, redirectIfLoggedIn } = require('../middleware/userAuth')
 
@@ -202,7 +202,7 @@ router.get("/address", async (req, res) => {
             })
         }
 
-    //const user=req.user
+    const user=req.user
     if(i===likedPosts.length){
       for(var post of products){
         const c=await Product.findOne({images:post})
