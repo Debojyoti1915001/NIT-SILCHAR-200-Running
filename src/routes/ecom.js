@@ -167,12 +167,16 @@ router.get("/address", async (req, res) => {
     const product = await Product.create(req.body);
     res.json(product);
   });
-  router.get("/product2", async (req, res) => {
+  router.get("/suggestedProducts",requireAuth, async (req, res) => {
     const products = await Product.find({}).lean();
+    const likedPosts=req.user.likedPosts
+    //satyik ML model here
+    const user=req.user
     return res.render("ejs/products2", {
-        products: products,
+      products: products,
+      user
     });
-});
+  });
 
 // Routes for Categories
 
