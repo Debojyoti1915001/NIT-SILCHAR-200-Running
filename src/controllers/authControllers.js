@@ -39,7 +39,7 @@ module.exports.login_get = (req, res) => {
 
 module.exports.signup_post = async (req, res) => {
     const { name, email, password, confirmPwd, phoneNumber } = req.body
-    // console.log("in sign up route",req.body);
+    console.log("in sign up route",req.body);
     if (password != confirmPwd) {
         req.flash('error_msg', 'Passwords do not match. Try again')
         res.status(400).redirect('/user/login')
@@ -74,15 +74,7 @@ module.exports.signup_post = async (req, res) => {
         //res.send(saveUser)
         res.redirect('/user/login')
     } catch (err) {
-        const errors = handleErrors(err)
-        // console.log(errors)
-
-        var message = 'Could not signup. '.concat((errors['email'] || ""), (errors['password'] || ""), (errors['phoneNumber'] || ""),(errors['name'] || "")  )
-        //res.json(errors);
-        req.flash(
-            'error_msg',
-            message
-        )
+        console.log(err)
         res.status(400).redirect('/user/signup')
     }
 }
