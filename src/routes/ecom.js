@@ -283,7 +283,7 @@ router.post("/product2", async (req, res) => {
       }
     }
   
-    user = await User.findByIdAndUpdate(
+    const u = await User.findByIdAndUpdate(
       userId,
       { wishListItems: [...bag, { productId: prodId }] },
       { new: true }
