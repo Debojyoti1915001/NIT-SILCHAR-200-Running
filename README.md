@@ -61,8 +61,40 @@ Web app will be accessible at ```localhost:3000```
 
 ### Running Flask app for accesing ML model
 * Change to the **NIT-SILCHAR-200-Running** directory 
-```cd ML```
-* The following python modules are required for running of the flask app ``` sklearn,tensorflow,keras,numpy,pandas,flask,tqdm,Pillow,nltk,pickle,spacy```
+```
+cd ML
+```
+* The following python modules are required for running of the flask app 
+``` 
+pip install sklearn
+```
+```
+pip install tensorflow
+```
+```
+pip install numpy
+```
+```
+pip install pandas
+```
+```
+pip install tqdm
+```
+```
+pip install nltk
+```
+```
+pip install Pillow
+```
+```
+pip install spacy
+```
+```
+pip install pickle
+```
+```
+pip install flask
+```
 * Install the required python modules and After all packages have gotten installed, py app.pyWeb app will be accessible at ```localhost:5000```
 
 
