@@ -848,15 +848,15 @@ module.exports.homeGroup_get = async (req, res) =>{
     const id=params.get('id')
     const user1=req.user
     const user= await user1.populate('group').execPopulate()
-    // console.log(user.group)
+    console.log(user.group)
     var isPresent=false
-    // console.log(id)
+    console.log(id)
     for(var i=0;i<user.group.length;i++){
-        if(user.group[i]==id){
+        if(user.group[i]._id==id){
             isPresent=true
         }
     }
-    
+    console.log(isPresent)
     const group=await Group.findOne({_id:id})
     const groupC = await group.populate('post').execPopulate()
     const groupContent=await groupC.populate('arrayUsers').execPopulate()

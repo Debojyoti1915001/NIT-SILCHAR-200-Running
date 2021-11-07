@@ -49,7 +49,7 @@
                         <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
                             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                         </svg> -->
-                        <span> Ecommerce</span> </a> 
+                        <span> Products</span> </a> 
                     </li>
                     <li><a href="/user/groupLanding"> 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
@@ -111,7 +111,12 @@
                 <div class="relative" uk-slider="finite: true">
                 
                     <div class="uk-slider-container px-1 py-3">
-                        <h4>Groups</h4>
+                        <% if(allGroups.length!=0){ %>
+                            <h4>Groups</h4>
+                          <% } else { %>
+                            <h4>No results</h4>
+                        <% } %>
+                        
                         <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid">
                             <%for(var group of allGroups ){%>
                             <li>
@@ -146,7 +151,9 @@
                 <div class="relative" uk-slider="finite: true">
                 
                     <div class="uk-slider-container px-1 py-3">
-                        <h4>Posts</h4>
+                        <% if(allGroups.length!=0){ %>
+                            <h4>Posts</h4>
+                          <% } %>
                         <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid">
                             <%for(var post of allPosts ){%>
                             <li>

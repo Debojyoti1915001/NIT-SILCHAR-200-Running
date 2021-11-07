@@ -53,7 +53,7 @@
                         <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
                             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                         </svg> -->
-                        <span> Ecommerce </span> </a> 
+                        <span> Products </span> </a> 
                     </li>
                     <li><a href="/user/groupLanding"> 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
@@ -393,19 +393,15 @@
                 
                     </div>
                     <div class="lg:w-72 w-full">
-                
                         <div class="" uk-sticky="offset:80">
                 
                             <nav class="responsive-nav border-b extanded mb-2 -mt-2">
                                 <ul uk-switcher="connect: #group-details; animation: uk-animation-fade">
-
                                     <li class="uk-active"><a class="active" href="#0">  My Groups </a></li>
-                                    <li><a href="#0">Suggestions</a></li>
                                 </ul>
                             </nav>
                 
                             <div class="contact-list">
-
                                <% for(var v of value){ %>
                                     <a href="/user/homegroupPage/<%=v.name%>">
                                         <div class="contact-avatar">
@@ -430,8 +426,6 @@
                                         </div>
                                     </div>
                                <% }%>
-                
-                                
                 
                             </div>
 

@@ -51,7 +51,7 @@
                         <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
                             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                         </svg> -->
-                        <span> Ecommerce </span> </a> 
+                        <span> Products </span> </a> 
                     </li>
                     <li><a href="/user/groupLanding"> 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-blue-600"> 
@@ -537,7 +537,9 @@
                                   <img src="../images/avatars/avatar-4.jpg" alt="" class="rounded-lg">
                                   <img src="../images/avatars/avatar-5.jpg" alt="" class="rounded-lg"> 
                               </div> -->
-                              <a href="#" class="is_link button gray mt-3 w-full" uk-toggle="target: #edit-group-modal">  Edit</a>
+
+                              <a href="#" class="is_link button mt-3 w-full bg-blue-600 text-white space-x-1.5 hover:text-white" uk-toggle="target: #edit-group-modal">  Edit</a>
+
                             </div>
 <!--                         
                             <div class="widget card p-5 border-t">
@@ -588,15 +590,17 @@
                                 </div>
                               <a href="#" class="button gray mt-3 w-full">  See all </a>
                             </div> -->
-                            
+                          
                             <div class="widget card p-5 border-t">
                                 <div class="flex items-center justify-between mb-4">
+
                                     <div>
                                         <h4 class="text-lg font-semibold"> Groups Followed </h4>
                                         <p class="text-sm"> <%=user.group.length%> groups</p>
                                     </div>
                                     <a href="#" class="text-blue-600 ">See all</a>
                                 </div>
+
                                 <div class="grid grid-cols-3 gap-3 text-gray-600 font-semibold">
                                     <%if(user.group.length<4){%>
                                         <%for(var g of user.group){%>
@@ -630,7 +634,7 @@
                                 </div>
                               <a href="#" class="button gray mt-3 w-full">  See all </a>
                             </div>
-                            
+
                         </div>
                     </div>
                           
@@ -665,11 +669,11 @@
                             <%}%>
 
                         </div>
-                             
+<!--                              
                         <div class="flex justify-center mt-6">
                             <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
                                 Load more ..</a>
-                        </div>
+                        </div> -->
 
                     </div>
 

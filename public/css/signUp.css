@@ -389,7 +389,8 @@ top:8px;
     border-radius: 6px;
     outline: none;
     /* border: 1px solid #8692a6; */
-    border: 1px solid #f13ab1;
+    border: 1px solid #73C2FB;
+    /* border: 1px solid #f13ab1; */
     margin-bottom: 1vh;
     font-size: 90%;
 }
@@ -412,7 +413,8 @@ top:8px;
     /* height:10vh; */
     opacity: 1 !important;
     /* background-color: #9ac1f8; */
-    background-color: #f13ab1;
+    background-color: #73C2FB;
+    /* background-color: #f13ab1; */
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -461,7 +463,9 @@ border:2px solid blue;
     margin-top: 3px;
     width: 80%;
     height: 5.5vh;
-    background: #f13ab1;
+    /* Rimpi ui changes */
+    background-color: #1107CC;
+    /* background: #f13ab1; */
     border-radius: 6px;
     outline: none;
     border: none;
