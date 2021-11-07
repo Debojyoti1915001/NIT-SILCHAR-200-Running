@@ -797,6 +797,16 @@ module.exports.groupLanding_get = async (req, res) => {
     //   })
     // console.log(value[0])
     // res.send(value)
+    // await User.findOneAndUpdate({_id: req.user._id}, {$set:{group:[]}}, {new: true}, (err, doc) => {
+    //     if (err) {
+    //         // console.log("Something wrong when updating data!");
+    //         req.flash("error_msg", "Something wrong when updating data!")
+    //         res.redirect('/')
+    //     }
+        
+    //     // console.log(doc);
+    // });
+    console.log(req.user)
     res.render('./userViews/groupLanding',{
         value,
         user

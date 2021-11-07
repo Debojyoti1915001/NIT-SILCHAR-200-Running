@@ -4,19 +4,21 @@ const Bag = require("../models/bag.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { requireAuth, redirectIfLoggedIn } = require('../middleware/userAuth')
 
 const Product = require("../models/product.model");
 
 router.get("/address", async (req, res) => {
     return res.render("ejs/address", {});
   });
-  router.get("/bag", (req, res) => {
-    return res.render('ejs/emptyBag');
-  });
+  // router.get("/bag", (req, res) => {
+  //   return res.render('ejs/emptyBag');
+  // });
   
-  router.get("/bag/:userId", async (req, res) => {
+  router.get("/bag",requireAuth, async (req, res) => {
     try {
-      let user = await User.findById(req.params.userId);
+
+      const user=req.user
   
       let bag = user.bagItems;
   
@@ -42,7 +44,7 @@ router.get("/address", async (req, res) => {
         prodArr.push([product, bag[i].quantity]);
   
         total +=
-          Math.ceil((product.price * (100 - product.discount)) / 100) *
+          Math.ceil((product.price * (100 - 0)) / 100) *
           bag[i].quantity;
         quantity += bag[i].quantity;
   
@@ -51,7 +53,7 @@ router.get("/address", async (req, res) => {
   
       let dis = actualPrice - total;
   
-      return res.render("ejs/bag", { bag: prodArr, total, quantity, dis });
+      return res.render("ejs/bag", { bag: prodArr, total, quantity:1, dis });
     } catch (err) {
       res.send(err.message);
     }
@@ -83,10 +85,10 @@ router.get("/address", async (req, res) => {
   
   })
   
-  router.post("/bag/addtoCart", async (req, res) => {
-    let { userId, prodId } = req.body;
-    let user = await User.findById(userId).lean().exec();
-  
+  router.get("/bag/addtoCart/:id",requireAuth, async (req, res) => {
+    let  prodId  = req.params.id;
+    let user = req.user
+    let userId=user._id
     let bag = user.bagItems;
   
     for (let i = 0; i < bag.length; i++) {
@@ -100,7 +102,7 @@ router.get("/address", async (req, res) => {
           .lean()
           .exec();
   
-        return res.json(user);
+        return res.redirect('/bag');
       }
     }
   
@@ -111,7 +113,7 @@ router.get("/address", async (req, res) => {
     )
       .lean()
       .exec();
-    return res.json(user);
+      return res.redirect('/bag');
   });
   
   router.get("/home", async (req, res) => {
@@ -129,11 +131,13 @@ router.get("/address", async (req, res) => {
   router.get("/mens", async (req, res) => {
     return res.render("ejs/mens", {});
   });
-  router.get("/moda/:id", async (req, res) => {
+  router.get("/moda/:id",requireAuth, async (req, res) => {
     try {
       const el = await Product.findById(req.params.id).lean().exec();
+      const user=req.user
       return res.render("\ejs/moda", {
         el
+        ,user
       });
     } catch (error) {
       res.send(error.message);
@@ -147,10 +151,12 @@ router.get("/address", async (req, res) => {
   router.get("/payment/process", async (req, res) => {
     return res.render("ejs/successfulPayment");
   });
-  router.get("/products", async (req, res) => {
+  router.get("/products",requireAuth, async (req, res) => {
     const products = await Product.find({}).lean();
+    const user=req.user
     return res.render("ejs/products", {
       products: products,
+      user
     });
   });
   
@@ -161,16 +167,20 @@ router.get("/address", async (req, res) => {
     const product = await Product.create(req.body);
     res.json(product);
   });
-  router.get("/product2", async (req, res) => {
+  router.get("/suggestedProducts",requireAuth, async (req, res) => {
     const products = await Product.find({}).lean();
+    const likedPosts=req.user.likedPosts
+    //satyik ML model here
+    const user=req.user
     return res.render("ejs/products2", {
-        products: products,
+      products: products,
+      user
     });
-});
+  });
 
 // Routes for Categories
 
-router.get("/product2/ethnic", async (req, res) => {
+router.get("/product2/ethnic",requireAuth, async (req, res) => {
     const products = await Product.find({ $or: [{ category: "Saree" }, { category: "Kurta" }] }).lean();
     //   res.json(products);
     return res.render("ejs/products2", {
@@ -194,13 +204,11 @@ router.post("/product2", async (req, res) => {
 
 
   
-  router.get("/wishlist", (req, res) => {
-    return res.render("ejs/emptyWL");
-  });
   
-  router.get("/wishlist/:userId", async (req, res) => {
+  
+  router.get("/wishlist",requireAuth, async (req, res) => {
     try {
-      let user = await User.findById(req.params.userId);
+      let user =req.user
   
       let bag = user.wishListItems;
   
@@ -216,21 +224,22 @@ router.post("/product2", async (req, res) => {
         prodArr.push([product, 1]);
       }
   
-      return res.render("ejs/wishlist", { items: prodArr });
+      return res.render("ejs/wishlist", { items: prodArr,user });
     } catch (err) {
       res.send(err.message);
     }
   });
   
-  router.post("/wishlist/add", async (req, res) => {
-    let { userId, prodId } = req.body;
-    let user = await User.findById(userId).lean().exec();
+  router.get("/wishlist/add/:id",requireAuth, async (req, res) => {
+    const user=req.user
+    const userId=req.user._id
+    const prodId=req.params.id
   
     let bag = user.wishListItems;
   
     for (let i = 0; i < bag.length; i++) {
       if (bag[i].productId == prodId) {
-        return res.send("Item Already Added");
+        return res.redirect('/wishlist');
       }
     }
   
@@ -241,7 +250,7 @@ router.post("/product2", async (req, res) => {
     )
       .lean()
       .exec();
-    return res.json(user);
+    return res.redirect('/wishlist')
   });
   
   router.post("/wishlist/deleteItem/", async (req, res) => {
