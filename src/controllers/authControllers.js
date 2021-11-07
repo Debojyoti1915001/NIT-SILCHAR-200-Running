@@ -846,7 +846,8 @@ module.exports.homeGroup_get = async (req, res) =>{
     const groupId=req.query
     const params=new URLSearchParams(groupId)
     const id=params.get('id')
-    const user=req.user
+    const user1=req.user
+    const user= await user1.populate('group').execPopulate()
     // console.log(user.group)
     var isPresent=false
     // console.log(id)
@@ -855,6 +856,7 @@ module.exports.homeGroup_get = async (req, res) =>{
             isPresent=true
         }
     }
+    
     const group=await Group.findOne({_id:id})
     const groupC = await group.populate('post').execPopulate()
     const groupContent=await groupC.populate('arrayUsers').execPopulate()
