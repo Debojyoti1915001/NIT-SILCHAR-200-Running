@@ -5,13 +5,20 @@
 ### Work only on the dev branch
 
 ### Routes
- * GET ```/``` -> Renders the home page
+ * GET ```/``` -> Renders the Ecommerce Landing Page
  * User authentication routes
    * GET ```/user/signup``` -> Renders the registration view
    * POST ```/user/signup``` -> Creation of new user account
    * GET ```/user/login``` -> Renders the login view
    * POST ```/user/login``` -> User login
    * GET ```/user/logout``` -> Logs the user out and redirects to ```/login``` route
+   * GET ```/user/groupLanding``` -> Renders the group Landing page i.e. the post of all the Groups you are part of.
+   * GET ```/user/groupFeed``` -> Renders all the groups you are part of alng with the suggested Groups done using ML.
+   * GET ```/user/homeGroup?id=``` -> Renders all the details within a group
+   * GET ```/products``` -> Renders all the products
+   * GET ```/suggestedProducts`` -> Renders all the suggested products done using ML
+   
+
    
 ### Installation 
 (Note : These instructions are only for developers/testers for now)
