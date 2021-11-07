@@ -169,9 +169,9 @@ router.get("/address", async (req, res) => {
     res.json(product);
   });
   router.get("/suggestedProducts",requireAuth, async (req, res) => {
-    const products = await Product.find({}).lean();
+    const products =[]
     const likedPosts=req.user.likedPosts
-    //console.log(likedPosts);
+    // console.log(likedPosts);
     let allpost=[]
     var i=0;
         for(i=0;i<likedPosts.length;i++){
@@ -181,17 +181,41 @@ router.get("/address", async (req, res) => {
             })
             .then(res => {
                 console.log(res.data)
-                //allpost.push(res.data.group);
+                var f=0
+                var cur=''
+                for(var i=0;i<res.data.length;i++){
+                  if(f===0&&res.data[i]=="'"){
+                    f=1
+                  }
+                  else if(f===1&&res.data[i]=="'"){
+                    products.push(cur)
+                    cur=''
+                    f=0
+                  }else if(f===1){
+                    cur+=res.data[i]
+                  } 
+                }
+                //allpost.push(res.data);
             })
             .catch(error => {
                 //console.log('error')
             })
         }
+
     //const user=req.user
-    return res.render("ejs/products2", {
-      products: products,
-      user
-    });
+    if(i===likedPosts.length){
+      for(var post of products){
+        const c=await Product.findOne({images:post})
+        if(c!==null){
+          allpost.push(c)
+        }
+      }
+      console.log(products)
+      return res.render("ejs/products2", {
+        products: allpost,
+        user
+      });
+    }
   });
 
 // Routes for Categories
