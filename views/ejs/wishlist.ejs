@@ -58,22 +58,22 @@
         <div>
           <img
             onclick="redirect('<%= pro[0]._id %>')"
-            src="<%= pro[0].images[0] %>"
+            src="<%= pro[0].images %>"
             alt=""
           />
           <div class="brand"><%= pro[0].brandName %></div>
           <div class="name"><%= pro[0].productName %></div>
           <div class="price">
-            Rs. <%= Math.ceil(pro[0].price * (100 - pro[0].discount) / 100)%>
-            <span class="line-through"> Rs. <%= pro[0].price %></span>
-            <span class="discount" font-size="5px !important"
+            Rs. <%= Math.ceil(pro[0].price * (100 - 0) / 100)%>
+            <!-- <span class="line-through"> Rs. <%= pro[0].price %></span> -->
+            <!-- <span class="discount" font-size="5px !important"
               >(<%= pro[0].discount %> % OFF)</span
-            >
+            > -->
           </div>
           <div class="newdiv">
-            <button class="wishbtn" onclick="deleteItem('<%=pro[0]._id %>')">
+            <!-- <button class="wishbtn" onclick="deleteItem('<%=pro[0]._id %>')">
               Delete Item
-            </button>
+            </button> -->
           </div>
         </div>
       </a>

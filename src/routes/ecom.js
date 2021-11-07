@@ -220,14 +220,14 @@ router.post("/product2", async (req, res) => {
         prodArr.push([product, 1]);
       }
   
-      return res.render("ejs/wishlist", { items: prodArr });
+      return res.render("ejs/wishlist", { items: prodArr,user });
     } catch (err) {
       res.send(err.message);
     }
   });
   
-  router.post("/wishlist/add/:id",requireAuth, async (req, res) => {
-    
+  router.get("/wishlist/add/:id",requireAuth, async (req, res) => {
+    const user=req.user
     const userId=req.user._id
     const prodId=req.params.id
   
@@ -235,7 +235,7 @@ router.post("/product2", async (req, res) => {
   
     for (let i = 0; i < bag.length; i++) {
       if (bag[i].productId == prodId) {
-        return res.send("Item Already Added");
+        return res.redirect('/wishlist');
       }
     }
   
@@ -246,7 +246,7 @@ router.post("/product2", async (req, res) => {
     )
       .lean()
       .exec();
-    return res.render('/wishlist')
+    return res.redirect('/wishlist')
   });
   
   router.post("/wishlist/deleteItem/", async (req, res) => {
