@@ -95,6 +95,10 @@ pip install pickle
 ```
 pip install flask
 ```
-* Install the required python modules and After all packages have gotten installed, py app.pyWeb app will be accessible at ```localhost:5000```
+* Install the required python modules and After all packages have gotten installed, 
+```
+py app.py
+```
+Web app will be accessible at ```localhost:5000```
 
 
