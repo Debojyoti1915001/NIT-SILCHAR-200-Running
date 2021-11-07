@@ -269,9 +269,9 @@
                             <img src="<%=group.pic%>" class="absolute w-full h-full inset-0 rounded-md object-cover shadow-sm" alt="">
                         </div> 
                         <div class="flex-1 border-b pb-3">
-                            <a href=""  class="text-lg font-semibold capitalize"> <%=group.name%></a>
+                            <a href="/user/homeGroup?id=<%=group._id%>"  class="text-lg font-semibold capitalize"> <%=group.name%></a>
                             <div class="flex space-x-2 items-center text-sm">
-                                <div> <%=group.arrayUsers.length%></div>
+                                <div> <%=group.arrayUsers.length%>members</div>
                                 <div>·</div>
                                 <div> <%=group.post.length%> posts </div>
                             </div>

@@ -275,13 +275,14 @@
                         <div class="space-y-5 flex-shrink-0 md:w-7/12">
       
                            <!-- create post  -->
+                           <%if(isPresent===true){%>
                            <div class="card lg:mx-0 p-4" uk-toggle="target: #create-post-modal">
                             <div class="flex space-x-3">
                                 <img src="<%=groupContent.pic%>" class="w-10 h-10 rounded-full">
                                 <input placeholder="What's Your Mind ?" class="bg-gray-100 hover:bg-gray-200 flex-1 h-10 px-6 rounded-full"> 
                             </div>
                             </div>
-                   
+                            <%}%>
                            
                    
                                <!-- post header-->
