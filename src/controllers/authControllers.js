@@ -616,17 +616,17 @@ module.exports.groupFeed_get = async (req, res) => {
         // } )
         var i=0;
         for(i=0;i<userGroups.length;i++){
-            await axios
-            .post('http://127.0.0.1:5000/group', {
-                des: userGroups[i].desc
-            })
-            .then(res => {
-                // console.log(res.data)
-                allGroups.push(res.data.group);
-            })
-            .catch(error => {
-                console.log('error')
-            })
+            // await axios
+            // .post('http://127.0.0.1:5000/group', {
+            //     des: userGroups[i].desc
+            // })
+            // .then(res => {
+            //     // console.log(res.data)
+            //     allGroups.push(res.data.group);
+            // })
+            // .catch(error => {
+            //     console.log('error')
+            // })
         }
     
     if(i===userGroups.length){
