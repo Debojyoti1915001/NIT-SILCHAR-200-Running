@@ -59,6 +59,8 @@ nodemon src/app.js
 
 Web app will be accessible at ```localhost:3000```
 
-
+7)### Running Flask app for accesing ML model
+* Change to the *NIT-SILCHAR-200-Running* directorycd ML
+* The following python modules are required for running of the flask app sklearn,tensorflow,keras,numpy,pandas,flask,tqdm,Pillow,nltk,pickle,spacy3) Install the required python modules and After all packages have gotten installed, py app.pyWeb app will be accessible at ```localhost:5000```
 
 
