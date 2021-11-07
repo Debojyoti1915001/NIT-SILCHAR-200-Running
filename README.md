@@ -31,11 +31,23 @@ git clone https://github.com/Debojyoti1915001/NIT-SILCHAR-200-Running.git
 ```
 cd NIT-SILCHAR-200-Running
 ```
-4) Since the operational code is in the ```dev```, and the current branch is ```master```, checkout a tracking branch pointing to the ```dev``` of the remote repo (changes will get pulled automatically)
+4) The operational code is in  ```master```
 ```
 git checkout --track origin/dev
 ```
 5) Obtain the **.env** file and place it inside the root (**NIT-SILCHAR-200-Running**) directory
+
+```
+MONGODB_URL=mongodb+srv://debo:debo@debo.brgyg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+NODEMAILER_EMAIL= enter_your_email_here
+NODEMAILER_SECONDARYEMAIL=enter_your_secondary_email_here
+NODEMAILER_PASSWORD = enter_your_email's_password_here
+JWT_SECRET = seaoftranquility
+Cloud_Name=dxjcjsopt
+API_Key=776272262761276
+API_Secret=ZvhJVjaKl4CTKyDJIN-xKfNOit4
+```
+
 6) Open your git bash or cmd again, and cd to the **NIT-SILCHAR-200-Running** directory. Then
 ```
 npm install
@@ -46,4 +58,52 @@ nodemon src/app.js
 ```
 
 Web app will be accessible at ```localhost:3000```
+
+### Running Flask app for accesing ML model
+* Change to the **NIT-SILCHAR-200-Running** directory 
+```
+cd ML
+```
+* The following python modules are required for running of the flask app 
+``` 
+pip install sklearn
+```
+```
+pip install tensorflow
+```
+```
+pip install numpy
+```
+```
+pip install pandas
+```
+```
+pip install tqdm
+```
+```
+pip install nltk
+```
+```
+pip install Pillow
+```
+```
+pip install spacy
+```
+```
+pip install pickle
+```
+```
+pip install flask
+```
+```
+pip install requests
+```
+* Install the required python modules and After all packages have gotten installed, 
+```
+py app.py
+```
+Web app will be accessible at ```localhost:5000```
+
+
+
 
