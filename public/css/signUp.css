@@ -282,7 +282,12 @@ ul li {
     height: 100vh;
     opacity: 0.85;
     /* background-color: #5ca0ff; */
-    background-color: #fff;
+    /* Rimpi ui changes */
+    background-color: #73c2fb;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+    /* background-color: #fff; */
     float: left;
 }
 #signUp {
@@ -294,7 +299,12 @@ ul li {
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 98vw 93vh;
-    background-color: #ffffff;
+    /* Rimpi ui changes */
+    background-color: #73c2fb;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+    /* background-color: #ffffff; */
 }
 #design {
     margin-top: 18vh;
@@ -461,7 +471,9 @@ border:2px solid blue;
     margin-top: 3px;
     width: 80%;
     height: 5.5vh;
-    background: #f13ab1;
+    /* Rimpi ui changes */
+    background-color: #1107CC;
+    /* background: #f13ab1; */
     border-radius: 6px;
     outline: none;
     border: none;

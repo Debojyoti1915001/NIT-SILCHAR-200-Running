@@ -15,6 +15,8 @@
 </head>
 
 <body>
+  <!-- Rimpi ui changes -->
+  <div  style="background-color:#73c2fb;">
    <!--Signup-->
 <div id="signUp"><!--started details-->
 	<div id="signupLeftImage">
@@ -102,14 +104,15 @@
             <input type="password" placeholder="Confirm password" class="inputDetails" id="confirmPwd" required name="confirmPwd">
             <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i><br>
           </div>
-        
-    		<div><input type="checkbox" id="terms" required><label for="terms" id="terms1" > I agree to <a href="" id="termLink" style="color: #f13ab1;">terms & conditions</a></label></div>
+          <div><input type="checkbox" id="terms" required><label for="terms" id="terms1" > I agree to <a href="" id="termLink">terms & conditions</a></label></div>
+    		<!-- <div><input type="checkbox" id="terms" required><label for="terms" id="terms1" > I agree to <a href="" id="termLink" style="color: #f13ab1;">terms & conditions</a></label></div> -->
         <button type="submit" id="submitbtn" class="register" name="submitbtn">Register Account</button>
         </form>
       </div>
       <div class="loginlink-section">
         <p id="login" style="color:black">Already have an account?</p>
-    	  <a href="#" id="loginLink" style="text-decoration:none !important; color: #f13ab1;">Login</a>
+    	  <!-- <a href="#" id="loginLink" style="text-decoration:none !important; color: #f13ab1;">Login</a> -->
+        <a href="#" id="loginLink" style="text-decoration:none !important;">Login</a>
       </div>
     	
     </div>
@@ -127,16 +130,17 @@
             <label class="label2">Password*</label>
             <input type="password" placeholder="Password" class="inputDetails" required id="password" name="password"/>
             <i class="fa fa-eye" aria-hidden="true" id="eyeIcon"></i>
-            <button type="submit" id="submitbtn1" >Login</button>
+            <button type="submit" id="submitbtn1" style="background-color: #1107CC;">Login</button>
           </form>
         </div>
         <div class="signuplink-section">
           <p id="signUpopt" style="color:black">Don't have an account?</p>
-        <a href="#" id="signUpLink" style="text-decoration:none !important;color: #f13ab1;">Create account</a>
+          <a href="#" id="signUpLink" style="text-decoration:none !important;">Create account</a>
+        <!-- <a href="#" id="signUpLink" style="text-decoration:none !important;color: #f13ab1;">Create account</a> -->
         </div>  
     </div>
   </div>
-
+</div>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="/js/passwordstrength.js"></script>
   <script src="/js/signUp.js"></script>
