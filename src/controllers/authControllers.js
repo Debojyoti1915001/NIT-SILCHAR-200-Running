@@ -580,7 +580,10 @@ module.exports.updatePost_post = async (req, res) => {
 }
 // createGroup_get
 module.exports.createGroup_get = async (req, res) => {
-    res.render('./userViews/create-group')
+    const user=req.user
+    res.render('./userViews/create-group',{
+        user
+    })
 }
 
 module.exports.groupFeed_get = async (req, res) => {
