@@ -31,7 +31,7 @@ git clone https://github.com/Debojyoti1915001/NIT-SILCHAR-200-Running.git
 ```
 cd NIT-SILCHAR-200-Running
 ```
-4) Since the operational code is in the ```dev```, and the current branch is ```master```, checkout a tracking branch pointing to the ```dev``` of the remote repo (changes will get pulled automatically)
+4) The operational code is in  ```master```
 ```
 git checkout --track origin/dev
 ```
