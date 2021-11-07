@@ -9771,3 +9771,23 @@ html.dark,
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+footer{
+  background: #73c2fb;
+  height:auto;
+  font-family: "Open Sans";
+  color:blue;
+}
+#footer-content{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+}
+#footer-content h3{
+  color:#2563eb;
+  font-size:1.2rem;
+  font-weight:400;
+  text-decoration:capitalize;
+  line-height:3rem;
+}

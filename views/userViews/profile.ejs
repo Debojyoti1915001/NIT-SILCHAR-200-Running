@@ -567,7 +567,8 @@
                                         </a>
                                     <%}%>
                                 </div>
-                               <a href="#" class="button gray mt-3 w-full">  See all </a>
+                               <a href="#profile-myGroups" class="button gray mt-3 w-full">  See all </a>
+                            
                             </div>
                             <!--div-- class="widget card p-5 border-t">
                                 <div class="flex items-center justify-between mb-2">
@@ -611,7 +612,7 @@
                             </ul>
                         </nav> -->
 
-                        <div class="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4 mt-3">
+                        <div class="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4 mt-3" id="profile-myGroups">
                             <!-- come here babay -->
                             <%for(var g of user.group){%>
                             <div class="card p-2">
@@ -630,10 +631,10 @@
 
                         </div>
                              
-                        <div class="flex justify-center mt-6">
+                        <!-- <div class="flex justify-center mt-6">
                             <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
                                 Load more ..</a>
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -1442,6 +1443,9 @@
     <script src="../js/custom.js"></script>
     <script src="../js/bootstrap-select.min.js"></script>
     <script src="../unpkg.com/ionicons%405.2.3/dist/ionicons.js"></script>
+
+    
+
 
 </body>
 
