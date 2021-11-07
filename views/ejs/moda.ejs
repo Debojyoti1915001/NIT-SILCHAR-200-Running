@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Buy <%= el.productName %></title>
+    <title>THE SORTED STORE</title>
     <link rel="stylesheet" href="../css/navbarR.css" />
     <link rel="stylesheet" href="../css/modaR.css" />
     <link rel="stylesheet" href="../css/footerR.css" />
@@ -54,12 +54,16 @@
           <!-- <div class="circles">XXL</div> -->
         </div>
         <div class="newdiv">
-          <button class="cartbtn" onclick="addtoCart('<%=el._id %>')">
+          <a href="/bag/addtoCart/<%=el._id%>">
+            <button class="cartbtn">
             <img src="https://www.svgrepo.com/show/17522/bag.svg" />ADD TO BAG
           </button>
-          <button class="wishbtn" onclick="addtoWishList('<%=el._id %>')">
+        </a>
+        <a href="/wishlist/add/<%=el._id%>">
+          <button class="wishbtn">
             <img src="https://www.svgrepo.com/show/14970/heart.svg" />WISH LIST
           </button>
+        </a>
         </div>
         <div class="newdiv">
           <h4 class="font" class="van">
@@ -197,8 +201,7 @@
 <script src="../js/moda.js"></script>
 
 <script>
-  const userObj = JSON.parse(localStorage.getItem("token"));
-  const userId = userObj.id;
+  const userId = req.user._id;
   console.log(userId);
 
   async function addtoWishList(prodId) {
@@ -223,6 +226,7 @@
       headers: {
         "Content-Type": "application/json",
       },
+      
       body: JSON.stringify({
         userId,
         prodId,
