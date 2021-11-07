@@ -11,13 +11,14 @@ const Product = require("../models/product.model");
 router.get("/address", async (req, res) => {
     return res.render("ejs/address", {});
   });
-  router.get("/bag", (req, res) => {
-    return res.render('ejs/emptyBag');
-  });
+  // router.get("/bag", (req, res) => {
+  //   return res.render('ejs/emptyBag');
+  // });
   
-  router.get("/bag/:userId", async (req, res) => {
+  router.get("/bag",requireAuth, async (req, res) => {
     try {
-      let user = await User.findById(req.params.userId);
+
+      const user=req.user
   
       let bag = user.bagItems;
   
@@ -43,7 +44,7 @@ router.get("/address", async (req, res) => {
         prodArr.push([product, bag[i].quantity]);
   
         total +=
-          Math.ceil((product.price * (100 - product.discount)) / 100) *
+          Math.ceil((product.price * (100 - 0)) / 100) *
           bag[i].quantity;
         quantity += bag[i].quantity;
   
@@ -52,7 +53,7 @@ router.get("/address", async (req, res) => {
   
       let dis = actualPrice - total;
   
-      return res.render("ejs/bag", { bag: prodArr, total, quantity, dis });
+      return res.render("ejs/bag", { bag: prodArr, total, quantity:1, dis });
     } catch (err) {
       res.send(err.message);
     }
@@ -84,10 +85,10 @@ router.get("/address", async (req, res) => {
   
   })
   
-  router.post("/bag/addtoCart", async (req, res) => {
-    let { userId, prodId } = req.body;
-    let user = await User.findById(userId).lean().exec();
-  
+  router.get("/bag/addtoCart/:id",requireAuth, async (req, res) => {
+    let  prodId  = req.params.id;
+    let user = req.user
+    let userId=user._id
     let bag = user.bagItems;
   
     for (let i = 0; i < bag.length; i++) {
@@ -101,7 +102,7 @@ router.get("/address", async (req, res) => {
           .lean()
           .exec();
   
-        return res.json(user);
+        return res.redirect('/bag');
       }
     }
   
@@ -112,7 +113,7 @@ router.get("/address", async (req, res) => {
     )
       .lean()
       .exec();
-    return res.json(user);
+      return res.redirect('/bag');
   });
   
   router.get("/home", async (req, res) => {
@@ -199,13 +200,11 @@ router.post("/product2", async (req, res) => {
 
 
   
-  router.get("/wishlist", (req, res) => {
-    return res.render("ejs/emptyWL");
-  });
   
-  router.get("/wishlist/:userId", async (req, res) => {
+  
+  router.get("/wishlist",requireAuth, async (req, res) => {
     try {
-      let user = await User.findById(req.params.userId);
+      let user =req.user
   
       let bag = user.wishListItems;
   
@@ -227,9 +226,10 @@ router.post("/product2", async (req, res) => {
     }
   });
   
-  router.post("/wishlist/add", async (req, res) => {
-    let { userId, prodId } = req.body;
-    let user = await User.findById(userId).lean().exec();
+  router.post("/wishlist/add/:id",requireAuth, async (req, res) => {
+    
+    const userId=req.user._id
+    const prodId=req.params.id
   
     let bag = user.wishListItems;
   
@@ -246,7 +246,7 @@ router.post("/product2", async (req, res) => {
     )
       .lean()
       .exec();
-    return res.json(user);
+    return res.render('/wishlist')
   });
   
   router.post("/wishlist/deleteItem/", async (req, res) => {

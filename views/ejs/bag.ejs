@@ -44,15 +44,15 @@
                     <button class = "child3">APPLY</button>
                     <hr class = "child4">
                     <p class = "child5">PRICE DETAILS (<%= quantity %> Item)</p>
-                    <p class = "child6">Total MRP</p>
-                    <p class = "child7">Rs. <%= total + dis %></p>
-                    <p class = "child8">Discount on MRP</p>
-                    <p class = "child9">- Rs. <%= dis %></p>
-                    <p class = "child10">Coupon Discount</p>
+                    <!-- <p class = "child6">Total MRP</p>
+                    <p class = "child7">Rs. <%= total  %></p> -->
+                    <!-- <p class = "child8">Discount on MRP</p>
+                    <p class = "child9">- Rs. <%= dis %></p> -->
+                    <!-- <p class = "child10">Coupon Discount</p>
                     <button class = "child11">Apply Coupon</button>
                     <p class = "child12">Convenience Fee <b style = "color: #ff3f6c;;">Know More</b></p>
                     <p class = "child13"><s>Rs99 </s> Free</p>
-                    <hr class = "child14">
+                    <hr class = "child14"> -->
                     <p class = "child15">Total Amount</p>
                     <p class = "child16">Rs. <%= total %></p>
                     <button class = "child17" onclick="showAddressPage()">PLACE ORDER</button>
@@ -93,7 +93,7 @@
                         <div onclick="deleteItem('<%= pro[0]._id %>')" id="delete-btn"> X </div>
                         
 
-                        <img id = "img2" src = "<%= pro[0].images[0] %>"/>
+                        <img id = "img2" src = "<%= pro[0].images %>"/>
                         <div class = "child">
                             <p class = "p"><%=pro[0].brandName%><br>
                            <%= pro.productName %>
@@ -118,14 +118,14 @@
                                 
                             </select>
 
-                            <div class="mydiv">
+                            <!-- <div class="mydiv">
                                 <div class="mybold" id = "discount">  Rs. <%=(Math.ceil((pro[0].price * (100 - pro[0].discount)) / 100) * pro[1])%>  &nbsp; <s class="mylight">(Rs. <%= pro[0].price * pro[1] %>) </s> &nbsp; <span > <%=pro[0].discount%>% OFF</span></div>
-                            </div>
+                            </div> -->
 
                             <br>
 
                             
-                            <h6 class="myDown" style = "color: cornflowerblue;">Delivery By 4th September, 2021</h6>
+                            <h6 class="myDown" style = "color: cornflowerblue;">Delivery By 25 November, 2021</h6>
                             
 
                         </div>
