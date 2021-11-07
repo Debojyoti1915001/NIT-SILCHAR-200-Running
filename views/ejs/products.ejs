@@ -15,20 +15,22 @@
   <body>
     <main>
       <%- include('../partials/nav'); %>
-
+      
       <!-- content -->
       <div class="content">
+        
         <!-- <div class="midsize">Home / <span>All Products</span></div> -->
         <div class="midsizeplus padding">
-          Products <span> - <%= products.length %> Items</span>
+          Products <span> - <%= products.length %> Items</span>-->
+          <a href="/suggestedProducts" class="is_link">  Suggested Products </a></div>
         </div>
 
         <div class="products-catalogue">
           <div class="filter-left">
-            <!-- <div class="midsizeplus" style="padding: 20px 20px">FILTERS</div> -->
+            <div class="midsizeplus" style="padding: 20px 20px">
+              
             <div class="filters">
               
-
               
                 
               </div>
@@ -37,6 +39,7 @@
 
           
             <div id="products-right">
+              
               <% products.map((el) => { %> <% let id = el._id %>
               <a class="each-product" onclick="changePage('<%= el._id %>')">
                 <div>
