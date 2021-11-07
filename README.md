@@ -36,6 +36,18 @@ cd NIT-SILCHAR-200-Running
 git checkout --track origin/dev
 ```
 5) Obtain the **.env** file and place it inside the root (**NIT-SILCHAR-200-Running**) directory
+
+```
+MONGODB_URL=mongodb+srv://debo:debo@debo.brgyg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+NODEMAILER_EMAIL= enter_your_email_here
+NODEMAILER_SECONDARYEMAIL=enter_your_secondary_email_here
+NODEMAILER_PASSWORD = enter_your_email's_password_here
+JWT_SECRET = seaoftranquility
+Cloud_Name=dxjcjsopt
+API_Key=776272262761276
+API_Secret=ZvhJVjaKl4CTKyDJIN-xKfNOit4
+```
+
 6) Open your git bash or cmd again, and cd to the **NIT-SILCHAR-200-Running** directory. Then
 ```
 npm install
@@ -46,4 +58,7 @@ nodemon src/app.js
 ```
 
 Web app will be accessible at ```localhost:3000```
+
+
+
 
