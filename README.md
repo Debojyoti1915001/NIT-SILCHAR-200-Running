@@ -1,6 +1,9 @@
 # NIT-SILCHAR-200-Running
 
-### Work only on the dev branch
+### Video Link
+```
+https://drive.google.com/drive/u/0/folders/1u6u1o7_rQ2_3iHQW93XfrnaAiqZMEPmo
+```
 
 ### Routes
  * GET ```/``` -> Renders the Ecommerce Landing Page
