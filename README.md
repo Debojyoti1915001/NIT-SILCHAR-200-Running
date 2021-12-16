@@ -43,7 +43,7 @@ git checkout --track origin/dev
 5. Obtain the **.env** file and place it inside the root (**NIT-SILCHAR-200-Running**) directory
 
 ```
-MONGODB_URL=mongodb+srv://debo:debo@debo.brgyg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+MONGODB_URL=Enter_MongoDB_Link_Here
 NODEMAILER_EMAIL= enter_your_email_here
 NODEMAILER_SECONDARYEMAIL=enter_your_secondary_email_here
 NODEMAILER_PASSWORD = enter_your_email's_password_here
